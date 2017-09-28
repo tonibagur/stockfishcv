@@ -71,4 +71,5 @@ enum SetupPhase {
 - (int)epCandidateSquaresForColor:(Color)us toArray:(Square *)squares;
 - (NSString *)fen;
 
+- (void) addPiece:(Piece)p onSquare:(Square) s;
 @end

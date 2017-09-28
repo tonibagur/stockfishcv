@@ -133,6 +133,9 @@
    board[s] = EMPTY;
 }
 
+- (void) addPiece:(Piece)p onSquare:(Square) s {
+    [self putPiece:p onSquare:s];
+}
 
 - (void)clear {
    if (phase == PHASE_EDIT_BOARD) {
