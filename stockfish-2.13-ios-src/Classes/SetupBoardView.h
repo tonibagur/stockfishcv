@@ -72,4 +72,5 @@ enum SetupPhase {
 - (NSString *)fen;
 
 - (void) addPiece:(Piece)p onSquare:(Square) s;
+- (Piece) pieceFromMLByCode:(NSInteger) code;
 @end

@@ -9,7 +9,7 @@
 #import <CoreML/CoreML.h>
 #import <Vision/Vision.h>
 
-typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSError * _Nullable error);
+typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
 
 @protocol CoreMLDelegate <NSObject>
 

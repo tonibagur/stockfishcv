@@ -197,10 +197,25 @@
         [ml setupModel];
     }
     
-    [ml executeImage:nil withCompletion:^(BOOL succes, NSError * _Nullable error) {
+    [ml executeImage:nil withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
+    {
+        NSLog(@"success: %@", succes?@"YES":@"NO");
         NSLog(@"error of completion: %@",error);
+        NSLog(@"arrResults: %@", arrResultPieces);
         
-   
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            for (NSDictionary *dic in arrResultPieces)
+            {
+                Piece piece = [boardView pieceFromMLByCode:[dic[@"z"]integerValue]];
+                if (piece == NO_PIECE) {
+                    [boardView removePieceOnSquare:make_square(File([dic[@"x"]integerValue]), Rank([dic[@"y"]integerValue]))];
+                }
+                else {
+                    [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File([dic[@"x"]integerValue]), Rank([dic[@"y"]integerValue]))];
+                }
+            }
+            });
     }];
     
 

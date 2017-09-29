@@ -8,6 +8,7 @@
 #import "CoreMLManager.h"
 
 #import "chess500.h"
+#import "chess_pieces.h"
 
 
 @implementation CoreMLManager
@@ -18,13 +19,15 @@
 - (void) setupModel
 {
     MLModel *model = [[[chess500 alloc] init] model];
+    MLModel *modelPieces = [[[chess_pieces alloc] init] model];
+    
     if (!model) {
         isAvailable = NO;
         NSLog(@"Error in loading model.h");
         return;
     }
     
-    _mlEngine = [VNCoreMLModel modelForMLModel: model error:nil];
+    _mlEngine = [VNCoreMLModel modelForMLModel: modelPieces error:nil];
     if (!_mlEngine) {
         isAvailable = NO;
         NSLog(@"Error in model");
@@ -42,17 +45,53 @@
                               self.results = [request.results copy];
                               VNCoreMLFeatureValueObservation *observations = (VNCoreMLFeatureValueObservation*) self.results[0];
                               
-                              NSLog(@"%@", observations.featureValue.multiArrayValue[0]);
-                              
-                              
+                              NSMutableArray *arr = [self evaluateMultiArray:observations.featureValue.multiArrayValue];
+
                               if (completionHandler) {
-                                  completionHandler(YES, nil);
+                                  completionHandler((arr && arr.count > 0)?YES:NO, arr, nil);
                               }
                           }                          
                       });
                   }];
 }
 
+- (NSMutableArray*) evaluateMultiArray:(MLMultiArray*) multiArray
+{
+    NSInteger x = -1;
+    NSInteger y = -1;
+    NSInteger z = -1;
+    
+    if (multiArray.shape.count > 0) z = [multiArray.shape[0] integerValue]; // 13
+    if (multiArray.shape.count > 1) y = [multiArray.shape[1] integerValue]; //  8
+    if (multiArray.shape.count > 2) x = [multiArray.shape[2] integerValue]; //  8
+    
+    NSMutableArray *arr = [NSMutableArray new];
+    
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j <y; j++)
+        {
+            double maxValue = -1;
+            int indexZMaxValue = -1;
+            
+            for (int k = 0; k < z; k++)
+            {
+                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(i), @(j)]] doubleValue];
+                if (evaluate > maxValue) {
+                    indexZMaxValue = k;
+                    maxValue = evaluate;
+                }
+            }
+            NSDictionary *dic =  @{@"x": @(i), @"y": @(j), @"z": @(indexZMaxValue)};
+            
+            [arr addObject:dic];
+            
+            NSLog(@"%d , %d -> %d", i, j, indexZMaxValue);
+        }
+    }
+    
+    return arr;
+}
 
 - (void) executeImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionHandler _Nullable ) completion
 {
@@ -70,7 +109,6 @@
     
     completionHandler = completion;
 
-    
     VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
     dispatch_async(dispatch_get_main_queue(), ^{
         [handler performRequests:a error:nil];
