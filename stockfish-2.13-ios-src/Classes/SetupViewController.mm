@@ -23,6 +23,8 @@
 #import "SetupViewController.h"
 #import "SideToMoveController.h"
 
+#import "CoreMLManager.h"
+
 @implementation SetupViewController
 
 @synthesize boardViewController;
@@ -187,17 +189,31 @@
     
     return SQ_NONE;
 }
+
 - (void) btnPressOnCam
 {
+    if (!ml) {
+        ml = [CoreMLManager  new];
+        [ml setupModel];
+    }
+    
+    [ml executeImage:nil withCompletion:^(BOOL succes, NSError * _Nullable error) {
+        NSLog(@"error of completion: %@",error);
+        
+   
+    }];
+    
 
-         [boardView addPiece:[boardView.selectedPieceView selectedPiece] onSquare:make_square(File(0), Rank(0))];
-    [boardView addPiece:[boardView.selectedPieceView selectedPiece] onSquare:make_square(File(0), Rank(7))];
+    return;
+    
+         [boardView addPiece:[boardView.selectedPieceView selectedPiece] onSquare:make_square(File(0), Rank(2))];
+   // [boardView addPiece:[boardView.selectedPieceView selectedPiece] onSquare:make_square(File(0), Rank(7))];
    
     
-    [boardView addPiece:BK onSquare:make_square(File(4), Rank(2))];
+ //   [boardView addPiece:BK onSquare:make_square(File(4), Rank(2))];
     
     
-        [boardView addPiece:WK onSquare:[self getSquareByIndex:2]];
+   //     [boardView addPiece:WK onSquare:[self getSquareByIndex:2]];
     
     return;
 //    [boardView addPiece:BK onSquare:SQ_B1];

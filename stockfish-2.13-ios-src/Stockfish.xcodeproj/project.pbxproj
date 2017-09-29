@@ -667,6 +667,11 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3669E881C221C4E64F0C2F9E /* ColorUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3669E10D3A8EE40F981232B6 /* ColorUtils.mm */; };
 		3669EEA85F37F07344CF192F /* ArrowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3669E50F4255300CE2D0FAD3 /* ArrowView.mm */; };
+		3C79C85E1F7E471300FDAEE9 /* CoreMLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C79C85D1F7E471300FDAEE9 /* CoreMLManager.m */; };
+		3C79C8611F7E475E00FDAEE9 /* chess500.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C79C8601F7E475A00FDAEE9 /* chess500.mlmodel */; };
+		3C79C8631F7E506F00FDAEE9 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C79C8621F7E506F00FDAEE9 /* Vision.framework */; };
+		3C79C8651F7E507600FDAEE9 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C79C8641F7E507600FDAEE9 /* CoreML.framework */; };
+		3C79C8671F7E5C5000FDAEE9 /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C79C8661F7E5C4500FDAEE9 /* chess_pieces.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1427,6 +1432,14 @@
 		3669E50F4255300CE2D0FAD3 /* ArrowView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArrowView.mm; sourceTree = "<group>"; };
 		3669E8F40602BE7AC99B4F60 /* ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorUtils.h; sourceTree = "<group>"; };
 		3669EFA6EE823426143F23FE /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
+		3C79C8591F7E3BA400FDAEE9 /* CaptureSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
+		3C79C85A1F7E3BA400FDAEE9 /* CaptureSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
+		3C79C85C1F7E471300FDAEE9 /* CoreMLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreMLManager.h; sourceTree = "<group>"; };
+		3C79C85D1F7E471300FDAEE9 /* CoreMLManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreMLManager.m; sourceTree = "<group>"; };
+		3C79C8601F7E475A00FDAEE9 /* chess500.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess500.mlmodel; sourceTree = "<group>"; };
+		3C79C8621F7E506F00FDAEE9 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		3C79C8641F7E507600FDAEE9 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		3C79C8661F7E5C4500FDAEE9 /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Stockfish-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Stockfish-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1435,6 +1448,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C79C8651F7E507600FDAEE9 /* CoreML.framework in Frameworks */,
+				3C79C8631F7E506F00FDAEE9 /* Vision.framework in Frameworks */,
 				17C81EE717E4835000A47866 /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -2250,6 +2265,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3C79C8571F7E3B8F00FDAEE9 /* Managers */,
 				1729521219DC6B66008E9803 /* Launch Screen.xib */,
 				1796005911D3938F0074E5B7 /* Chess */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -2307,6 +2323,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C79C8641F7E507600FDAEE9 /* CoreML.framework */,
+				3C79C8621F7E506F00FDAEE9 /* Vision.framework */,
 				17C81EE617E4835000A47866 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -2314,6 +2332,43 @@
 				1796004E11D393270074E5B7 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C79C8571F7E3B8F00FDAEE9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3C79C85F1F7E474E00FDAEE9 /* MLModel */,
+				3C79C85B1F7E46F600FDAEE9 /* CoreMLManager */,
+				3C79C8581F7E3BA400FDAEE9 /* CaptureSessionManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		3C79C8581F7E3BA400FDAEE9 /* CaptureSessionManager */ = {
+			isa = PBXGroup;
+			children = (
+				3C79C8591F7E3BA400FDAEE9 /* CaptureSessionManager.h */,
+				3C79C85A1F7E3BA400FDAEE9 /* CaptureSessionManager.m */,
+			);
+			path = CaptureSessionManager;
+			sourceTree = "<group>";
+		};
+		3C79C85B1F7E46F600FDAEE9 /* CoreMLManager */ = {
+			isa = PBXGroup;
+			children = (
+				3C79C85C1F7E471300FDAEE9 /* CoreMLManager.h */,
+				3C79C85D1F7E471300FDAEE9 /* CoreMLManager.m */,
+			);
+			path = CoreMLManager;
+			sourceTree = "<group>";
+		};
+		3C79C85F1F7E474E00FDAEE9 /* MLModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C79C8661F7E5C4500FDAEE9 /* chess_pieces.mlmodel */,
+				3C79C8601F7E475A00FDAEE9 /* chess500.mlmodel */,
+			);
+			path = MLModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2952,6 +3007,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1796FEA111D391570074E5B7 /* main.mm in Sources */,
+				3C79C8611F7E475E00FDAEE9 /* chess500.mlmodel in Sources */,
 				1773011E17EDB10200CB6DD3 /* AnimatedGameView.mm in Sources */,
 				17C81EE517E314FA00A47866 /* notation.cpp in Sources */,
 				1796FF5211D3921A0074E5B7 /* AboutController.mm in Sources */,
@@ -2980,6 +3036,7 @@
 				1796FF6911D3921A0074E5B7 /* OpeningBook.mm in Sources */,
 				1796FF6A11D3921A0074E5B7 /* Options.mm in Sources */,
 				1796FF6B11D3921A0074E5B7 /* OptionsViewController.mm in Sources */,
+				3C79C8671F7E5C5000FDAEE9 /* chess_pieces.mlmodel in Sources */,
 				1796FF6C11D3921A0074E5B7 /* PGN.mm in Sources */,
 				1796FF6D11D3921A0074E5B7 /* PGNTextFieldController.mm in Sources */,
 				1796FF6E11D3921A0074E5B7 /* PieceImageView.mm in Sources */,
@@ -3013,6 +3070,7 @@
 				1796008B11D393A60074E5B7 /* san.cpp in Sources */,
 				1796008C11D393A60074E5B7 /* square.cpp in Sources */,
 				1796008D11D393A60074E5B7 /* value.cpp in Sources */,
+				3C79C85E1F7E471300FDAEE9 /* CoreMLManager.m in Sources */,
 				17DC4770132B938B00C48450 /* CoordinatesView.mm in Sources */,
 				17560C3313360B5400466B87 /* MoveTableViewController.mm in Sources */,
 				17560C77133627A900466B87 /* MoveListCell.mm in Sources */,
@@ -3072,7 +3130,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AX2LN7U3JJ;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -3083,7 +3141,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Stockfish-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = (
 					"-DNDEBUG",
 					"-DNS_BLOCK_ASSERTIONS=1",
@@ -3094,9 +3152,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.coneptum.chessML;
 				PRODUCT_NAME = Stockfish;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a0f8b81b-0038-40db-bb5b-b1997d7727bd";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "qbit-wildcard";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3130,7 +3188,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AX2LN7U3JJ;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -3141,7 +3199,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Stockfish-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = (
 					"-DNDEBUG",
 					"-DNS_BLOCK_ASSERTIONS=1",
@@ -3152,9 +3210,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.coneptum.chessML;
 				PRODUCT_NAME = Stockfish;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a0f8b81b-0038-40db-bb5b-b1997d7727bd";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "qbit-wildcard";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -3179,7 +3237,7 @@
 				GCC_PREFIX_HEADER = Stockfish_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Stockfish-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = test.coneptum.chessML;
 				PRODUCT_NAME = Stockfish;
 				PROVISIONING_PROFILE = "a0f8b81b-0038-40db-bb5b-b1997d7727bd";
@@ -3211,7 +3269,7 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Stockfish-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_CFLAGS = (
 					"-DNDEBUG",
 					"-DNS_BLOCK_ASSERTIONS=1",
