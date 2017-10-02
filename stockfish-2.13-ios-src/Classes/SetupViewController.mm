@@ -207,12 +207,14 @@
             
             for (NSDictionary *dic in arrResultPieces)
             {
+                NSInteger x = [dic[@"x"]integerValue];
+                NSInteger y = [dic[@"y"]integerValue];
                 Piece piece = [boardView pieceFromMLByCode:[dic[@"z"]integerValue]];
                 if (piece == NO_PIECE) {
-                    [boardView removePieceOnSquare:make_square(File([dic[@"x"]integerValue]), Rank([dic[@"y"]integerValue]))];
+                    [boardView removePieceOnSquare:make_square(File(y), Rank(7-x))];
                 }
                 else {
-                    [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File([dic[@"x"]integerValue]), Rank([dic[@"y"]integerValue]))];
+                    [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File(y), Rank(7-x))];
                 }
             }
             });

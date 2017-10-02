@@ -124,7 +124,6 @@
    }
 }
 
-
 - (void)removePieceOnSquare:(Square)s {
    assert(phase == PHASE_EDIT_BOARD);
    Piece p = board[s];
@@ -133,31 +132,27 @@
    board[s] = EMPTY;
 }
 
-//enum Piece {
-//    NO_PIECE = 0, WP = 1, WN = 2, WB = 3, WR = 4, WQ = 5, WK = 6,
-//    BP = 9, BN = 10, BB = 11, BR = 12, BQ = 13, BK = 14,
-//    EMPTY = 16, OUTSIDE = 17
-//};
-
 - (Piece) pieceFromMLByCode:(NSInteger) code
 {
-    //return BQ;
-    if (code == 0) return WP;
+    if (code == 0) return WP;       //peon
     else if (code == 1) return BP;
-    else if (code == 2) return WR;
-    else if (code == 3) return WR;
-    else if (code == 3) return WR;
-    else if (code == 4) return BB;
-    else if (code == 5) return WB;
-    else if (code == 6) return BN;
-    else if (code == 7) return WN;
-    else if (code == 8) return BK;
-    else if (code == 9) return WK;
-    else if (code == 10) return WQ;
-    else if (code == 11) return BQ;
-    else if (code == 12) return NO_PIECE;
     
-    return NO_PIECE;
+    else if (code == 2) return WR;  //torre
+    else if (code == 3) return BR;
+    
+    else if (code == 4) return WB;   //alfil
+    else if (code == 5) return BB;
+    
+    else if (code == 6) return WN;    // caballo
+    else if (code == 7) return BN;
+    
+    else if (code == 8) return WK;   //rey
+    else if (code == 9) return BK;
+   
+    else if (code == 10) return WQ;   //reina
+    else if (code == 11) return WQ;
+
+    else return NO_PIECE;
 }
 
 - (void) addPiece:(Piece)p onSquare:(Square) s {
