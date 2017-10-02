@@ -24,9 +24,12 @@
 #import "SideToMoveController.h"
 
 #import "CoreMLManager.h"
+#import "CameraVC.h"
 
 @implementation SetupViewController
-
+{
+    CameraVC *camVC;
+}
 @synthesize boardViewController;
 
 - (id)initWithBoardViewController:(BoardViewController *)bvc
@@ -118,6 +121,16 @@
 {
     [self openTheML];
 }
+
+- (void) openCamera
+{
+    if (!cam) {
+        cam = [CameraVC new];
+    }
+    
+    [self presentViewController:cam animated:YES completion:nil];
+}
+
 - (void) openTheML
 {
     NSLog(@"openML");

@@ -671,6 +671,8 @@
 		3C7876271F8295700056AFB4 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7876261F8295700056AFB4 /* Vision.framework */; };
 		3C7876291F82957B0056AFB4 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7876281F82957B0056AFB4 /* CoreML.framework */; };
 		3C78762D1F8297850056AFB4 /* CoreMLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C78762C1F8296350056AFB4 /* CoreMLManager.m */; };
+		3C7876391F82A1690056AFB4 /* CameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7876371F82A1690056AFB4 /* CameraVC.m */; };
+		3C78763A1F82A1690056AFB4 /* CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C7876381F82A1690056AFB4 /* CameraVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1438,6 +1440,9 @@
 		3C78762C1F8296350056AFB4 /* CoreMLManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreMLManager.m; sourceTree = "<group>"; };
 		3C78762F1F829CA80056AFB4 /* CaptureSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
 		3C7876301F829CA80056AFB4 /* CaptureSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
+		3C7876361F82A1690056AFB4 /* CameraVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraVC.h; sourceTree = "<group>"; };
+		3C7876371F82A1690056AFB4 /* CameraVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraVC.m; sourceTree = "<group>"; };
+		3C7876381F82A1690056AFB4 /* CameraVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraVC.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Stockfish-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Stockfish-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2264,9 +2269,9 @@
 			isa = PBXGroup;
 			children = (
 				1729521219DC6B66008E9803 /* Launch Screen.xib */,
-				3C78762A1F8296350056AFB4 /* CoreMLManager */,
 				3C7876231F8293500056AFB4 /* CoreModel */,
-				3C78762E1F829CA80056AFB4 /* CaptureSessionManager */,
+				3C7876351F82A1430056AFB4 /* ViewControllers */,
+				3C7876341F82A13C0056AFB4 /* Managers */,
 				1796005911D3938F0074E5B7 /* Chess */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				1796FEA511D3916D0074E5B7 /* Engine */,
@@ -2358,6 +2363,25 @@
 				3C7876301F829CA80056AFB4 /* CaptureSessionManager.m */,
 			);
 			path = CaptureSessionManager;
+			sourceTree = "<group>";
+		};
+		3C7876341F82A13C0056AFB4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3C78762A1F8296350056AFB4 /* CoreMLManager */,
+				3C78762E1F829CA80056AFB4 /* CaptureSessionManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		3C7876351F82A1430056AFB4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C7876361F82A1690056AFB4 /* CameraVC.h */,
+				3C7876371F82A1690056AFB4 /* CameraVC.m */,
+				3C7876381F82A1690056AFB4 /* CameraVC.xib */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2577,6 +2601,7 @@
 				1773009017EC9AA300CB6DD3 /* DarkWood96@2x.png in Resources */,
 				1773FEF317EC9A7D00CB6DD3 /* MayaBKing@2x.png in Resources */,
 				1773008117EC9AA300CB6DD3 /* CheqWKing96@2x.png in Resources */,
+				3C78763A1F82A1690056AFB4 /* CameraVC.xib in Resources */,
 				1773007B17EC9AA300CB6DD3 /* CheqBQueen96@2x.png in Resources */,
 				1773FF4E17EC9A7D00CB6DD3 /* USCFWRook.png in Resources */,
 				1773010417EC9AA300CB6DD3 /* USCFWBishop96.png in Resources */,
@@ -3027,6 +3052,7 @@
 				1796FF6A11D3921A0074E5B7 /* Options.mm in Sources */,
 				1796FF6B11D3921A0074E5B7 /* OptionsViewController.mm in Sources */,
 				1796FF6C11D3921A0074E5B7 /* PGN.mm in Sources */,
+				3C7876391F82A1690056AFB4 /* CameraVC.m in Sources */,
 				1796FF6D11D3921A0074E5B7 /* PGNTextFieldController.mm in Sources */,
 				1796FF6E11D3921A0074E5B7 /* PieceImageView.mm in Sources */,
 				1796FF7011D3921A0074E5B7 /* Queue.mm in Sources */,
