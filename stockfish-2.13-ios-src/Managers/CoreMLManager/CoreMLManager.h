@@ -19,16 +19,20 @@ typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nul
 @interface CoreMLManager : NSObject
 {
     CoreMLManagerCompletionHandler completionHandler;
+    
 }
 
 @property (nonatomic, weak) id  <CoreMLDelegate> _Nullable delegate;
 
-@property (nonatomic, retain) VNCoreMLModel * _Nullable mlEngine;
-@property (nonatomic, retain) VNCoreMLRequest * _Nullable mlRequest;
+//@property (nonatomic, retain) VNCoreMLModel * _Nullable mlEngine;
+//@property (nonatomic, retain) VNCoreMLRequest * _Nullable mlRequest;
+//@property (nonatomic, retain) MLModel *_Nullable modelPieces;
 
 @property (nonatomic, strong) NSArray* _Nullable results;
+@property BOOL isAvailable;
 
 
+- (void) closeAll;
 - (void) setupModel;
-- (void) executeImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionHandler _Nullable ) completion;
+//- (void) executeImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionHandler _Nullable ) completion;
 @end

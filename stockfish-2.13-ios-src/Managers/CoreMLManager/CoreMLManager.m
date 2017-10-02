@@ -7,33 +7,38 @@
 
 #import "CoreMLManager.h"
 
-#import "chess500.h"
-#import "chess_pieces.h"
+//#import "chess_pieces.h"
 
 
 @implementation CoreMLManager
+/*
+- (void) closeAll
 {
-    BOOL isAvailable;
+    _mlEngine = nil;
+    _mlRequest = nil;
+    _modelPieces = nil;
+    self.delegate = nil;
+        completionHandler = nil;
+    self.isAvailable = NO;
 }
 
 - (void) setupModel
 {
-    MLModel *model = [[[chess500 alloc] init] model];
-    MLModel *modelPieces = [[[chess_pieces alloc] init] model];
+    _modelPieces = [[[chess_pieces alloc] init] model];
     
-    if (!model) {
-        isAvailable = NO;
+    if (!_modelPieces) {
+        self.isAvailable = NO;
         NSLog(@"Error in loading model.h");
         return;
     }
     
-    _mlEngine = [VNCoreMLModel modelForMLModel: modelPieces error:nil];
+    _mlEngine = [VNCoreMLModel modelForMLModel: _modelPieces error:nil];
     if (!_mlEngine) {
-        isAvailable = NO;
+        self.isAvailable = NO;
         NSLog(@"Error in model");
         return;
     }
-    isAvailable = YES;
+    self.isAvailable = YES;
     
     _mlRequest = [[VNCoreMLRequest alloc] initWithModel: _mlEngine completionHandler: (VNRequestCompletionHandler) ^(VNRequest *request, NSError *error)
                   {
@@ -95,7 +100,7 @@
 
 - (void) executeImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionHandler _Nullable ) completion
 {
-    if (!isAvailable) {
+    if (!self.isAvailable) {
         NSLog(@"CoreML not available, is not initialize");
         return;
     }
@@ -114,6 +119,10 @@
         [handler performRequests:a error:nil];
     });
 }
-
+*/
+- (void) dealloc
+{
+    NSLog(@"dealloc CoreMLManager");
+}
 
 @end

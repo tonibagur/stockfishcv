@@ -23,7 +23,7 @@
 #import "SetupViewController.h"
 #import "SideToMoveController.h"
 
-#import "CoreMLManager.h"
+//#import "CoreMLManager.h"
 
 @implementation SetupViewController
 
@@ -85,7 +85,8 @@
       sqSize = 40.0f;
       spv = [[SelectedPieceView alloc] initWithFrame:CGRectMake(40.0f, 320.0f + dy, 240.0f, 80.0f)];
    } else {
-      sqSize = [UIScreen mainScreen].applicationFrame.size.width / 8.0f;
+       sqSize = [UIScreen mainScreen].bounds.size.width / 8.0f;
+     // sqSize = [UIScreen mainScreen].applicationFrame.size.width / 8.0f;
       spv = [[SelectedPieceView alloc]
             initWithFrame:CGRectMake(40.0f, 8*sqSize + 74.0f, 6*sqSize, 2*sqSize)];
    }
@@ -192,16 +193,27 @@
 
 - (void) btnPressOnCam
 {
+    [boardView clear];
+    
+    /*
     if (!ml) {
-        ml = [CoreMLManager  new];
+        ml = [[CoreMLManager alloc]init];
+    }
+    
+    if (!ml.isAvailable) {
         [ml setupModel];
     }
+    */
+    
+    /*
+    CoreMLManager *ml = [[CoreMLManager alloc]init];
+    [ml setupModel];
     
     [ml executeImage:nil withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
     {
         NSLog(@"success: %@", succes?@"YES":@"NO");
         NSLog(@"error of completion: %@",error);
-        NSLog(@"arrResults: %@", arrResultPieces);
+     //   NSLog(@"arrResults: %@", arrResultPieces);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -210,6 +222,7 @@
                 NSInteger x = [dic[@"x"]integerValue];
                 NSInteger y = [dic[@"y"]integerValue];
                 Piece piece = [boardView pieceFromMLByCode:[dic[@"z"]integerValue]];
+                
                 if (piece == NO_PIECE) {
                     [boardView removePieceOnSquare:make_square(File(y), Rank(7-x))];
                 }
@@ -217,7 +230,10 @@
                     [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File(y), Rank(7-x))];
                 }
             }
-            });
+            
+            [ml closeAll];
+//            ml = nil;
+        });
     }];
     
 
@@ -238,7 +254,7 @@
         
         [boardView addPiece:[boardView.selectedPieceView selectedPiece] onSquare:[self getSquareByIndex:i]];
     }
-    
+    */
 }
 
 - (void)didReceiveMemoryWarning {

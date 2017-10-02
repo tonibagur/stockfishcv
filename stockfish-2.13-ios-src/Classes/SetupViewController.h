@@ -17,7 +17,7 @@
 */
 
 #import <UIKit/UIKit.h>
-#import "CoreMLManager.h"
+//#import "CoreMLManager.h"
 @class BoardViewController;
 @class SetupBoardView;
 
@@ -27,7 +27,7 @@
    UISegmentedControl *menu;
    NSString *fen;
     
-    CoreMLManager *ml;
+   // CoreMLManager *ml;
 }
 
 @property (weak, nonatomic, readonly) BoardViewController *boardViewController;
