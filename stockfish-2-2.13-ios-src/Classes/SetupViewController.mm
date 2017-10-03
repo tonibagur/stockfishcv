@@ -119,16 +119,17 @@
 
 - (void) btnPressOnCam
 {
-    [self openTheML];
+  //  [self openTheML];
+    [self openCamera];
 }
 
 - (void) openCamera
 {
-    if (!cam) {
-        cam = [CameraVC new];
+    if (!camVC) {
+        camVC = [CameraVC new];
     }
     
-    [self presentViewController:cam animated:YES completion:nil];
+    [self presentViewController:camVC animated:YES completion:nil];
 }
 
 - (void) openTheML
