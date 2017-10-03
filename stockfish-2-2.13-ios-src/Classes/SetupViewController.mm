@@ -26,6 +26,7 @@
 #import "CoreMLManager.h"
 #import "CameraVC.h"
 
+
 @implementation SetupViewController
 {
     CameraVC *camVC;
@@ -202,6 +203,9 @@
 - (void)enableDoneButton {
     [menu setEnabled: YES forSegmentAtIndex: 2];
 }
+
+
+#pragma mark - CameraVC Delegate
 
 
 

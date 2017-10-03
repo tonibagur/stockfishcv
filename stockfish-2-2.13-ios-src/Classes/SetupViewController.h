@@ -21,7 +21,7 @@
 @class BoardViewController;
 @class SetupBoardView;
 
-@interface SetupViewController : UIViewController {
+@interface SetupViewController : UIViewController  {
    BoardViewController *__weak boardViewController;
    SetupBoardView *boardView;
    UISegmentedControl *menu;

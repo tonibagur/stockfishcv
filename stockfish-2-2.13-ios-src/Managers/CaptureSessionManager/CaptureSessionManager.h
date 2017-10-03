@@ -14,13 +14,18 @@
 
 
 
+#import <QuartzCore/QuartzCore.h>
+
 #import <Foundation/Foundation.h>
 
 #import <CoreMedia/CoreMedia.h>
+#import <CoreVideo/CoreVideo.h>
+
+
 #import <AVFoundation/AVFoundation.h>
 
-@protocol CaptureSessionManagerDelegate <NSObject>
 
+@protocol CaptureSessionManagerDelegate <NSObject>
 
 - (void) CaptureSessionManagerDelegate_PhotoTaked:(UIImage*) photo;
 - (void) CaptureSessionManagerDelegate_PhotoFailed;
@@ -58,22 +63,23 @@ AVCaptureVideoDataOutputSampleBufferDelegate>
 @property (retain) AVCaptureMovieFileOutput *movieFileOutput;
 @property (assign) UIImageOrientation orientationLastPhoto;
 @property (retain) UIImage *lastPhotoTaked;
-@property (retain) CIImage *lastPhotoCI;
+//@property (retain) CIImage *lastPhotoCI;
 
 @property (retain) UIImage *lastPhotoTakedSmall;
-@property (retain) CIImage *lastPhotoCISmall;
+//@property (retain) CIImage *lastPhotoCISmall;
 
 @property BOOL isSaveVideo;
 @property (retain) NSURL *urlLastVideo;
 @property UIImage *imgVideoThumbnail;
 
+@property AVCaptureSessionPreset presetCam;
 @property BOOL isFrontCamera;
 
-- (id)initWithFrame:(CGRect)frame withDel:(id<CaptureSessionManagerDelegate>)del;
+- (id)initWithFrame:(CGRect)frame withDel:(id<CaptureSessionManagerDelegate>)del withPresset:(AVCaptureSessionPreset) preset;
 - (id)initWithFrame:(CGRect)frame;
 - (void) isAvailableAuthorization;
-- (CIImage*) getCIImageForFilter;
-- (CIImage*) getCIImageForFilterSmall;
+//- (CIImage*) getCIImageForFilter;
+//- (CIImage*) getCIImageForFilterSmall;
 
 - (void)takePhoto;
 - (void)toggleCam;

@@ -8,7 +8,7 @@
 
 
 
-#import "AudioSession.h"
+//#import "AudioSession.h"
 #import "CaptureSessionManager.h"
 
 @implementation CaptureSessionManager
@@ -26,12 +26,18 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame withDel:(id<CaptureSessionManagerDelegate>)del
+- (id)initWithFrame:(CGRect)frame withDel:(id<CaptureSessionManagerDelegate>)del withPresset:(AVCaptureSessionPreset) preset
 {
     if ((self = [super init]))
     {
         if (del) {
             _delegate = del;
+        }
+        if (preset) {
+            _presetCam = preset;
+        }
+        else {
+            preset = AVCaptureSessionPresetPhoto;
         }
         [self firstInit];
         _previewLayer.frame = frame;
@@ -52,6 +58,7 @@
     return self;
 }
 
+/*
 - (CIImage*) getCIImageForFilter
 {
     if (self.lastPhotoTaked) {
@@ -79,6 +86,7 @@
     }
     return nil;
 }
+ */
 
 - (void) orientationChanged:(NSNotification *)note
 {
@@ -105,6 +113,7 @@
 
 - (void) prepareForvideo
 {
+    /*
     [AudioSession prepareSessionAudioToRecord];
     
     NSString *filePath = [[Utils getDirectoryForAudio] stringByAppendingPathComponent:@"video.m4a"];
@@ -233,7 +242,7 @@
      
     [_movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
  });
-    
+    */
 }
 
 - (void) stopVideoRecord
@@ -244,7 +253,7 @@
 
 - (void) prepareForPhoto
 {
-    _captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
+    _captureSession.sessionPreset = _presetCam;
     [self CameraSetOutputProperties];
 }
 
@@ -308,7 +317,7 @@
         _captureSession = [[AVCaptureSession alloc] init];
         
         
-        _captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
+        _captureSession.sessionPreset = _presetCam;
         
     }
     
@@ -331,7 +340,6 @@
     
     _output = [[AVCaptureStillImageOutput alloc] init];
     
-    
     if ( [_captureSession canAddOutput:_output] ) {
         [_captureSession addOutput:_output];
     }
@@ -344,8 +352,7 @@
     
     _previewLayer = [[AVCaptureVideoPreviewLayer alloc]
                      initWithSession:_captureSession];
-    _previewLayer.videoGravity =
-    AVLayerVideoGravityResizeAspectFill;
+    _previewLayer.videoGravity =  AVLayerVideoGravityResizeAspectFill;
 
 }
 
@@ -396,9 +403,9 @@
     
     self.lastPhotoTaked = nil;
     self.lastPhotoTakedSmall = nil;
-    
-    self.lastPhotoCI = nil;
-    self.lastPhotoCISmall = nil;
+#warning ojo xcode 9
+    //self.lastPhotoCI = nil;
+   // self.lastPhotoCISmall = nil;
 }
 
 
@@ -495,7 +502,7 @@
     [self.output captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error)
      {
          if (imageSampleBuffer == NULL || error) {
-             [SVProgressHUD showErrorWithStatus:HAVEVALUE(error.localizedDescription)?:@""];
+            // [SVProgressHUD showErrorWithStatus:HAVEVALUE(error.localizedDescription)?:@""];
              return ;
          }
          
@@ -545,6 +552,8 @@
 
 - (void) generateAndSaveInternalImagesAfterTakePhotoWithPhoto:(UIImage*) photo
 {
+#warning ojo xcode 9
+    /*
     if (photo) {
         // [self resetPhoto];
         self.lastPhotoTaked = photo;
@@ -564,7 +573,7 @@
             }
         });
     });
-    
+    */
 }
 
 - (UIImage *)normalizeImage: (UIImage *)img
@@ -719,12 +728,12 @@ didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL
 {
     LogInfo(@"finish record: %@", outputFileURL);
     
-    if ([self.delegate respondsToSelector:@selector(CaptureSessionManagerDelegate_DidFinishVideoRecording:)]) {
-        self.isSaveVideo = YES;
-        self.urlLastVideo = outputFileURL;
-        self.imgVideoThumbnail = [Utils generateThumbnailFromURLVideo:outputFileURL];
-        [self.delegate CaptureSessionManagerDelegate_DidFinishVideoRecording:outputFileURL];
-    }
+//    if ([self.delegate respondsToSelector:@selector(CaptureSessionManagerDelegate_DidFinishVideoRecording:)]) {
+//        self.isSaveVideo = YES;
+//        self.urlLastVideo = outputFileURL;
+//        self.imgVideoThumbnail = [Utils generateThumbnailFromURLVideo:outputFileURL];
+//        [self.delegate CaptureSessionManagerDelegate_DidFinishVideoRecording:outputFileURL];
+//    }
 }
 
 
