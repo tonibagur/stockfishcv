@@ -9,7 +9,6 @@
 
 #import "chess_pieces.h"
 
-
 @implementation CoreMLManager
 
 - (void) closeAll

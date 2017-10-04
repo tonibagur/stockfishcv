@@ -28,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcvConfirm_BOTTOM;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcvConfirm_HEIGHT;
 
-
 @end
 
 @implementation CameraVC
@@ -38,7 +37,6 @@
     
     [self initCapture];
     [self setupUI];
-    
 }
 
 - (void) initCapture
@@ -69,8 +67,6 @@
 - (IBAction)btnPhoto:(id)sender
 {
     [camManager takePhoto];
-    //[camManager stopRunning];
-    //[self showHideConfirm:YES];
 }
 
 - (IBAction)btnRetake:(id)sender
@@ -93,24 +89,24 @@
     self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
     
     UIImage *screenImage = [self captureViewIn:self.imgPhotoTaken];
-//     UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
-//    NSLog(@"screenImage: %@", screenImage);
+    //     UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
+    //    NSLog(@"screenImage: %@", screenImage);
     
-//    CGImageRef imgRef = screenImage.CGImage;
-//    CGFloat width = CGImageGetWidth(imgRef);
-//    CGFloat height = CGImageGetHeight(imgRef);
+    //    CGImageRef imgRef = screenImage.CGImage;
+    //    CGFloat width = CGImageGetWidth(imgRef);
+    //    CGFloat height = CGImageGetHeight(imgRef);
     
     CGFloat scaleScreen = [UIScreen mainScreen].scale;
     
-        CGRect cropRect = self.vMarkSelectionPhoto.frame;
+    CGRect cropRect = self.vMarkSelectionPhoto.frame;
     
     cropRect = CGRectMake(self.vMarkSelectionPhoto.frame.origin.x * scaleScreen, self.vMarkSelectionPhoto.frame.origin.y*scaleScreen, self.vMarkSelectionPhoto.frame.size.width*scaleScreen, self.vMarkSelectionPhoto.frame.size.width*scaleScreen);
     
     CGImageRef imageRef = CGImageCreateWithImageInRect([screenImage CGImage], cropRect);
     
     UIImage *finalImage = [UIImage imageWithCGImage:imageRef scale:scaleScreen orientation:screenImage.imageOrientation];
-  //  UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
-    NSLog(@"finalImage: %@", finalImage);
+    //  UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
+    //  NSLog(@"finalImage: %@", finalImage);
     
     if ([self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)]) {
         
@@ -119,65 +115,17 @@
         return;
     }
     
-    /*
-    CGRect rect = self.vCamera.bounds;
-    
-    CGImageRef imgRef = lastPhoto.CGImage;
-    CGFloat width = CGImageGetWidth(imgRef);
-    CGFloat height = CGImageGetHeight(imgRef);
-    
-    CGFloat ratio = 1.0;
-    
-    if (rect.size.width > width) {
-        ratio = rect.size.width / width;
-    }
-    else if (rect.size.width < width) {
-        ratio = width / rect.size.width;
-    }
-
-    CGFloat proporcionPhoto = height / width; //  480/640  = 0.75
-    CGFloat proporcionScreen = [UIScreen mainScreen].bounds.size.width / [UIScreen mainScreen].bounds.size.height; // 375/667 = 0.56221
-    
-    CGFloat conversionEntreFormatos = proporcionPhoto / proporcionScreen;  // 0.75 / 0.56221 = 1.33402
-    */
-//    rect = [UIScreen mainScreen].bounds;
-//
-//    if (rect.size.width > width) {
-//        ratio = rect.size.width / width;
-//    }
-//    else if (rect.size.width < width) {
-//        ratio = width / rect.size.width;
-//    }
-//
-    
-    //ratio = ratio * conversionEntreFormatos;
-    /*
-    CGRect mark = self.vMarkSelectionPhoto.frame;
-    
-    CGRect cropRect = CGRectMake((mark.origin.x * conversionEntreFormatos) * ratio, (mark.origin.y * conversionEntreFormatos)* ratio, mark.size.width * ratio, mark.size.width * ratio);
-    
-    CGImageRef imageRef = CGImageCreateWithImageInRect([lastPhoto CGImage], cropRect);
-
-    UIImage *finalImage = [UIImage imageWithCGImage:imageRef scale:1 orientation:lastPhoto.imageOrientation];
-    UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
-    */
-    
- //   UIImageWriteToSavedPhotosAlbum(lastPhoto, nil, nil, nil);
-    
-    
-    
-    
     [camManager startRunning];
     [self showHideConfirm:NO];
 }
 
 
-- (UIImage *)captureViewIn:(UIView*)view {
-    
+- (UIImage *)captureViewIn:(UIView*)view
+{
     //hide controls if needed
     CGRect rect = [view bounds];
     
- //   UIGraphicsBeginImageContext(rect.size);
+    //   UIGraphicsBeginImageContext(rect.size);
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -185,7 +133,6 @@
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return img;
-    
 }
 
 - (UIImage *)captureView {
@@ -199,10 +146,7 @@
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return img;
-    
 }
-
-
 
 - (IBAction)btnClose:(id)sender
 {
@@ -239,7 +183,6 @@
     if (!photo) {
         lastPhoto = nil;
         return;
-        
     }
     
     lastPhoto = photo;
@@ -255,6 +198,7 @@
 {
     NSLog(@"de alloc CameraVC");
 }
+
 - (void) CaptureSessionManagerDelegate_PhotoFailed {}
 - (void) CaptureSessionManagerDelegate_EndProcessCIImage {}
 - (void) showNotAuthorizeAudio:(BOOL) isAudio isCamera:(BOOL) isCamera isGalery:(BOOL) isGalery {}

@@ -141,7 +141,9 @@
     CoreMLManager *ml = [[CoreMLManager alloc]init];
     [ml setupModel];
     
-    [ml executeImage:image withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
+    UIImage *smallImage = image?[Utils onlyScaleImage:image toMaxResolution:400]:nil;
+    
+    [ml executeImage:smallImage withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
      {
          NSLog(@"success: %@", succes?@"YES":@"NO");
          NSLog(@"error of completion: %@",error);

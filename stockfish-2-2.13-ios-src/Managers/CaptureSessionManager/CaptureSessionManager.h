@@ -12,15 +12,12 @@
 #define kFlashOff 2
 
 
-
-
 #import <QuartzCore/QuartzCore.h>
 
 #import <Foundation/Foundation.h>
 
 #import <CoreMedia/CoreMedia.h>
 #import <CoreVideo/CoreVideo.h>
-
 
 #import <AVFoundation/AVFoundation.h>
 

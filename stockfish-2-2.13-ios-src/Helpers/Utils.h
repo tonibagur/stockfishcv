@@ -17,5 +17,4 @@
 + (UIImage *) onlyScaleImage:(UIImage*)image toMaxResolution:(int) resolution;
 + (UIImage* ) scaleImage:(UIImage *)image toMaxResolution:(int)resolution withRotation:(UIImageOrientation)orientation;
 
-
 @end

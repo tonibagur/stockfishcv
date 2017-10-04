@@ -58,35 +58,6 @@
     return self;
 }
 
-/*
-- (CIImage*) getCIImageForFilter
-{
-    if (self.lastPhotoTaked) {
-        if (self.lastPhotoCI) {
-            return self.lastPhotoCI;
-        }
-        else {
-            self.lastPhotoCI =  [CIImage imageWithData:UIImagePNGRepresentation(self.lastPhotoTaked)];
-            return self.lastPhotoCI;
-        }
-    }
-    return nil;
-}
-
-- (CIImage*) getCIImageForFilterSmall
-{
-    if (self.lastPhotoTakedSmall) {
-        if (self.lastPhotoCISmall) {
-            return self.lastPhotoCISmall;
-        }
-        else {
-            self.lastPhotoCISmall =  [CIImage imageWithData:UIImagePNGRepresentation(self.lastPhotoTakedSmall)];
-            return self.lastPhotoCISmall;
-        }
-    }
-    return nil;
-}
- */
 
 - (void) orientationChanged:(NSNotification *)note
 {
@@ -263,9 +234,6 @@
 {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        
-        
-        
         AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
         
         if(status == AVAuthorizationStatusAuthorized) {
@@ -296,7 +264,7 @@
 
 - (void)firstInit
 {
-    [Utils validateExistFolderAudio];
+//    [Utils validateExistFolderAudio];
     
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter]

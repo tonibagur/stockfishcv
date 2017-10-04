@@ -71,11 +71,7 @@
     return normalizedImage;
     
     //  UIGraphicsBeginImageContextWithOptio
-    
 }
-
-
-
 
 + (UIImage *) onlyScaleImage:(UIImage*)image toMaxResolution:(int) resolution
 {
@@ -135,7 +131,6 @@
         
         return image;
     }
-    
 }
 
 @end
