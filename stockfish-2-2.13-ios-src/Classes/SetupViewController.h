@@ -17,11 +17,11 @@
 */
 
 #import <UIKit/UIKit.h>
-
+#import "CameraVC.h"
 @class BoardViewController;
 @class SetupBoardView;
 
-@interface SetupViewController : UIViewController  {
+@interface SetupViewController : UIViewController <CameraVCDelegate> {
    BoardViewController *__weak boardViewController;
    SetupBoardView *boardView;
    UISegmentedControl *menu;

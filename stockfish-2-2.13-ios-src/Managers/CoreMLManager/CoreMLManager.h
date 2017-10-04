@@ -19,7 +19,6 @@ typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nul
 @interface CoreMLManager : NSObject
 {
     CoreMLManagerCompletionHandler completionHandler;
-    
 }
 
 @property (nonatomic, weak) id  <CoreMLDelegate> _Nullable delegate;

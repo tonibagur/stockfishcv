@@ -24,13 +24,12 @@
 #import "SideToMoveController.h"
 
 #import "CoreMLManager.h"
-#import "CameraVC.h"
 
-
-@implementation SetupViewController
+@implementation SetupViewController 
 {
     CameraVC *camVC;
 }
+
 @synthesize boardViewController;
 
 - (id)initWithBoardViewController:(BoardViewController *)bvc
@@ -112,15 +111,9 @@
     
 }
 
-- (void) viewDidLoad
-{
-    //    [self openTheML];
-    
-}
-
 - (void) btnPressOnCam
 {
-  //  [self openTheML];
+    //  [self openTheML:nil];
     [self openCamera];
 }
 
@@ -128,21 +121,27 @@
 {
     if (!camVC) {
         camVC = [CameraVC new];
+        camVC.delegate = self;
     }
     
     [self presentViewController:camVC animated:YES completion:nil];
 }
 
-- (void) openTheML
+- (void) openTheML:(UIImage*) image
 {
     NSLog(@"openML");
+    
+    if (camVC) {
+        camVC.delegate = self;
+        camVC = nil;
+    }
     
     [boardView clear];
     
     CoreMLManager *ml = [[CoreMLManager alloc]init];
     [ml setupModel];
     
-    [ml executeImage:nil withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
+    [ml executeImage:image withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
      {
          NSLog(@"success: %@", succes?@"YES":@"NO");
          NSLog(@"error of completion: %@",error);
@@ -204,9 +203,13 @@
     [menu setEnabled: YES forSegmentAtIndex: 2];
 }
 
-
 #pragma mark - CameraVC Delegate
-
+- (void) cameraDidSelectPhoto:(UIImage *)imageSelected
+{
+    NSLog(@"did select photo from camera");
+    NSLog(@"%@", imageSelected);
+    [self openTheML:imageSelected];
+}
 
 
 

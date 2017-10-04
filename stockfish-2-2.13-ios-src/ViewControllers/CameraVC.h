@@ -7,6 +7,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CameraVCDelegate <NSObject>
+- (void) cameraDidSelectPhoto:(UIImage*) imageSelected;
+@end
+
 @interface CameraVC : UIViewController
+@property (weak, nonatomic) id <CameraVCDelegate> delegate;
 
 @end

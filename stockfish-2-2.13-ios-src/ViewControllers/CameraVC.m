@@ -93,12 +93,12 @@
     self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
     
     UIImage *screenImage = [self captureViewIn:self.imgPhotoTaken];
-     UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
-    NSLog(@"screenImage: %@", screenImage);
+//     UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
+//    NSLog(@"screenImage: %@", screenImage);
     
-    CGImageRef imgRef = screenImage.CGImage;
-    CGFloat width = CGImageGetWidth(imgRef);
-    CGFloat height = CGImageGetHeight(imgRef);
+//    CGImageRef imgRef = screenImage.CGImage;
+//    CGFloat width = CGImageGetWidth(imgRef);
+//    CGFloat height = CGImageGetHeight(imgRef);
     
     CGFloat scaleScreen = [UIScreen mainScreen].scale;
     
@@ -109,9 +109,15 @@
     CGImageRef imageRef = CGImageCreateWithImageInRect([screenImage CGImage], cropRect);
     
     UIImage *finalImage = [UIImage imageWithCGImage:imageRef scale:scaleScreen orientation:screenImage.imageOrientation];
-    UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
+  //  UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
     NSLog(@"finalImage: %@", finalImage);
     
+    if ([self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)]) {
+        
+        [self.delegate cameraDidSelectPhoto:finalImage];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
     
     /*
     CGRect rect = self.vCamera.bounds;
@@ -196,6 +202,8 @@
     
 }
 
+
+
 - (IBAction)btnClose:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -241,6 +249,11 @@
     NSLog(@"fpoto: %@", photo);
     self.imgPhotoTaken.image = photo;
     self.imgPhotoTaken.hidden = NO;
+}
+
+- (void) dealloc
+{
+    NSLog(@"de alloc CameraVC");
 }
 - (void) CaptureSessionManagerDelegate_PhotoFailed {}
 - (void) CaptureSessionManagerDelegate_EndProcessCIImage {}
