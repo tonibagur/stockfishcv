@@ -2441,7 +2441,7 @@
 				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = AX2LN7U3JJ;
+						DevelopmentTeam = 4C3FYJPDGB;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -3277,7 +3277,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = AX2LN7U3JJ;
+				DEVELOPMENT_TEAM = 4C3FYJPDGB;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -3287,9 +3287,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = test2.coneptum.chessML;
 				PRODUCT_NAME = Stockfish;
-				PROVISIONING_PROFILE = "a0f8b81b-0038-40db-bb5b-b1997d7727bd";
+				PROVISIONING_PROFILE = "3764e88d-887c-4f5c-8164-3a22e9e4eba7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				PROVISIONING_PROFILE_SPECIFIER = "qbit-wildcard";
+				PROVISIONING_PROFILE_SPECIFIER = "ConeptumDev-WildCard";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3307,7 +3307,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = AX2LN7U3JJ;
+				DEVELOPMENT_TEAM = 4C3FYJPDGB;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -3328,8 +3328,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test2.coneptum.chessML;
 				PRODUCT_NAME = Stockfish;
-				PROVISIONING_PROFILE = "a0f8b81b-0038-40db-bb5b-b1997d7727bd";
-				PROVISIONING_PROFILE_SPECIFIER = "qbit-wildcard";
+				PROVISIONING_PROFILE = "3764e88d-887c-4f5c-8164-3a22e9e4eba7";
+				PROVISIONING_PROFILE_SPECIFIER = "ConeptumDev-WildCard";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
