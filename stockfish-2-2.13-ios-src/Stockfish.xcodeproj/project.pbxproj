@@ -667,7 +667,7 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3669E881C221C4E64F0C2F9E /* ColorUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3669E10D3A8EE40F981232B6 /* ColorUtils.mm */; };
 		3669EEA85F37F07344CF192F /* ArrowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3669E50F4255300CE2D0FAD3 /* ArrowView.mm */; };
-		3C7876251F8293610056AFB4 /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C7876241F82935A0056AFB4 /* chess_pieces.mlmodel */; };
+		3C72D9901F86229900EF0F2E /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C72D98F1F86229500EF0F2E /* chess_pieces.mlmodel */; };
 		3C7876271F8295700056AFB4 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7876261F8295700056AFB4 /* Vision.framework */; };
 		3C7876291F82957B0056AFB4 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7876281F82957B0056AFB4 /* CoreML.framework */; };
 		3C78762D1F8297850056AFB4 /* CoreMLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C78762C1F8296350056AFB4 /* CoreMLManager.m */; };
@@ -1438,7 +1438,7 @@
 		3669E50F4255300CE2D0FAD3 /* ArrowView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArrowView.mm; sourceTree = "<group>"; };
 		3669E8F40602BE7AC99B4F60 /* ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorUtils.h; sourceTree = "<group>"; };
 		3669EFA6EE823426143F23FE /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
-		3C7876241F82935A0056AFB4 /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
+		3C72D98F1F86229500EF0F2E /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
 		3C7876261F8295700056AFB4 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		3C7876281F82957B0056AFB4 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		3C78762B1F8296350056AFB4 /* CoreMLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreMLManager.h; sourceTree = "<group>"; };
@@ -2360,7 +2360,7 @@
 		3C7876231F8293500056AFB4 /* CoreModel */ = {
 			isa = PBXGroup;
 			children = (
-				3C7876241F82935A0056AFB4 /* chess_pieces.mlmodel */,
+				3C72D98F1F86229500EF0F2E /* chess_pieces.mlmodel */,
 			);
 			name = CoreModel;
 			sourceTree = "<group>";
@@ -3068,7 +3068,6 @@
 				1796FF6011D3921A0074E5B7 /* GameListController.mm in Sources */,
 				1796FF6111D3921A0074E5B7 /* GameParser.mm in Sources */,
 				1796FF6211D3921A0074E5B7 /* GamePreview.mm in Sources */,
-				3C7876251F8293610056AFB4 /* chess_pieces.mlmodel in Sources */,
 				1796FF6311D3921A0074E5B7 /* AppDelegate.mm in Sources */,
 				1796FF6411D3921A0074E5B7 /* HighlightedSquaresView.mm in Sources */,
 				1796FF6511D3921A0074E5B7 /* LastMoveView.mm in Sources */,
@@ -3121,6 +3120,7 @@
 				17560CA11336310200466B87 /* BoardPreview.mm in Sources */,
 				17DCB80915C54A2D005ADD54 /* benchmark.cpp in Sources */,
 				17DCB80A15C54A2D005ADD54 /* bitbase.cpp in Sources */,
+				3C72D9901F86229900EF0F2E /* chess_pieces.mlmodel in Sources */,
 				17DCB80B15C54A2D005ADD54 /* bitboard.cpp in Sources */,
 				17DCB80C15C54A2D005ADD54 /* book.cpp in Sources */,
 				17DCB80D15C54A2D005ADD54 /* endgame.cpp in Sources */,

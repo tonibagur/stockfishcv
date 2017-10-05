@@ -113,7 +113,13 @@
 
 - (void) btnPressOnCam
 {
+#if TARGET_IPHONE_SIMULATOR
+    [self openTheML:nil];
+    return;
+#endif
+    
     //  [self openTheML:nil];
+    
     [self openCamera];
 }
 

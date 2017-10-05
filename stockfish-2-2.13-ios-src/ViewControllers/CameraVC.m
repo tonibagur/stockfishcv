@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIView *btnConfirm;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcvConfirm_BOTTOM;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcvConfirm_HEIGHT;
+@property (weak, nonatomic) IBOutlet UIButton *btnGallery;
 
 @end
 
@@ -75,13 +76,25 @@
     [self showHideConfirm:NO];
 }
 
-- (IBAction)btnOkPhoto:(id)sender
+- (IBAction)btnSaveGallery:(id)sender
+{
+    UIImage *img = [self getImageCropScreen];
+    if (img) {
+        UIImage *small = [Utils onlyScaleImage:img toMaxResolution:400];
+        if (small) {
+        UIImageWriteToSavedPhotosAlbum(small, nil, nil, nil);
+        }
+        
+    }
+}
+
+- (UIImage*) getImageCropScreen
 {
     if (!lastPhoto)  {
         [camManager startRunning];
         [self showHideConfirm:NO];
         NSLog(@"Error: no image saved in memory");
-        return;
+        return nil;
         
     }
     
@@ -108,7 +121,15 @@
     //  UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
     //  NSLog(@"finalImage: %@", finalImage);
     
-    if ([self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)]) {
+    return finalImage;
+}
+
+- (IBAction)btnOkPhoto:(id)sender
+{
+
+    UIImage *finalImage = [self getImageCropScreen];
+    
+    if (finalImage && [self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)]) {
         
         [self.delegate cameraDidSelectPhoto:finalImage];
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -165,14 +186,18 @@
 
 - (void) showHideConfirm:(BOOL) show
 {
-    if (show) self.lcvConfirm_BOTTOM.constant = 0;
+    if (show) {
+        self.lcvConfirm_BOTTOM.constant = 0;
+        self.btnGallery.hidden = NO;
+    }
     else {
-        self.imgPhotoTaken.hidden = YES;
+        self.btnGallery.hidden = YES;
         self.lcvConfirm_BOTTOM.constant = -self.lcvConfirm_HEIGHT.constant;
     }
     
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
+        [self showHideBackgroundSelection:show];
     }];
 }
 
