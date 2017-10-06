@@ -118,8 +118,6 @@
     return;
 #endif
     
-    //  [self openTheML:nil];
-    
     [self openCamera];
 }
 
@@ -137,10 +135,10 @@
 {
     NSLog(@"openML");
     
-    if (camVC) {
-        camVC.delegate = self;
-        camVC = nil;
-    }
+//    if (camVC) {
+//        camVC.delegate = self;
+//        camVC = nil;
+//    }
     
     [boardView clear];
     

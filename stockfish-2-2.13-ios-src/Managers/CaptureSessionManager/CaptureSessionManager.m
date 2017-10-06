@@ -289,14 +289,14 @@
         
     }
     
-    
+    /*
     _audioCapture = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
     
     _audioInput = [AVCaptureDeviceInput deviceInputWithDevice:_audioCapture error:nil];
     if ([_captureSession canAddInput:_audioInput]) {
         [_captureSession addInput:_audioInput];
     }
-    
+    */
     
     _videoInput = [[AVCaptureDeviceInput alloc]
                    initWithDevice:_videoDevice error:nil];
@@ -305,6 +305,7 @@
     if ([_captureSession canAddInput:_videoInput]) {
         [_captureSession addInput:_videoInput];
     }
+    
     
     _output = [[AVCaptureStillImageOutput alloc] init];
     

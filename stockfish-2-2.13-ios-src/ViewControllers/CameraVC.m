@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcvConfirm_BOTTOM;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lcvConfirm_HEIGHT;
 @property (weak, nonatomic) IBOutlet UIButton *btnGallery;
+@property (weak, nonatomic) IBOutlet UIButton *btnFullGallery;
 
 @end
 
@@ -37,7 +38,7 @@
     [super viewDidLoad];
     
     [self initCapture];
-    [self setupUI];
+    //[self setupUI];
 }
 
 - (void) initCapture
@@ -45,10 +46,12 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         if (!camManager) {
             camManager = [[CaptureSessionManager alloc] initWithFrame:[UIScreen mainScreen].bounds withDel:self withPresset:AVCaptureSessionPresetHigh];
-        }
-        [camManager startRunning];
-        [self.vCamera.layer addSublayer:camManager.previewLayer];
+            
+            [camManager startRunning];
         
+        [self.vCamera.layer addSublayer:camManager.previewLayer];
+            [self setupUI];
+        }
     });
 }
 
@@ -82,10 +85,25 @@
     if (img) {
         UIImage *small = [Utils onlyScaleImage:img toMaxResolution:400];
         if (small) {
-        UIImageWriteToSavedPhotosAlbum(small, nil, nil, nil);
+            UIImageWriteToSavedPhotosAlbum(small, nil, nil, nil);
         }
         
     }
+}
+
+- (IBAction)btnSaveFull:(id)sender
+{
+    if (!lastPhoto)  {
+        NSLog(@"Error: no image saved in memory");
+        return ;
+    }
+    
+    self.imgPhotoTaken.image = lastPhoto;
+    self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
+    
+    UIImage *screenImage = [self captureViewIn:self.imgPhotoTaken];
+    UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
+    
 }
 
 - (UIImage*) getImageCropScreen
@@ -102,12 +120,6 @@
     self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
     
     UIImage *screenImage = [self captureViewIn:self.imgPhotoTaken];
-    //     UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
-    //    NSLog(@"screenImage: %@", screenImage);
-    
-    //    CGImageRef imgRef = screenImage.CGImage;
-    //    CGFloat width = CGImageGetWidth(imgRef);
-    //    CGFloat height = CGImageGetHeight(imgRef);
     
     CGFloat scaleScreen = [UIScreen mainScreen].scale;
     
@@ -118,15 +130,14 @@
     CGImageRef imageRef = CGImageCreateWithImageInRect([screenImage CGImage], cropRect);
     
     UIImage *finalImage = [UIImage imageWithCGImage:imageRef scale:scaleScreen orientation:screenImage.imageOrientation];
-    //  UIImageWriteToSavedPhotosAlbum(finalImage, nil, nil, nil);
-    //  NSLog(@"finalImage: %@", finalImage);
+
     
     return finalImage;
 }
 
 - (IBAction)btnOkPhoto:(id)sender
 {
-
+    
     UIImage *finalImage = [self getImageCropScreen];
     
     if (finalImage && [self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)]) {
@@ -136,8 +147,8 @@
         return;
     }
     
-    [camManager startRunning];
-    [self showHideConfirm:NO];
+    //[camManager startRunning];
+    //[self showHideConfirm:NO];
 }
 
 
@@ -146,7 +157,6 @@
     //hide controls if needed
     CGRect rect = [view bounds];
     
-    //   UIGraphicsBeginImageContext(rect.size);
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -188,10 +198,10 @@
 {
     if (show) {
         self.lcvConfirm_BOTTOM.constant = 0;
-        self.btnGallery.hidden = NO;
+        self.btnGallery.hidden = self.btnFullGallery.hidden = NO;
     }
     else {
-        self.btnGallery.hidden = YES;
+        self.btnGallery.hidden = self.btnFullGallery.hidden = YES;
         self.lcvConfirm_BOTTOM.constant = -self.lcvConfirm_HEIGHT.constant;
     }
     
@@ -209,7 +219,7 @@
         lastPhoto = nil;
         return;
     }
-    
+    self.imgPhotoTaken.frame = self.vCamera.bounds;
     lastPhoto = photo;
     
     [camManager stopRunning];
