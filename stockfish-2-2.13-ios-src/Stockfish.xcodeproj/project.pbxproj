@@ -667,12 +667,12 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3669E881C221C4E64F0C2F9E /* ColorUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3669E10D3A8EE40F981232B6 /* ColorUtils.mm */; };
 		3669EEA85F37F07344CF192F /* ArrowView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3669E50F4255300CE2D0FAD3 /* ArrowView.mm */; };
-		3C72D9901F86229900EF0F2E /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C72D98F1F86229500EF0F2E /* chess_pieces.mlmodel */; };
 		3C7876271F8295700056AFB4 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7876261F8295700056AFB4 /* Vision.framework */; };
 		3C7876291F82957B0056AFB4 /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7876281F82957B0056AFB4 /* CoreML.framework */; };
 		3C78762D1F8297850056AFB4 /* CoreMLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C78762C1F8296350056AFB4 /* CoreMLManager.m */; };
 		3C7876391F82A1690056AFB4 /* CameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7876371F82A1690056AFB4 /* CameraVC.m */; };
 		3C78763A1F82A1690056AFB4 /* CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C7876381F82A1690056AFB4 /* CameraVC.xib */; };
+		3C98477E1F8778210050EE60 /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C98477D1F87781F0050EE60 /* chess_pieces.mlmodel */; };
 		3CAA1F501F838E0400D9580A /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C7876301F829CA80056AFB4 /* CaptureSessionManager.m */; };
 		3CAA1F561F83903000D9580A /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CAA1F551F83903000D9580A /* Utils.m */; };
 		3CAA1F581F83922900D9580A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CAA1F571F83922800D9580A /* CoreMedia.framework */; };
@@ -1438,7 +1438,6 @@
 		3669E50F4255300CE2D0FAD3 /* ArrowView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ArrowView.mm; sourceTree = "<group>"; };
 		3669E8F40602BE7AC99B4F60 /* ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorUtils.h; sourceTree = "<group>"; };
 		3669EFA6EE823426143F23FE /* ArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrowView.h; sourceTree = "<group>"; };
-		3C72D98F1F86229500EF0F2E /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
 		3C7876261F8295700056AFB4 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		3C7876281F82957B0056AFB4 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		3C78762B1F8296350056AFB4 /* CoreMLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreMLManager.h; sourceTree = "<group>"; };
@@ -1448,6 +1447,7 @@
 		3C7876361F82A1690056AFB4 /* CameraVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraVC.h; sourceTree = "<group>"; };
 		3C7876371F82A1690056AFB4 /* CameraVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraVC.m; sourceTree = "<group>"; };
 		3C7876381F82A1690056AFB4 /* CameraVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraVC.xib; sourceTree = "<group>"; };
+		3C98477D1F87781F0050EE60 /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
 		3CAA1F531F838EFF00D9580A /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		3CAA1F541F83903000D9580A /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		3CAA1F551F83903000D9580A /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
@@ -2360,7 +2360,7 @@
 		3C7876231F8293500056AFB4 /* CoreModel */ = {
 			isa = PBXGroup;
 			children = (
-				3C72D98F1F86229500EF0F2E /* chess_pieces.mlmodel */,
+				3C98477D1F87781F0050EE60 /* chess_pieces.mlmodel */,
 			);
 			name = CoreModel;
 			sourceTree = "<group>";
@@ -3120,7 +3120,7 @@
 				17560CA11336310200466B87 /* BoardPreview.mm in Sources */,
 				17DCB80915C54A2D005ADD54 /* benchmark.cpp in Sources */,
 				17DCB80A15C54A2D005ADD54 /* bitbase.cpp in Sources */,
-				3C72D9901F86229900EF0F2E /* chess_pieces.mlmodel in Sources */,
+				3C98477E1F8778210050EE60 /* chess_pieces.mlmodel in Sources */,
 				17DCB80B15C54A2D005ADD54 /* bitboard.cpp in Sources */,
 				17DCB80C15C54A2D005ADD54 /* book.cpp in Sources */,
 				17DCB80D15C54A2D005ADD54 /* endgame.cpp in Sources */,
