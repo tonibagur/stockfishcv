@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreML/CoreML.h>
 
 @interface PythonManager : NSObject
 
++ (id)sharedManager;
+
+- (void) executePython:(MLMultiArray*) multi;
 @end
