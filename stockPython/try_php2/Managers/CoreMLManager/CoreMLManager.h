@@ -8,8 +8,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreML/CoreML.h>
 #import <Vision/Vision.h>
+#import "PythonManager.h"
 
 typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
+typedef void (^CoreMLManagerSpecialCompletionHandler)(BOOL succes, MLMultiArray* _Nullable arrMulti, NSError * _Nullable error);
 
 @protocol CoreMLDelegate <NSObject>
 
@@ -19,6 +21,8 @@ typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nul
 @interface CoreMLManager : NSObject
 {
     CoreMLManagerCompletionHandler completionHandler;
+     CoreMLManagerSpecialCompletionHandler  completionSpecialHandler;
+    PythonManager *python;
 }
 
 @property (nonatomic, weak) id  <CoreMLDelegate> _Nullable delegate;
@@ -34,4 +38,5 @@ typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nul
 - (void) closeAll;
 - (void) setupModel;
 - (void) executeImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionHandler _Nullable ) completion;
+- (void) executeImage:(UIImage*_Nullable) image withSpecialCompletion:(CoreMLManagerSpecialCompletionHandler _Nullable ) completion;
 @end

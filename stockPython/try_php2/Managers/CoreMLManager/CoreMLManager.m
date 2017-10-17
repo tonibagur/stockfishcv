@@ -18,6 +18,7 @@
     _modelPieces = nil;
     self.delegate = nil;
         completionHandler = nil;
+    completionSpecialHandler = nil;
     self.isAvailable = NO;
 }
 
@@ -53,6 +54,17 @@
 
                               if (completionHandler) {
                                   completionHandler((arr && arr.count > 0)?YES:NO, arr, nil);
+                              }
+                              
+                              if (completionSpecialHandler) {
+                                  MLMultiArray *aux = observations.featureValue.multiArrayValue;
+                                  
+                                  if (!python) {
+                                      python = [PythonManager sharedManager];
+                                  }
+                                  
+                                  [python executePython:aux];
+                                  completionSpecialHandler((arr && arr.count > 0)?YES:NO, aux, nil);
                               }
                           }                          
                       });
@@ -113,6 +125,29 @@
     
     completionHandler = completion;
 
+    VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [handler performRequests:a error:nil];
+    });
+}
+
+
+- (void) executeImage:(UIImage*_Nullable) image withSpecialCompletion:(CoreMLManagerSpecialCompletionHandler _Nullable ) completion
+{
+    if (!self.isAvailable) {
+        NSLog(@"CoreML not available, is not initialize");
+        return;
+    }
+    self.results = @[];
+    
+    NSArray *a = @[_mlRequest];
+    
+    if (!image) {
+        image = [UIImage imageNamed:@"tablero"];
+    }
+    completionSpecialHandler = completion;
+    completionHandler = nil;
+    
     VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
     dispatch_async(dispatch_get_main_queue(), ^{
         [handler performRequests:a error:nil];
