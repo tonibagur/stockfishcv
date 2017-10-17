@@ -182,7 +182,7 @@
                         <constraint firstAttribute="bottom" secondItem="be4-EQ-F4F" secondAttribute="bottom" id="aVL-ZF-JkU"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IL6-Jr-JHG">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IL6-Jr-JHG">
                     <rect key="frame" x="20" y="20" width="165" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="165" id="6Fz-9H-xck"/>
@@ -195,7 +195,7 @@
                         <action selector="btnSaveGallery:" destination="-1" eventType="touchUpInside" id="ahN-A1-wZz"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rak-C0-1zL">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rak-C0-1zL">
                     <rect key="frame" x="20" y="69" width="165" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="6Cr-Bx-6IZ"/>

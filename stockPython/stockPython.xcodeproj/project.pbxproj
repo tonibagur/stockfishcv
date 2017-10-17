@@ -1339,7 +1339,7 @@
 		3CD028511F960CFA002A697C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CD028541F961DAB002A697C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3CD028561F961F9C002A697C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		3CF832541F94D4F9006669C1 /* try_php2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = try_php2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CF832541F94D4F9006669C1 /* stockPython.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockPython.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF832571F94D4F9006669C1 /* xAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xAppDelegate.h; sourceTree = "<group>"; };
 		3CF832581F94D4F9006669C1 /* xAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xAppDelegate.m; sourceTree = "<group>"; };
 		3CF8325A1F94D4F9006669C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -2188,7 +2188,7 @@
 		3CF832551F94D4F9006669C1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CF832541F94D4F9006669C1 /* try_php2.app */,
+				3CF832541F94D4F9006669C1 /* stockPython.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2241,9 +2241,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3CF832531F94D4F9006669C1 /* try_php2 */ = {
+		3CF832531F94D4F9006669C1 /* stockPython */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3CF8326A1F94D4F9006669C1 /* Build configuration list for PBXNativeTarget "try_php2" */;
+			buildConfigurationList = 3CF8326A1F94D4F9006669C1 /* Build configuration list for PBXNativeTarget "stockPython" */;
 			buildPhases = (
 				3CF832501F94D4F9006669C1 /* Sources */,
 				3CF832511F94D4F9006669C1 /* Frameworks */,
@@ -2253,9 +2253,9 @@
 			);
 			dependencies = (
 			);
-			name = try_php2;
+			name = stockPython;
 			productName = try_php2;
-			productReference = 3CF832541F94D4F9006669C1 /* try_php2.app */;
+			productReference = 3CF832541F94D4F9006669C1 /* stockPython.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2273,7 +2273,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3CF8324F1F94D4F9006669C1 /* Build configuration list for PBXProject "try_php2" */;
+			buildConfigurationList = 3CF8324F1F94D4F9006669C1 /* Build configuration list for PBXProject "stockPython" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -2286,7 +2286,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3CF832531F94D4F9006669C1 /* try_php2 */,
+				3CF832531F94D4F9006669C1 /* stockPython */,
 			);
 		};
 /* End PBXProject section */
@@ -3116,7 +3116,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3CF8324F1F94D4F9006669C1 /* Build configuration list for PBXProject "try_php2" */ = {
+		3CF8324F1F94D4F9006669C1 /* Build configuration list for PBXProject "stockPython" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3CF832681F94D4F9006669C1 /* Debug */,
@@ -3125,7 +3125,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3CF8326A1F94D4F9006669C1 /* Build configuration list for PBXNativeTarget "try_php2" */ = {
+		3CF8326A1F94D4F9006669C1 /* Build configuration list for PBXNativeTarget "stockPython" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3CF8326B1F94D4F9006669C1 /* Debug */,
