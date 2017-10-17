@@ -23,7 +23,7 @@
 #import "SetupViewController.h"
 #import "SideToMoveController.h"
 
-//#import "CoreMLManager.h"
+#import "CoreMLManager.h"
 
 #include "../../../Python/dist/root/python/include/python2.7/Python.h"
 //#include "/Users/toni/dev/kivy-ios/dist/include/common/sdl2/SDL_main.h"
@@ -127,12 +127,12 @@ void bload_custom_builtin_importer(void);
 - (void) btnPressOnCam
 {
     
-    [self executePython:nil];
+   [self openTheML:nil needsPython:YES];
     return;
     
     
 #if TARGET_IPHONE_SIMULATOR
-    [self openTheML:nil];
+    [self openTheML:nil needsPython:NO];
     return;
 #endif
     
@@ -149,9 +149,10 @@ void bload_custom_builtin_importer(void);
     [self presentViewController:camVC animated:YES completion:nil];
 }
 
-- (void) openTheML:(UIImage*) image
+
+- (void) openTheML:(UIImage*) image needsPython:(BOOL) needsPython
 {
-    /*
+    
     NSLog(@"openML");
     
 //    if (camVC) {
@@ -166,6 +167,16 @@ void bload_custom_builtin_importer(void);
     
     UIImage *smallImage = image?[Utils onlyScaleImage:image toMaxResolution:400]:nil;
     
+    if (needsPython)
+    {
+        [ml executeImage:smallImage withSpecialCompletion:^(BOOL succes, MLMultiArray * _Nullable arrMulti, NSError * _Nullable error) {
+            NSLog(@"success: %@", succes?@"YES":@"NO");
+            NSLog(@"error of completion: %@",error);
+            
+        }];
+    }
+    else
+    {
     [ml executeImage:smallImage withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
      {
          NSLog(@"success: %@", succes?@"YES":@"NO");
@@ -194,7 +205,8 @@ void bload_custom_builtin_importer(void);
 
          });
      }];
-    */
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -233,7 +245,7 @@ void bload_custom_builtin_importer(void);
 {
     NSLog(@"did select photo from camera");
     NSLog(@"%@", imageSelected);
-    [self openTheML:imageSelected];
+    [self openTheML:imageSelected needsPython:NO];
 }
 
 
