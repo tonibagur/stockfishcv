@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C376FA51F962A8000A5747D /* PythonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C376FA41F962A8000A5747D /* PythonManager.m */; };
 		3CD0232D1F95F7F2002A697C /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232C1F95F7F2002A697C /* CoreML.framework */; };
 		3CD0232F1F95F800002A697C /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232E1F95F800002A697C /* Vision.framework */; };
 		3CD025771F95FCCA002A697C /* AlphaBBishop96.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CD024961F95FC63002A697C /* AlphaBBishop96.png */; };
@@ -632,6 +633,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C376FA31F962A8000A5747D /* PythonManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PythonManager.h; sourceTree = "<group>"; };
+		3C376FA41F962A8000A5747D /* PythonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PythonManager.m; sourceTree = "<group>"; };
 		3CD0232C1F95F7F2002A697C /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		3CD0232E1F95F800002A697C /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		3CD023311F95FC1A002A697C /* book.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = book.bin; sourceTree = "<group>"; };
@@ -1392,6 +1395,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C376FA11F9629FE00A5747D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3CD0284D1F9602B2002A697C /* chess_pieces.mlmodel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3C376FA21F962A5D00A5747D /* PythonManager */ = {
+			isa = PBXGroup;
+			children = (
+				3C376FA31F962A8000A5747D /* PythonManager.h */,
+				3C376FA41F962A8000A5747D /* PythonManager.m */,
+			);
+			path = PythonManager;
+			sourceTree = "<group>";
+		};
 		3CD023301F95FC0B002A697C /* stockFish */ = {
 			isa = PBXGroup;
 			children = (
@@ -2148,7 +2168,7 @@
 		3CD028441F960279002A697C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3CD0284D1F9602B2002A697C /* chess_pieces.mlmodel */,
+				3C376FA21F962A5D00A5747D /* PythonManager */,
 				3CD028451F960279002A697C /* CaptureSessionManager */,
 				3CD028481F960279002A697C /* CoreMLManager */,
 			);
@@ -2196,6 +2216,7 @@
 		3CF832561F94D4F9006669C1 /* try_php2 */ = {
 			isa = PBXGroup;
 			children = (
+				3C376FA11F9629FE00A5747D /* Models */,
 				3CD028441F960279002A697C /* Managers */,
 				3CD0283E1F96025D002A697C /* ViewControllers */,
 				3CD027961F95FE88002A697C /* Helpers */,
@@ -2824,6 +2845,7 @@
 				3CD028421F960262002A697C /* CameraVC.m in Sources */,
 				3CD028101F96022E002A697C /* CastleRightsController.mm in Sources */,
 				3CD028141F96022E002A697C /* CoordinatesView.mm in Sources */,
+				3C376FA51F962A8000A5747D /* PythonManager.m in Sources */,
 				3CD028111F96022E002A697C /* ChessClock.mm in Sources */,
 				3CD0281C1F96022E002A697C /* GameController.mm in Sources */,
 				3CD028501F96045D002A697C /* main.cpp in Sources */,
