@@ -47,10 +47,14 @@ static PythonManager *sharedMyManager = nil;
 }
 
 
-- (void) executePython:(MLMultiArray*) multi
+- (void) executePython:(MLMultiArray*) multi withCompletion:(PythonCompletionCGRectTupla) completion
 {
+    BOOL succes = NO;
+    CGRect rect = CGRectZero;
+    
     if (!multi) {
         NSLog(@" ********************** error MLMultiArray");
+         [self completionFail:completion withError:nil];
         return;
     }
     
@@ -81,14 +85,31 @@ static PythonManager *sharedMyManager = nil;
             pValue = PyObject_CallObject(pFunc, pArgs);
             Py_DECREF(pArgs);
             if (pValue != NULL) {
-                long value=PyInt_AsLong(pValue);
-                printf("Result of call: %ld\n", value);
+                long x1,y1,x2,y2;
+                if (PyTuple_Size(pValue) == 4)
+                {
+                    x1=PyInt_AsLong(PyTuple_GetItem(pValue, 0));
+                    y1=PyInt_AsLong(PyTuple_GetItem(pValue, 1));
+                    x2=PyInt_AsLong(PyTuple_GetItem(pValue, 2));
+                    y2=PyInt_AsLong(PyTuple_GetItem(pValue, 3));
+                    
+                    if (y2 >= y1 && x2 >=x1 && (x1 != x2 || (y1 != y2))) {
+                        rect = CGRectMake((float)x1, (float)y2, (float)x2-x1, (float) y2-y1);
+                        succes = YES;
+                    }
+                    
+                    printf("Result of call: %ld %ld %ld %ld\n", x1,y1,x2,y2);
+                }
+                else {
+                    printf("Wrong params result of points");
+                }
                 Py_DECREF(pValue);
             }
             else {
                 Py_DECREF(pFunc);
                 PyErr_Print();
                 fprintf(stderr,"Call failed\n");
+                 [self completionFail:completion withError:nil];
                 return ;
             }
         }
@@ -100,7 +121,22 @@ static PythonManager *sharedMyManager = nil;
     }
     else {
         PyErr_Print();
+        [self completionFail:completion withError:nil];
         return ;
+    }
+    
+    if (succes && completion) {
+        completion(YES, rect, nil);
+    }
+    else {
+        [self completionFail:completion withError:nil];
+    }
+}
+
+- (void) completionFail:(PythonCompletionCGRectTupla) completion withError:(NSError*) error
+{
+    if (completion) {
+        completion(NO, CGRectZero, error);
     }
 }
 

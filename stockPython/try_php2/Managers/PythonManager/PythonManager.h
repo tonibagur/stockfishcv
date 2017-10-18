@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreML/CoreML.h>
 
+typedef void (^PythonCompletionCGRectTupla)(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error);
+
 @interface PythonManager : NSObject
 
-+ (id)sharedManager;
++ (id _Nullable )sharedManager;
 
-- (void) executePython:(MLMultiArray*) multi;
+- (void) executePython:(MLMultiArray* _Nullable) multi withCompletion:(PythonCompletionCGRectTupla _Nullable) completion;
+
 @end
