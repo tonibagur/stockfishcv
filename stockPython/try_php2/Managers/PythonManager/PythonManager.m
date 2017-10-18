@@ -16,9 +16,13 @@
 void initExport_orientation(void);
 void initLoad_custom_builtin_importer(void);
 
-@implementation PythonManager
-
 static PythonManager *sharedMyManager = nil;
+
+@implementation PythonManager
+{
+    PyObject *pName;
+    PyObject *pModule;
+}
 
 + (id)sharedManager {
     
@@ -32,25 +36,35 @@ static PythonManager *sharedMyManager = nil;
 
 - (void) initVariables
 {
-    [self testInitOnce];
+    [self initOncePython];
+    [self loadModules];
+}
+
+- (void) loadModules
+{
+    pName = PyString_FromString("test_module");
+    pModule = PyImport_Import(pName);
+    Py_DECREF(pName);
+    Py_DECREF(pModule);
 }
 
 
 - (void) executePython:(MLMultiArray*) multi
 {
     if (!multi) {
-        NSLog(@" ********************** no MLMultiArray");
+        NSLog(@" ********************** error MLMultiArray");
         return;
     }
     
-    PyObject *pName, *pModule, *pFunc;
+    PyObject *pFunc;
     PyObject *pArgs, *pValue;
 
-    pName = PyString_FromString("test_module");
-    pModule = PyImport_Import(pName);
-    Py_DECREF(pName);
+    if (pModule == NULL) {
+        [self loadModules];
+    }
     
-    if (pModule != NULL) {
+    if (pModule != NULL)
+    {
         pFunc = PyObject_GetAttrString(pModule, "test_function");
         /* pFunc is a new reference */
         
@@ -59,10 +73,8 @@ static PythonManager *sharedMyManager = nil;
             pArgs = PyTuple_New(numArgs);
             printf("Testing numpy\n");
             
-            //double array[]={1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0};
             npy_intp shape[] = {[multi.shape[0] integerValue], [multi.shape[1] integerValue], [multi.shape[2] integerValue] };
             
-            //npy_intp shape[]={13,8,8};
             import_array()
             PyObject* arr=PyArray_SimpleNewFromData(2, shape, NPY_DOUBLE, multi.dataPointer);
             
@@ -76,7 +88,7 @@ static PythonManager *sharedMyManager = nil;
             }
             else {
                 Py_DECREF(pFunc);
-                Py_DECREF(pModule);
+              //  Py_DECREF(pModule);
                 PyErr_Print();
                 fprintf(stderr,"Call failed\n");
                 return ;
@@ -88,7 +100,7 @@ static PythonManager *sharedMyManager = nil;
             // fprintf(stderr, "Cannot find function \"%s\"\n", argv[2]);
         }
         Py_XDECREF(pFunc);
-        Py_DECREF(pModule);
+     //   Py_DECREF(pModule);
     }
     else {
         PyErr_Print();
@@ -99,12 +111,19 @@ static PythonManager *sharedMyManager = nil;
 
 - (void) dealloc
 {
+    [self releaseAll];
+}
+
+- (void) releaseAll
+{
     Py_Finalize();
+    Py_DECREF(pName);
+    Py_DECREF(pModule);
 }
 
 #pragma mark - First Init
 
-- (void) testInitOnce
+- (void) initOncePython
 {
     // Change the executing path to YourApp
     chdir("project_python");
