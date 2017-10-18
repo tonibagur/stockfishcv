@@ -38,19 +38,12 @@
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrC-bA-OiG" userLabel="vCamera">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <subviews>
-                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g4X-9B-NQK" userLabel="imgTaken">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        </imageView>
-                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="g4X-9B-NQK" secondAttribute="trailing" id="5AV-kT-PVU"/>
-                        <constraint firstItem="g4X-9B-NQK" firstAttribute="leading" secondItem="FrC-bA-OiG" secondAttribute="leading" id="Pr6-i8-N09"/>
-                        <constraint firstAttribute="bottom" secondItem="g4X-9B-NQK" secondAttribute="bottom" id="VHG-ty-xcm"/>
-                        <constraint firstItem="g4X-9B-NQK" firstAttribute="top" secondItem="FrC-bA-OiG" secondAttribute="top" id="ykC-6E-lMh"/>
-                    </constraints>
                 </view>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g4X-9B-NQK" userLabel="imgTaken">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83f-aG-yTf" userLabel="vAlphaMark">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
@@ -216,9 +209,13 @@
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Rrl-c1-jIO" secondAttribute="trailing" id="3nA-Vz-ijh"/>
                 <constraint firstItem="83f-aG-yTf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4XF-9m-Eie"/>
+                <constraint firstItem="g4X-9B-NQK" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="64e-kf-Dab"/>
+                <constraint firstItem="g4X-9B-NQK" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="8Lx-HU-gDP"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="83f-aG-yTf" secondAttribute="trailing" id="Gf7-JB-lvm"/>
                 <constraint firstItem="FrC-bA-OiG" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="I8T-qT-1oy"/>
+                <constraint firstItem="g4X-9B-NQK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JK5-jl-qKK"/>
                 <constraint firstItem="83f-aG-yTf" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="JMe-xe-1gk"/>
+                <constraint firstItem="g4X-9B-NQK" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="LXj-3C-o1A"/>
                 <constraint firstItem="FrC-bA-OiG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="M0h-FE-Md1"/>
                 <constraint firstItem="FrC-bA-OiG" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="Xcx-8R-DFN"/>
                 <constraint firstItem="Rrl-c1-jIO" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="aC3-Sq-dqQ"/>

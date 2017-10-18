@@ -7,6 +7,7 @@
 
 #import "CameraVC.h"
 #import "CaptureSessionManager.h"
+#import "CoreMLManager.h"
 
 @interface CameraVC () < CaptureSessionManagerDelegate>
 {
@@ -76,7 +77,11 @@
 
 - (IBAction)btnRetake:(id)sender
 {
-    lastPhoto = photoResult = nil;
+    lastPhoto = nil;
+    photoResult = nil;
+    
+    self.imgPhotoTaken.image = nil;
+    self.imgPhotoTaken.hidden = YES;
     
     [camManager startRunning];
     [self showHideConfirm:NO];
@@ -123,6 +128,9 @@
         
     }
     
+    return photoResult;
+    
+    /*
     self.imgPhotoTaken.image = lastPhoto;
     self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -140,12 +148,12 @@
 
     
     return finalImage;
+    */
 }
 
 - (IBAction)btnOkPhoto:(id)sender
 {
-    
-    UIImage *finalImage = [self getImageCropScreen];
+    UIImage *finalImage = photoResult; // [self getImageCropScreen];
     
     if (finalImage && [self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)]) {
         
@@ -223,20 +231,43 @@
 
 - (void) CaptureSessionManagerDelegate_PhotoTaked:(UIImage*) photo
 {
+            lastPhoto = nil;
+    photoResult = nil;
     if (!photo) {
-        lastPhoto = nil;
-        photoResult = nil;
         return;
     }
-    self.imgPhotoTaken.frame = self.vCamera.bounds;
+
     lastPhoto = photo;
     
     [camManager stopRunning];
     [self showHideConfirm:YES];
+
+    CoreMLManager *ml = [CoreMLManager new];
+    [ml setupModelForPythonResult];
     
-    NSLog(@"fpoto: %@", photo);
-    self.imgPhotoTaken.image = photo;
-   // self.imgPhotoTaken.hidden = NO;
+    [ml getCGRectTuplaPythonWithImage:lastPhoto
+                       withCompletion:^(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error)
+     {
+         NSLog(@"success: %@", succes?@"YES":@"NO");
+         NSLog(@"error of getCGRectTuplaPythonWithImage: %@",error);
+         if (succes)
+         {
+             NSLog(@"result CGRect: (%.0f, %.0f, %0.f, %.0f)", rectResultTupla.origin.x, rectResultTupla.origin.y, rectResultTupla.size.width, rectResultTupla.size.height);
+             
+             CGImageRef imageRef = CGImageCreateWithImageInRect([lastPhoto CGImage], rectResultTupla);
+             
+             photoResult = [UIImage imageWithCGImage:imageRef scale:lastPhoto.scale orientation:lastPhoto.imageOrientation];
+             
+             if (photoResult) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     self.imgPhotoTaken.image = photoResult;
+                     self.imgPhotoTaken.hidden = NO;
+                 });
+             }
+             
+             
+         }
+     }];
 }
 
 - (void) dealloc
