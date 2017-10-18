@@ -10,9 +10,6 @@
 #import <Vision/Vision.h>
 #import "PythonManager.h"
 
-//typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
-//typedef void (^CoreMLManagerSpecialCompletionHandler)(BOOL succes, MLMultiArray* _Nullable arrMulti, NSError * _Nullable error);
-
 
 typedef void (^CoreMLManagerCompletionPieces)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
 typedef void (^CoreMLManagerCompletionCGRectTupla)(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error);
@@ -25,7 +22,7 @@ typedef void (^CoreMLManagerCompletionCGRectTupla)(BOOL succes, CGRect rectResul
 @interface CoreMLManager : NSObject
 {
     CoreMLManagerCompletionPieces completionPieces;
-     CoreMLManagerCompletionCGRectTupla  completionCGRect;
+    CoreMLManagerCompletionCGRectTupla  completionCGRect;
     PythonManager *python;
 }
 
@@ -43,7 +40,6 @@ typedef void (^CoreMLManagerCompletionCGRectTupla)(BOOL succes, CGRect rectResul
 - (void) setupModelForPythonResult;
 
 - (void) closeAll;
-
 
 - (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion;
 - (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion;

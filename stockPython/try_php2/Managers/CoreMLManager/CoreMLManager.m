@@ -50,10 +50,7 @@
                           if (numberOfResults > 0) {
                               self.results = [request.results copy];
                               VNCoreMLFeatureValueObservation *observations = (VNCoreMLFeatureValueObservation*) self.results[0];
-                              
-                              NSMutableArray *arr = [self evaluateMultiArray:observations.featureValue.multiArrayValue];
-                              
-                              
+
                               if (completionCGRect) {
                                   MLMultiArray *aux = observations.featureValue.multiArrayValue;
                                   
@@ -61,9 +58,12 @@
                                       python = [PythonManager sharedManager];
                                   }
                                   
-                                  [python executePython:aux];
-                                  
-                                  completionCGRect((arr && arr.count > 0)?YES:NO, CGRectZero, nil);
+                                  [python executePython:aux withCompletion:^(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error)
+                                  {
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                               completionCGRect(succes, rectResultTupla, error);
+                                       });
+                                  }];
                               }
                           }
                           else if (completionCGRect) {

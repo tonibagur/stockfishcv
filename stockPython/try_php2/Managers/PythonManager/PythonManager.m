@@ -94,7 +94,7 @@ static PythonManager *sharedMyManager = nil;
                     y2=PyInt_AsLong(PyTuple_GetItem(pValue, 3));
                     
                     if (y2 >= y1 && x2 >=x1 && (x1 != x2 || (y1 != y2))) {
-                        rect = CGRectMake((float)x1, (float)y2, (float)x2-x1, (float) y2-y1);
+                        rect = CGRectMake((float)x1, (float)y1, (float)x2-x1, (float) y2-y1);
                         succes = YES;
                     }
                     
