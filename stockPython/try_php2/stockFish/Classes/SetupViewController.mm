@@ -43,7 +43,6 @@
     return self;
 }
 
-
 - (void) addButtonToCam
 {
     CGRect r = [UIScreen mainScreen].bounds;
@@ -116,7 +115,7 @@
 {
     
 #if TARGET_IPHONE_SIMULATOR
-    [self openTheML:nil needsPython:YES];
+    [self openTheML:nil];
     return;
 #endif
     
@@ -134,7 +133,7 @@
 }
 
 
-- (void) openTheML:(UIImage*) image needsPython:(BOOL) needsPython
+- (void) openTheML:(UIImage*) image
 {
     
     NSLog(@"openML");
@@ -142,54 +141,37 @@
     
     CoreMLManager *ml = [[CoreMLManager alloc]init];
     
-    if (needsPython)
-    {
-        [ml setupModelForPythonResult];
-        
-        [ml getCGRectTuplaPythonWithImage:image
-                           withCompletion:^(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error)
-         {
-             NSLog(@"success: %@", succes?@"YES":@"NO");
-             NSLog(@"error of getCGRectTuplaPythonWithImage: %@",error);
-             if (succes)
+    [ml setupModelForPieces];
+    
+    [ml getChessPiecesWithImage:image
+                 withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
+     {
+         
+         NSLog(@"success: %@", succes?@"YES":@"NO");
+         NSLog(@"error of getChessPiecesWithImage: %@",error);
+         //  NSLog(@"arrResults: %@", arrResultPieces);
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             
+             for (NSDictionary *dic in arrResultPieces)
              {
-             }
-         }];
-    }
-    else
-    {
-        [ml setupModelForPieces];
-        
-        [ml getChessPiecesWithImage:image
-                     withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
-         {
-             
-             NSLog(@"success: %@", succes?@"YES":@"NO");
-             NSLog(@"error of getChessPiecesWithImage: %@",error);
-             //  NSLog(@"arrResults: %@", arrResultPieces);
-             
-             dispatch_async(dispatch_get_main_queue(), ^{
+                 NSInteger x = [dic[@"x"]integerValue];
+                 NSInteger y = [dic[@"y"]integerValue];
+                 Piece piece = [boardView pieceFromMLByCode:[dic[@"z"]integerValue]];
                  
-                 for (NSDictionary *dic in arrResultPieces)
-                 {
-                     NSInteger x = [dic[@"x"]integerValue];
-                     NSInteger y = [dic[@"y"]integerValue];
-                     Piece piece = [boardView pieceFromMLByCode:[dic[@"z"]integerValue]];
-                     
-                     if (piece == NO_PIECE) {
-                         [boardView removePieceOnSquare:make_square(File(y), Rank(7-x))];
-                     }
-                     else {
-                         [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File(y), Rank(7-x))];
-                     }
+                 if (piece == NO_PIECE) {
+                     [boardView removePieceOnSquare:make_square(File(y), Rank(7-x))];
                  }
-                 
-                 [ml closeAll];
-                 [self enableDoneButton];
-                 
-             });
-         }];
-    }
+                 else {
+                     [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File(y), Rank(7-x))];
+                 }
+             }
+             
+             [ml closeAll];
+             [self enableDoneButton];
+             
+         });
+     }];
 }
 
 
@@ -230,7 +212,7 @@
 {
     NSLog(@"did select photo from camera");
     NSLog(@"%@", imageSelected);
-    [self openTheML:imageSelected needsPython:YES];
+    [self openTheML:imageSelected];
 }
 
 
