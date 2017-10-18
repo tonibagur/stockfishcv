@@ -89,14 +89,11 @@
 
 - (IBAction)btnSaveGallery:(id)sender
 {
-    UIImage *img = [self getImageCropScreen];
-    if (img) {
-        UIImage *small = [Utils onlyScaleImage:img toMaxResolution:400];
-        if (small) {
-            UIImageWriteToSavedPhotosAlbum(small, nil, nil, nil);
-        }
-        
+    if (!photoResult) {
+        NSLog(@"Error: no image cropped result");
+        return;
     }
+    UIImageWriteToSavedPhotosAlbum(photoResult, nil, nil, nil);
 }
 
 - (IBAction)btnSaveFull:(id)sender
@@ -107,59 +104,20 @@
     }
     
     UIImageWriteToSavedPhotosAlbum(lastPhoto, nil, nil, nil);
-    
-    /*
-    self.imgPhotoTaken.image = lastPhoto;
-    self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIImage *screenImage = [self captureViewIn:self.imgPhotoTaken];
-    UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
-     */
-    
-}
-
-- (UIImage*) getImageCropScreen
-{
-    if (!lastPhoto)  {
-        [camManager startRunning];
-        [self showHideConfirm:NO];
-        NSLog(@"Error: no image saved in memory");
-        return nil;
-        
-    }
-    
-    return photoResult;
-    
-    /*
-    self.imgPhotoTaken.image = lastPhoto;
-    self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
-    
-    UIImage *screenImage = [self captureViewIn:self.imgPhotoTaken];
-    
-    CGFloat scaleScreen = [UIScreen mainScreen].scale;
-    
-    CGRect cropRect = self.vMarkSelectionPhoto.frame;
-    
-    cropRect = CGRectMake(self.vMarkSelectionPhoto.frame.origin.x * scaleScreen, self.vMarkSelectionPhoto.frame.origin.y*scaleScreen, self.vMarkSelectionPhoto.frame.size.width*scaleScreen, self.vMarkSelectionPhoto.frame.size.width*scaleScreen);
-    
-    CGImageRef imageRef = CGImageCreateWithImageInRect([screenImage CGImage], cropRect);
-    
-    UIImage *finalImage = [UIImage imageWithCGImage:imageRef scale:scaleScreen orientation:screenImage.imageOrientation];
-
-    
-    return finalImage;
-    */
 }
 
 - (IBAction)btnOkPhoto:(id)sender
 {
-    UIImage *finalImage = photoResult; // [self getImageCropScreen];
+    if (!photoResult) {
+        NSLog(@"error: no photo crop result");
+        return;
+    }
+    UIImage *finalImage = photoResult;
     
-    if (finalImage && [self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)]) {
-        
+    if (finalImage && [self.delegate respondsToSelector:@selector(cameraDidSelectPhoto:)])
+    {
         [self.delegate cameraDidSelectPhoto:finalImage];
         [self dismissViewControllerAnimated:YES completion:nil];
-        return;
     }
     
     //[camManager startRunning];
@@ -226,7 +184,6 @@
     }];
 }
 
-
 #pragma mark - CaptureSessionManager delegate
 
 - (void) CaptureSessionManagerDelegate_PhotoTaked:(UIImage*) photo
@@ -264,8 +221,6 @@
                      self.imgPhotoTaken.hidden = NO;
                  });
              }
-             
-             
          }
      }];
 }
