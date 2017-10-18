@@ -10,8 +10,12 @@
 #import <Vision/Vision.h>
 #import "PythonManager.h"
 
-typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
-typedef void (^CoreMLManagerSpecialCompletionHandler)(BOOL succes, MLMultiArray* _Nullable arrMulti, NSError * _Nullable error);
+//typedef void (^CoreMLManagerCompletionHandler)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
+//typedef void (^CoreMLManagerSpecialCompletionHandler)(BOOL succes, MLMultiArray* _Nullable arrMulti, NSError * _Nullable error);
+
+
+typedef void (^CoreMLManagerCompletionPieces)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
+typedef void (^CoreMLManagerCompletionCGRectTupla)(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error);
 
 @protocol CoreMLDelegate <NSObject>
 
@@ -20,8 +24,8 @@ typedef void (^CoreMLManagerSpecialCompletionHandler)(BOOL succes, MLMultiArray*
 
 @interface CoreMLManager : NSObject
 {
-    CoreMLManagerCompletionHandler completionHandler;
-     CoreMLManagerSpecialCompletionHandler  completionSpecialHandler;
+    CoreMLManagerCompletionPieces completionPieces;
+     CoreMLManagerCompletionCGRectTupla  completionCGRect;
     PythonManager *python;
 }
 
@@ -35,8 +39,12 @@ typedef void (^CoreMLManagerSpecialCompletionHandler)(BOOL succes, MLMultiArray*
 @property BOOL isAvailable;
 
 
+- (void) setupModelForPieces;
+- (void) setupModelForPythonResult;
+
 - (void) closeAll;
-- (void) setupModel;
-- (void) executeImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionHandler _Nullable ) completion;
-- (void) executeImage:(UIImage*_Nullable) image withSpecialCompletion:(CoreMLManagerSpecialCompletionHandler _Nullable ) completion;
+
+
+- (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion;
+- (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion;
 @end

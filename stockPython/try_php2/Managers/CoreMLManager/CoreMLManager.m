@@ -17,12 +17,13 @@
     _mlRequest = nil;
     _modelPieces = nil;
     self.delegate = nil;
-        completionHandler = nil;
-    completionSpecialHandler = nil;
+    completionCGRect = nil;
+    completionPieces = nil;
     self.isAvailable = NO;
 }
 
-- (void) setupModel
+
+- (void) setupModelForPythonResult
 {
     _modelPieces = [[[chess_pieces alloc] init] model];
     
@@ -35,7 +36,7 @@
     _mlEngine = [VNCoreMLModel modelForMLModel: _modelPieces error:nil];
     if (!_mlEngine) {
         self.isAvailable = NO;
-        NSLog(@"Error in model");
+        NSLog(@"Error in model to GET POINTS for Python");
         return;
     }
     self.isAvailable = YES;
@@ -51,12 +52,9 @@
                               VNCoreMLFeatureValueObservation *observations = (VNCoreMLFeatureValueObservation*) self.results[0];
                               
                               NSMutableArray *arr = [self evaluateMultiArray:observations.featureValue.multiArrayValue];
-
-                              if (completionHandler) {
-                                  completionHandler((arr && arr.count > 0)?YES:NO, arr, nil);
-                              }
                               
-                              if (completionSpecialHandler) {
+                              
+                              if (completionCGRect) {
                                   MLMultiArray *aux = observations.featureValue.multiArrayValue;
                                   
                                   if (!python) {
@@ -64,15 +62,63 @@
                                   }
                                   
                                   [python executePython:aux];
-                                  completionSpecialHandler((arr && arr.count > 0)?YES:NO, aux, nil);
+                                  
+                                  completionCGRect((arr && arr.count > 0)?YES:NO, CGRectZero, nil);
                               }
-                          }                          
+                          }
+                          else if (completionCGRect) {
+                              completionCGRect(NO, CGRectZero, [NSError errorWithDomain:@"" code:999 userInfo:@{@"message":@"insuficients results in results request"}]);
+                              
+                          }
+                      });
+                  }];
+}
+
+- (void) setupModelForPieces
+{
+    _modelPieces = [[[chess_pieces alloc] init] model];
+    
+    if (!_modelPieces) {
+        self.isAvailable = NO;
+        NSLog(@"Error in loading model.h");
+        return;
+    }
+    
+    _mlEngine = [VNCoreMLModel modelForMLModel: _modelPieces error:nil];
+    if (!_mlEngine) {
+        self.isAvailable = NO;
+        NSLog(@"Error in model for DETECT PIECES CHESS");
+        return;
+    }
+    self.isAvailable = YES;
+    
+    _mlRequest = [[VNCoreMLRequest alloc] initWithModel: _mlEngine completionHandler: (VNRequestCompletionHandler) ^(VNRequest *request, NSError *error)
+                  {
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          
+                          long numberOfResults = request.results.count; //array the multiarrays
+                          
+                          if (numberOfResults > 0) {
+                              self.results = [request.results copy];
+                              VNCoreMLFeatureValueObservation *observations = (VNCoreMLFeatureValueObservation*) self.results[0];
+                              
+                              NSMutableArray *arr = [self evaluateMultiArray:observations.featureValue.multiArrayValue];
+                              
+                              if (completionPieces) {
+                                  completionPieces((arr && arr.count > 0)?YES:NO, arr, nil);
+                              }
+                          }
+                          else if (completionPieces) {
+                              completionPieces(NO, nil, [NSError errorWithDomain:@"" code:999 userInfo:@{@"message":@"insuficients results in results request"}]);
+                              
+                          }
                       });
                   }];
 }
 
 - (NSMutableArray*) evaluateMultiArray:(MLMultiArray*) multiArray
 {
+    // evaluate pieces of tablero
     NSInteger x = -1;
     NSInteger y = -1;
     NSInteger z = -1;
@@ -109,33 +155,14 @@
     return arr;
 }
 
-- (void) executeImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionHandler _Nullable ) completion
+- (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion
 {
     if (!self.isAvailable) {
         NSLog(@"CoreML not available, is not initialize");
-        return;
-    }
-    self.results = @[];
-    
-    NSArray *a = @[_mlRequest];
-    
-    if (!image) {
-        image = [UIImage imageNamed:@"tablero2"];
-    }
-    
-    completionHandler = completion;
-
-    VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [handler performRequests:a error:nil];
-    });
-}
-
-
-- (void) executeImage:(UIImage*_Nullable) image withSpecialCompletion:(CoreMLManagerSpecialCompletionHandler _Nullable ) completion
-{
-    if (!self.isAvailable) {
-        NSLog(@"CoreML not available, is not initialize");
+        if (completion) {
+            completion(NO, nil, [NSError errorWithDomain:@"" code:1 userInfo:@{@"message":@"unavailable ml initialize"}]);
+            
+        }
         return;
     }
     self.results = @[];
@@ -145,8 +172,34 @@
     if (!image) {
         image = [UIImage imageNamed:@"tablero"];
     }
-    completionSpecialHandler = completion;
-    completionHandler = nil;
+    
+    completionPieces = completion;
+    
+    VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [handler performRequests:a error:nil];
+    });
+}
+
+
+- (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion
+{
+    if (!self.isAvailable) {
+        NSLog(@"CoreML not available, is not initialize");
+         if (completion) {
+            completion(NO, CGRectZero, [NSError errorWithDomain:@"" code:1 userInfo:@{@"message":@"unavailable ml initialize"}]);
+            
+        }
+        return;
+    }
+    self.results = @[];
+    
+    NSArray *a = @[_mlRequest];
+    
+    if (!image) {
+        image = [UIImage imageNamed:@"tablero"];
+    }
+    completionCGRect = completion;
     
     VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -156,6 +209,7 @@
 
 - (void) dealloc
 {
+    [self closeAll];
     NSLog(@"dealloc CoreMLManager");
 }
 
