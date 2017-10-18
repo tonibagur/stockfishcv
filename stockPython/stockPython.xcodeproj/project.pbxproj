@@ -613,8 +613,6 @@
 		3CD028551F961DAB002A697C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD028541F961DAB002A697C /* CoreGraphics.framework */; };
 		3CD028571F961F9C002A697C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD028561F961F9C002A697C /* CoreMedia.framework */; };
 		3CD028581F961FC1002A697C /* Util.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CD028081F9601FB002A697C /* Util.mm */; };
-		3CF832591F94D4F9006669C1 /* xAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF832581F94D4F9006669C1 /* xAppDelegate.m */; };
-		3CF8325C1F94D4F9006669C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF8325B1F94D4F9006669C1 /* ViewController.m */; };
 		3CF8325F1F94D4F9006669C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF8325D1F94D4F9006669C1 /* Main.storyboard */; };
 		3CF832611F94D4F9006669C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CF832601F94D4F9006669C1 /* Assets.xcassets */; };
 		3CF832641F94D4F9006669C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF832621F94D4F9006669C1 /* LaunchScreen.storyboard */; };
@@ -1343,10 +1341,6 @@
 		3CD028541F961DAB002A697C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3CD028561F961F9C002A697C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3CF832541F94D4F9006669C1 /* stockPython.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stockPython.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CF832571F94D4F9006669C1 /* xAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xAppDelegate.h; sourceTree = "<group>"; };
-		3CF832581F94D4F9006669C1 /* xAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xAppDelegate.m; sourceTree = "<group>"; };
-		3CF8325A1F94D4F9006669C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3CF8325B1F94D4F9006669C1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3CF8325E1F94D4F9006669C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3CF832601F94D4F9006669C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CF832631F94D4F9006669C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -2221,10 +2215,6 @@
 				3CD0283E1F96025D002A697C /* ViewControllers */,
 				3CD027961F95FE88002A697C /* Helpers */,
 				3CD023301F95FC0B002A697C /* stockFish */,
-				3CF832571F94D4F9006669C1 /* xAppDelegate.h */,
-				3CF832581F94D4F9006669C1 /* xAppDelegate.m */,
-				3CF8325A1F94D4F9006669C1 /* ViewController.h */,
-				3CF8325B1F94D4F9006669C1 /* ViewController.m */,
 				3CF8325D1F94D4F9006669C1 /* Main.storyboard */,
 				3CF832601F94D4F9006669C1 /* Assets.xcassets */,
 				3CF832621F94D4F9006669C1 /* LaunchScreen.storyboard */,
@@ -2871,7 +2861,6 @@
 				3CD028341F96022E002A697C /* SelectedPieceView.mm in Sources */,
 				3CD0276C1F95FCFE002A697C /* bitbase.cpp in Sources */,
 				3CD027761F95FCFE002A697C /* pawns.cpp in Sources */,
-				3CF8325C1F94D4F9006669C1 /* ViewController.m in Sources */,
 				3CD0277C1F95FCFE002A697C /* ucioption.cpp in Sources */,
 				3CD0284C1F960283002A697C /* CaptureSessionManager.m in Sources */,
 				3CD027851F95FD13002A697C /* movepick.cpp in Sources */,
@@ -2908,7 +2897,6 @@
 				3CD028391F96022E002A697C /* SideToMoveController.mm in Sources */,
 				3CD028151F96022E002A697C /* DateTagViewController.mm in Sources */,
 				3CD0277A1F95FCFE002A697C /* tt.cpp in Sources */,
-				3CF832591F94D4F9006669C1 /* xAppDelegate.m in Sources */,
 				3CD0284E1F9602B5002A697C /* chess_pieces.mlmodel in Sources */,
 				3CD0281D1F96022E002A697C /* GameDetailsTableController.mm in Sources */,
 				3CD027791F95FCFE002A697C /* thread.cpp in Sources */,
