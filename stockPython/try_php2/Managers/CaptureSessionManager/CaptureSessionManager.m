@@ -33,6 +33,7 @@
         if (del) {
             _delegate = del;
         }
+        
         if (preset) {
             _presetCam = preset;
         }
@@ -41,9 +42,8 @@
         }
         [self firstInit];
         _previewLayer.frame = frame;
-        
-        
     }
+    
     return self;
 }
 - (id)initWithFrame:(CGRect)frame
@@ -52,8 +52,6 @@
     {
         [self firstInit];
         _previewLayer.frame = frame;
-        
-        
     }
     return self;
 }
@@ -314,14 +312,11 @@
     }
     
     
-  
-    
-    
     _flashMode = kFlashOff;
     
     _previewLayer = [[AVCaptureVideoPreviewLayer alloc]
                      initWithSession:_captureSession];
-    _previewLayer.videoGravity =  AVLayerVideoGravityResizeAspectFill;
+    _previewLayer.videoGravity =  AVLayerVideoGravityResizeAspect;
 
 }
 

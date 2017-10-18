@@ -63,11 +63,11 @@
                         </view>
                         <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEu-lM-fTi" userLabel="vTop">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0n-AJ-te7" userLabel="vBottom">
                             <rect key="frame" x="0.0" y="443.5" width="320" height="124.5"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lER-Cy-APS">
                             <rect key="frame" x="0.0" y="488" width="320" height="80"/>

@@ -127,12 +127,8 @@ void bload_custom_builtin_importer(void);
 - (void) btnPressOnCam
 {
     
-   [self openTheML:nil needsPython:YES];
-    return;
-    
-    
 #if TARGET_IPHONE_SIMULATOR
-    [self openTheML:nil needsPython:NO];
+    [self openTheML:nil needsPython:YES];
     return;
 #endif
     
@@ -154,12 +150,6 @@ void bload_custom_builtin_importer(void);
 {
     
     NSLog(@"openML");
-    
-//    if (camVC) {
-//        camVC.delegate = self;
-//        camVC = nil;
-//    }
-    
     [boardView clear];
     
     CoreMLManager *ml = [[CoreMLManager alloc]init];
@@ -177,34 +167,34 @@ void bload_custom_builtin_importer(void);
     }
     else
     {
-    [ml executeImage:smallImage withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
-     {
-         NSLog(@"success: %@", succes?@"YES":@"NO");
-         NSLog(@"error of completion: %@",error);
-       //  NSLog(@"arrResults: %@", arrResultPieces);
-         
-         dispatch_async(dispatch_get_main_queue(), ^{
+        [ml executeImage:smallImage withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
+         {
+             NSLog(@"success: %@", succes?@"YES":@"NO");
+             NSLog(@"error of completion: %@",error);
+             //  NSLog(@"arrResults: %@", arrResultPieces);
              
-             for (NSDictionary *dic in arrResultPieces)
-             {
+             dispatch_async(dispatch_get_main_queue(), ^{
                  
-                 NSInteger x = [dic[@"x"]integerValue];
-                 NSInteger y = [dic[@"y"]integerValue];
-                 Piece piece = [boardView pieceFromMLByCode:[dic[@"z"]integerValue]];
+                 for (NSDictionary *dic in arrResultPieces)
+                 {
+                     
+                     NSInteger x = [dic[@"x"]integerValue];
+                     NSInteger y = [dic[@"y"]integerValue];
+                     Piece piece = [boardView pieceFromMLByCode:[dic[@"z"]integerValue]];
+                     
+                     if (piece == NO_PIECE) {
+                         [boardView removePieceOnSquare:make_square(File(y), Rank(7-x))];
+                     }
+                     else {
+                         [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File(y), Rank(7-x))];
+                     }
+                 }
                  
-                 if (piece == NO_PIECE) {
-                     [boardView removePieceOnSquare:make_square(File(y), Rank(7-x))];
-                 }
-                 else {
-                     [boardView addPiece:[boardView pieceFromMLByCode:[dic[@"z"]integerValue]] onSquare:make_square(File(y), Rank(7-x))];
-                 }
-             }
-             
-             [ml closeAll];
-             [self enableDoneButton];
-
-         });
-     }];
+                 [ml closeAll];
+                 [self enableDoneButton];
+                 
+             });
+         }];
     }
     
 }
@@ -297,12 +287,12 @@ void bload_custom_builtin_importer(void);
 }
 - (void) executePython:(NSArray*) multi
 {
-//    if (times == 0) {
-        [self testInitOnce];
-//
-//    }
-        times ++;
-        NSLog(@"try");
+    //    if (times == 0) {
+    [self testInitOnce];
+    //
+    //    }
+    times ++;
+    NSLog(@"try");
     
     
     

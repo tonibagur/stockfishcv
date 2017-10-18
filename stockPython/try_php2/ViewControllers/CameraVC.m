@@ -45,7 +45,7 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (!camManager) {
-            camManager = [[CaptureSessionManager alloc] initWithFrame:[UIScreen mainScreen].bounds withDel:self withPresset:AVCaptureSessionPresetHigh];
+            camManager = [[CaptureSessionManager alloc] initWithFrame:[UIScreen mainScreen].bounds withDel:self withPresset:AVCaptureSessionPreset640x480];
             
             [camManager startRunning];
         
@@ -226,7 +226,7 @@
     [self showHideConfirm:YES];
     NSLog(@"fpoto: %@", photo);
     self.imgPhotoTaken.image = photo;
-    self.imgPhotoTaken.hidden = NO;
+   // self.imgPhotoTaken.hidden = NO;
 }
 
 - (void) dealloc

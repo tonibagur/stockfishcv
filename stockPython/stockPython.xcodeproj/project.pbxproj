@@ -2256,6 +2256,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CF8326A1F94D4F9006669C1 /* Build configuration list for PBXNativeTarget "stockPython" */;
 			buildPhases = (
+				3C1919401F975572003F041B /* ShellScript */,
+				3C19193F1F975570003F041B /* ShellScript */,
+				3C19193E1F97556E003F041B /* ShellScript */,
 				3CF832501F94D4F9006669C1 /* Sources */,
 				3CF832511F94D4F9006669C1 /* Frameworks */,
 				3CF832521F94D4F9006669C1 /* Resources */,
@@ -2818,6 +2821,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C19193E1F97556E003F041B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "find \"$PROJECT_DIR\"/project_python/ -iname '*.py' -exec rm {} \\; -or -iname '*.pyc' -exec rm {} \\;";
+		};
+		3C19193F1F975570003F041B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PROJECT_DIR\"/Python/dist/hostpython/bin/python -OO -m compileall \"$PROJECT_DIR\"/project_python";
+		};
+		3C1919401F975572003F041B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rsync -av --delete \"$PROJECT_DIR\"/Python/src_py/ \"$PROJECT_DIR\"/project_python";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3CF832501F94D4F9006669C1 /* Sources */ = {
