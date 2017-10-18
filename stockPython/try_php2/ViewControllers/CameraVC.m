@@ -12,6 +12,7 @@
 {
     CaptureSessionManager *camManager;
     UIImage *lastPhoto;
+    UIImage *photoResult;
 }
 // view Alpha Marks backgrounds
 @property (weak, nonatomic) IBOutlet UIView *vMarkTop;
@@ -75,6 +76,8 @@
 
 - (IBAction)btnRetake:(id)sender
 {
+    lastPhoto = photoResult = nil;
+    
     [camManager startRunning];
     [self showHideConfirm:NO];
 }
@@ -98,11 +101,15 @@
         return ;
     }
     
+    UIImageWriteToSavedPhotosAlbum(lastPhoto, nil, nil, nil);
+    
+    /*
     self.imgPhotoTaken.image = lastPhoto;
     self.imgPhotoTaken.contentMode = UIViewContentModeScaleAspectFit;
     
     UIImage *screenImage = [self captureViewIn:self.imgPhotoTaken];
     UIImageWriteToSavedPhotosAlbum(screenImage, nil, nil, nil);
+     */
     
 }
 
@@ -211,12 +218,14 @@
     }];
 }
 
+
 #pragma mark - CaptureSessionManager delegate
 
 - (void) CaptureSessionManagerDelegate_PhotoTaked:(UIImage*) photo
 {
     if (!photo) {
         lastPhoto = nil;
+        photoResult = nil;
         return;
     }
     self.imgPhotoTaken.frame = self.vCamera.bounds;
@@ -224,6 +233,7 @@
     
     [camManager stopRunning];
     [self showHideConfirm:YES];
+    
     NSLog(@"fpoto: %@", photo);
     self.imgPhotoTaken.image = photo;
    // self.imgPhotoTaken.hidden = NO;
