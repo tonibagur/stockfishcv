@@ -17,10 +17,7 @@
 - (id)init {
     if ((self = [super init]))
     {
-        
         [self firstInit];
-        
-        
     }
     return self;
 }
@@ -82,136 +79,7 @@
 
 - (void) prepareForvideo
 {
-    /*
-    [AudioSession prepareSessionAudioToRecord];
-    
-    NSString *filePath = [[Utils getDirectoryForAudio] stringByAppendingPathComponent:@"video.m4a"];
-    [[NSFileManager defaultManager] removeItemAtPath: filePath error: nil];
-    
-    
-    
-    AVCaptureConnection *videoConnection = [self getVideoConnection];
-    
-    if (!videoConnection || !self.output)
-    {
-        // hay algo que no esta bien..
-        
-        if ([self.delegate respondsToSelector:@selector(CaptureSessionManagerDelegate_PhotoFailed)])
-        {
-            [self.delegate CaptureSessionManagerDelegate_PhotoFailed];
-        }
-        
-        return;
-    }
-
-      _captureSession.sessionPreset = AVCaptureSessionPresetHigh;
-    
-    
-
-    //TODO  para entrar en el samplebuffer el _moviefileoutput no debe estar añadido, pq son incompatibles
-    
-    if (!_videoDataOutput)
-    {
-        _videoDataOutput = [[AVCaptureVideoDataOutput alloc] init];
-     //   [_videoDataOutput setSampleBufferDelegate:self queue:dispatch_get_main_queue()];
-    }
-    if ([_captureSession canAddOutput:_videoDataOutput] ) {
-       // [_captureSession addOutput:_videoDataOutput];
-    }
-    
-    if (!_movieFileOutput) {
-        _movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
-        _movieFileOutput.maxRecordedDuration = CMTimeMake(300000, 10000); // @ 5.3425 sec
-    }
-    
-    //   [_captureSession removeOutput:_output];
-    
-    if ([_captureSession canAddOutput:_movieFileOutput]) {
-        [_captureSession addOutput:_movieFileOutput];
-    }
-    
-
-    
-
-    NSURL *outputURL = [NSURL fileURLWithPath:filePath];
-    
-    
-    //   NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputpathofmovie];
-    
-    AVCaptureVideoOrientation newOrientation;
-    switch ([[UIDevice currentDevice] orientation])
-    {
-        case UIDeviceOrientationPortrait:
-        {
-            newOrientation = AVCaptureVideoOrientationPortrait;
-            
-            break;
-        }
-        case UIDeviceOrientationPortraitUpsideDown:
-        {
-            newOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
-            
-            break;
-        }
-        case UIDeviceOrientationLandscapeLeft:
-        {
-            newOrientation = AVCaptureVideoOrientationLandscapeRight;
-            
-            break;
-        }
-        case UIDeviceOrientationLandscapeRight:
-        {
-            newOrientation = AVCaptureVideoOrientationLandscapeLeft;
-            
-            break;
-        }
-        default:
-        {
-            newOrientation = AVCaptureVideoOrientationPortrait;
-        }
-    }
-    
-    AVCaptureConnection *XvideoConnection = nil;
-    
-    for ( AVCaptureConnection *connection in [_movieFileOutput connections] )
-    {
-        //LogInfo(@" connection- %@", connection);
-        for ( AVCaptureInputPort *port in [connection inputPorts] )
-        {
-           // LogInfo(@" port -%@", port);
-            if ( [[port mediaType] isEqual:AVMediaTypeVideo] )
-            {
-                XvideoConnection = connection;
-            }
-        }
-    }
-    
-    if([XvideoConnection isVideoOrientationSupported]) {
-        [XvideoConnection setVideoOrientation:newOrientation];//[[UIDevice currentDevice] orientation]];
-    }
-  //  XvideoConnection.videoMirrored = NO;
-    
-    
-    
-   // if ([XvideoConnection isVideoMirroringSupported]) {
-    //    XvideoConnection.automaticallyAdjustsVideoMirroring = NO;
-
-   // }
-   // XvideoConnection.mir
-
-    if (XvideoConnection.isVideoMirrored)
-    {
-        LogInfo(@" video MIRRORED");
-    }
-    
- dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-     if ([self.delegate respondsToSelector:@selector(CaptureSessionStartTimerVideo)]) {
-         [self.delegate CaptureSessionStartTimerVideo];
-     }
-     
-    [_movieFileOutput startRecordingToOutputFileURL:outputURL recordingDelegate:self];
- });
-    */
+ 
 }
 
 - (void) stopVideoRecord
@@ -225,8 +93,6 @@
     _captureSession.sessionPreset = _presetCam;
     [self CameraSetOutputProperties];
 }
-
-
 
 - (void) isAvailableAuthorization
 {
@@ -262,8 +128,6 @@
 
 - (void)firstInit
 {
-//    [Utils validateExistFolderAudio];
-    
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter]
      addObserver:self selector:@selector(orientationChanged:)
@@ -282,20 +146,9 @@
         
         _captureSession = [[AVCaptureSession alloc] init];
         
-        
         _captureSession.sessionPreset = _presetCam;
         
     }
-    
-    /*
-    _audioCapture = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-    
-    _audioInput = [AVCaptureDeviceInput deviceInputWithDevice:_audioCapture error:nil];
-    if ([_captureSession canAddInput:_audioInput]) {
-        [_captureSession addInput:_audioInput];
-    }
-    */
-    
     _videoInput = [[AVCaptureDeviceInput alloc]
                    initWithDevice:_videoDevice error:nil];
     
@@ -516,28 +369,6 @@
 
 - (void) generateAndSaveInternalImagesAfterTakePhotoWithPhoto:(UIImage*) photo
 {
-#warning ojo xcode 9
-    /*
-    if (photo) {
-        // [self resetPhoto];
-        self.lastPhotoTaked = photo;
-    }
-    dispatch_async(kQueueBgDownload, ^{
-        self.lastPhotoTakedSmall = [Utils scaleImage:self.lastPhotoTaked toMaxResolution:300];//[Utils onlyScaleImage:self.lastPhotoTaked toMaxResolution:300];
-        
-        //  self.lastPhotoCI = [CIImage imageWithData:UIImagePNGRepresentation(self.lastPhotoTaked)];
-        //    self.lastPhotoCISmall = [CIImage imageWithData:UIImagePNGRepresentation(self.lastPhotoTakedSmall)];
-        self.lastPhotoCI = [CIImage imageWithCGImage:self.lastPhotoTaked.CGImage];
-        self.lastPhotoCISmall = [CIImage imageWithCGImage:self.lastPhotoTakedSmall.CGImage];
-        
-        dispatch_async(kMainQueue, ^{
-            if ([self.delegate respondsToSelector:@selector(CaptureSessionManagerDelegate_EndProcessCIImage)])
-            {
-                [self.delegate CaptureSessionManagerDelegate_EndProcessCIImage];
-            }
-        });
-    });
-    */
 }
 
 - (UIImage *)normalizeImage: (UIImage *)img
@@ -581,27 +412,20 @@
         {
             [self.captureSession beginConfiguration];		//We can now change the inputs and output configuration.  Use commitConfiguration to end
             [self.captureSession removeInput:self.videoInput];
-            if ([self.captureSession canAddInput:NewVideoInput])
-            {
+            
+            if ([self.captureSession canAddInput:NewVideoInput])  {
                 [self.captureSession addInput:NewVideoInput];
                 self.videoInput = NewVideoInput;
             }
-            else
-            {
+            else {
                 [self.captureSession addInput:self.videoInput];
             }
             
-            
             [self CameraSetOutputProperties];
-            
-            
             [self.captureSession commitConfiguration];
-            
         }
     }
-    
 }
-
 
 - (void) putFlashIntoDevice
 {
@@ -634,7 +458,6 @@
     [device unlockForConfiguration];
 }
 
-
 - (void)CameraSetOutputProperties
 {
     // properties de camara
@@ -642,7 +465,6 @@
     [_output setOutputSettings:
      [[NSDictionary alloc] initWithObjectsAndKeys:AVVideoCodecJPEG,AVVideoCodecKey,nil]];
 }
-
 
 // Busca camara fronta o posterior
 
