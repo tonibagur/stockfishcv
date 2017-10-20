@@ -8,6 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		3C376FA51F962A8000A5747D /* PythonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C376FA41F962A8000A5747D /* PythonManager.m */; };
+		3C776C701F9A1578006957E2 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6B1F9A1578006957E2 /* about.html */; };
+		3C776C711F9A1578006957E2 /* movelist-ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6C1F9A1578006957E2 /* movelist-ipad.css */; };
+		3C776C721F9A1578006957E2 /* movelist-iphone.css in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6D1F9A1578006957E2 /* movelist-iphone.css */; };
+		3C776C731F9A1578006957E2 /* movelist.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6E1F9A1578006957E2 /* movelist.js */; };
+		3C776C741F9A1578006957E2 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6F1F9A1578006957E2 /* style.css */; };
+		3C776C8F1F9A1617006957E2 /* eco.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C751F9A1617006957E2 /* eco.txt */; };
+		3C776C901F9A1617006957E2 /* Alekhine.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C771F9A1617006957E2 /* Alekhine.pgn */; };
+		3C776C911F9A1617006957E2 /* Anderssen.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C781F9A1617006957E2 /* Anderssen.pgn */; };
+		3C776C921F9A1617006957E2 /* Botvinnik.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C791F9A1617006957E2 /* Botvinnik.pgn */; };
+		3C776C931F9A1617006957E2 /* Bronstein.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C7A1F9A1617006957E2 /* Bronstein.pgn */; };
+		3C776C941F9A1617006957E2 /* Capablanca.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C7B1F9A1617006957E2 /* Capablanca.pgn */; };
+		3C776C951F9A1617006957E2 /* Chigorin.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C7C1F9A1617006957E2 /* Chigorin.pgn */; };
+		3C776C961F9A1617006957E2 /* Euwe.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C7D1F9A1617006957E2 /* Euwe.pgn */; };
+		3C776C971F9A1617006957E2 /* Fischer.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C7E1F9A1617006957E2 /* Fischer.pgn */; };
+		3C776C981F9A1617006957E2 /* Karpov.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C7F1F9A1617006957E2 /* Karpov.pgn */; };
+		3C776C991F9A1617006957E2 /* Kasparov.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C801F9A1617006957E2 /* Kasparov.pgn */; };
+		3C776C9A1F9A1617006957E2 /* Keres.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C811F9A1617006957E2 /* Keres.pgn */; };
+		3C776C9B1F9A1617006957E2 /* Korchnoi.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C821F9A1617006957E2 /* Korchnoi.pgn */; };
+		3C776C9C1F9A1617006957E2 /* Larsen.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C831F9A1617006957E2 /* Larsen.pgn */; };
+		3C776C9D1F9A1617006957E2 /* Lasker.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C841F9A1617006957E2 /* Lasker.pgn */; };
+		3C776C9E1F9A1617006957E2 /* Marshall.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C851F9A1617006957E2 /* Marshall.pgn */; };
+		3C776C9F1F9A1617006957E2 /* Morphy.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C861F9A1617006957E2 /* Morphy.pgn */; };
+		3C776CA01F9A1617006957E2 /* Petrosian.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C871F9A1617006957E2 /* Petrosian.pgn */; };
+		3C776CA11F9A1617006957E2 /* Philidor.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C881F9A1617006957E2 /* Philidor.pgn */; };
+		3C776CA21F9A1617006957E2 /* Rubinstein.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C891F9A1617006957E2 /* Rubinstein.pgn */; };
+		3C776CA31F9A1617006957E2 /* Smyslov.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C8A1F9A1617006957E2 /* Smyslov.pgn */; };
+		3C776CA41F9A1617006957E2 /* Spassky.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C8B1F9A1617006957E2 /* Spassky.pgn */; };
+		3C776CA51F9A1617006957E2 /* Spielmann.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C8C1F9A1617006957E2 /* Spielmann.pgn */; };
+		3C776CA61F9A1617006957E2 /* Steinitz.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C8D1F9A1617006957E2 /* Steinitz.pgn */; };
+		3C776CA71F9A1617006957E2 /* Tal.pgn in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C8E1F9A1617006957E2 /* Tal.pgn */; };
 		3CD0232D1F95F7F2002A697C /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232C1F95F7F2002A697C /* CoreML.framework */; };
 		3CD0232F1F95F800002A697C /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232E1F95F800002A697C /* Vision.framework */; };
 		3CD025771F95FCCA002A697C /* AlphaBBishop96.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CD024961F95FC63002A697C /* AlphaBBishop96.png */; };
@@ -633,6 +663,36 @@
 /* Begin PBXFileReference section */
 		3C376FA31F962A8000A5747D /* PythonManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PythonManager.h; sourceTree = "<group>"; };
 		3C376FA41F962A8000A5747D /* PythonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PythonManager.m; sourceTree = "<group>"; };
+		3C776C6B1F9A1578006957E2 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		3C776C6C1F9A1578006957E2 /* movelist-ipad.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "movelist-ipad.css"; sourceTree = "<group>"; };
+		3C776C6D1F9A1578006957E2 /* movelist-iphone.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "movelist-iphone.css"; sourceTree = "<group>"; };
+		3C776C6E1F9A1578006957E2 /* movelist.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = movelist.js; sourceTree = "<group>"; };
+		3C776C6F1F9A1578006957E2 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		3C776C751F9A1617006957E2 /* eco.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eco.txt; sourceTree = "<group>"; };
+		3C776C771F9A1617006957E2 /* Alekhine.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Alekhine.pgn; sourceTree = "<group>"; };
+		3C776C781F9A1617006957E2 /* Anderssen.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Anderssen.pgn; sourceTree = "<group>"; };
+		3C776C791F9A1617006957E2 /* Botvinnik.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Botvinnik.pgn; sourceTree = "<group>"; };
+		3C776C7A1F9A1617006957E2 /* Bronstein.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Bronstein.pgn; sourceTree = "<group>"; };
+		3C776C7B1F9A1617006957E2 /* Capablanca.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Capablanca.pgn; sourceTree = "<group>"; };
+		3C776C7C1F9A1617006957E2 /* Chigorin.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chigorin.pgn; sourceTree = "<group>"; };
+		3C776C7D1F9A1617006957E2 /* Euwe.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Euwe.pgn; sourceTree = "<group>"; };
+		3C776C7E1F9A1617006957E2 /* Fischer.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fischer.pgn; sourceTree = "<group>"; };
+		3C776C7F1F9A1617006957E2 /* Karpov.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Karpov.pgn; sourceTree = "<group>"; };
+		3C776C801F9A1617006957E2 /* Kasparov.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Kasparov.pgn; sourceTree = "<group>"; };
+		3C776C811F9A1617006957E2 /* Keres.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Keres.pgn; sourceTree = "<group>"; };
+		3C776C821F9A1617006957E2 /* Korchnoi.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Korchnoi.pgn; sourceTree = "<group>"; };
+		3C776C831F9A1617006957E2 /* Larsen.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Larsen.pgn; sourceTree = "<group>"; };
+		3C776C841F9A1617006957E2 /* Lasker.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lasker.pgn; sourceTree = "<group>"; };
+		3C776C851F9A1617006957E2 /* Marshall.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Marshall.pgn; sourceTree = "<group>"; };
+		3C776C861F9A1617006957E2 /* Morphy.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Morphy.pgn; sourceTree = "<group>"; };
+		3C776C871F9A1617006957E2 /* Petrosian.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Petrosian.pgn; sourceTree = "<group>"; };
+		3C776C881F9A1617006957E2 /* Philidor.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Philidor.pgn; sourceTree = "<group>"; };
+		3C776C891F9A1617006957E2 /* Rubinstein.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rubinstein.pgn; sourceTree = "<group>"; };
+		3C776C8A1F9A1617006957E2 /* Smyslov.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Smyslov.pgn; sourceTree = "<group>"; };
+		3C776C8B1F9A1617006957E2 /* Spassky.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Spassky.pgn; sourceTree = "<group>"; };
+		3C776C8C1F9A1617006957E2 /* Spielmann.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Spielmann.pgn; sourceTree = "<group>"; };
+		3C776C8D1F9A1617006957E2 /* Steinitz.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Steinitz.pgn; sourceTree = "<group>"; };
+		3C776C8E1F9A1617006957E2 /* Tal.pgn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tal.pgn; sourceTree = "<group>"; };
 		3CD0232C1F95F7F2002A697C /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		3CD0232E1F95F800002A697C /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		3CD023311F95FC1A002A697C /* book.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = book.bin; sourceTree = "<group>"; };
@@ -1406,9 +1466,55 @@
 			path = PythonManager;
 			sourceTree = "<group>";
 		};
+		3C776C6A1F9A1578006957E2 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				3C776C6B1F9A1578006957E2 /* about.html */,
+				3C776C6C1F9A1578006957E2 /* movelist-ipad.css */,
+				3C776C6D1F9A1578006957E2 /* movelist-iphone.css */,
+				3C776C6E1F9A1578006957E2 /* movelist.js */,
+				3C776C6F1F9A1578006957E2 /* style.css */,
+			);
+			path = HTML;
+			sourceTree = "<group>";
+		};
+		3C776C761F9A1617006957E2 /* PGN */ = {
+			isa = PBXGroup;
+			children = (
+				3C776C771F9A1617006957E2 /* Alekhine.pgn */,
+				3C776C781F9A1617006957E2 /* Anderssen.pgn */,
+				3C776C791F9A1617006957E2 /* Botvinnik.pgn */,
+				3C776C7A1F9A1617006957E2 /* Bronstein.pgn */,
+				3C776C7B1F9A1617006957E2 /* Capablanca.pgn */,
+				3C776C7C1F9A1617006957E2 /* Chigorin.pgn */,
+				3C776C7D1F9A1617006957E2 /* Euwe.pgn */,
+				3C776C7E1F9A1617006957E2 /* Fischer.pgn */,
+				3C776C7F1F9A1617006957E2 /* Karpov.pgn */,
+				3C776C801F9A1617006957E2 /* Kasparov.pgn */,
+				3C776C811F9A1617006957E2 /* Keres.pgn */,
+				3C776C821F9A1617006957E2 /* Korchnoi.pgn */,
+				3C776C831F9A1617006957E2 /* Larsen.pgn */,
+				3C776C841F9A1617006957E2 /* Lasker.pgn */,
+				3C776C851F9A1617006957E2 /* Marshall.pgn */,
+				3C776C861F9A1617006957E2 /* Morphy.pgn */,
+				3C776C871F9A1617006957E2 /* Petrosian.pgn */,
+				3C776C881F9A1617006957E2 /* Philidor.pgn */,
+				3C776C891F9A1617006957E2 /* Rubinstein.pgn */,
+				3C776C8A1F9A1617006957E2 /* Smyslov.pgn */,
+				3C776C8B1F9A1617006957E2 /* Spassky.pgn */,
+				3C776C8C1F9A1617006957E2 /* Spielmann.pgn */,
+				3C776C8D1F9A1617006957E2 /* Steinitz.pgn */,
+				3C776C8E1F9A1617006957E2 /* Tal.pgn */,
+			);
+			path = PGN;
+			sourceTree = "<group>";
+		};
 		3CD023301F95FC0B002A697C /* stockFish */ = {
 			isa = PBXGroup;
 			children = (
+				3C776C751F9A1617006957E2 /* eco.txt */,
+				3C776C761F9A1617006957E2 /* PGN */,
+				3C776C6A1F9A1578006957E2 /* HTML */,
 				3CD025761F95FC95002A697C /* Stockfish_Prefix.pch */,
 				3CD0279B1F9601FB002A697C /* Classes */,
 				3CD024951F95FC63002A697C /* Images-iPad */,
@@ -2312,7 +2418,9 @@
 			files = (
 				3CD025A81F95FCCA002A697C /* CheqBBishop96@2x.png in Resources */,
 				3CD0264C1F95FCCA002A697C /* USCFWBishop96@2x.png in Resources */,
+				3C776C9A1F9A1617006957E2 /* Keres.pgn in Resources */,
 				3CD026CD1F95FCD5002A697C /* LeipzigWPawn@3x.png in Resources */,
+				3C776C911F9A1617006957E2 /* Anderssen.pgn in Resources */,
 				3CD0259B1F95FCCA002A697C /* BerlinWBishop96.png in Resources */,
 				3CD025EE1F95FCCA002A697C /* MayaWKing96@2x.png in Resources */,
 				3CD0270E1F95FCD5002A697C /* MeridaWPawn@3x.png in Resources */,
@@ -2337,6 +2445,7 @@
 				3CD027501F95FCD5002A697C /* USCFBPawn@3x.png in Resources */,
 				3CD026191F95FCCA002A697C /* ModernBRook96.png in Resources */,
 				3CD026661F95FCD5002A697C /* AlphaBRook.png in Resources */,
+				3C776C921F9A1617006957E2 /* Botvinnik.pgn in Resources */,
 				3CD026431F95FCCA002A697C /* USCFBKnight96.png in Resources */,
 				3CD026D61F95FCD5002A697C /* LightWood.png in Resources */,
 				3CD026421F95FCCA002A697C /* USCFBKing96@2x.png in Resources */,
@@ -2354,6 +2463,7 @@
 				3CD026701F95FCD5002A697C /* AlphaWKnight@2x.png in Resources */,
 				3CD0274D1F95FCD5002A697C /* USCFBKnight@3x.png in Resources */,
 				3CD0269E1F95FCD5002A697C /* CheqBRook@2x.png in Resources */,
+				3C776C931F9A1617006957E2 /* Bronstein.pgn in Resources */,
 				3CD0257C1F95FCCA002A697C /* AlphaBKnight96@2x.png in Resources */,
 				3CD025F11F95FCCA002A697C /* MayaWPawn96.png in Resources */,
 				3CD026D11F95FCD5002A697C /* LeipzigWRook.png in Resources */,
@@ -2395,6 +2505,7 @@
 				3CD025F21F95FCCA002A697C /* MayaWPawn96@2x.png in Resources */,
 				3CD026061F95FCCA002A697C /* MeridaWKing96@2x.png in Resources */,
 				3CD025A31F95FCCA002A697C /* BerlinWQueen96.png in Resources */,
+				3C776CA61F9A1617006957E2 /* Steinitz.pgn in Resources */,
 				3CD026FB1F95FCD5002A697C /* MeridaBPawn@2x.png in Resources */,
 				3CD026B11F95FCD5002A697C /* LeipzigBBishop@2x.png in Resources */,
 				3CD025F61F95FCCA002A697C /* MayaWRook96@2x.png in Resources */,
@@ -2420,6 +2531,8 @@
 				3CD026831F95FCD5002A697C /* BerlinBQueen.png in Resources */,
 				3CD025E81F95FCCA002A697C /* MayaBQueen96@2x.png in Resources */,
 				3CD026851F95FCD5002A697C /* BerlinBRook.png in Resources */,
+				3C776CA31F9A1617006957E2 /* Smyslov.pgn in Resources */,
+				3C776C941F9A1617006957E2 /* Capablanca.pgn in Resources */,
 				3CD0266D1F95FCD5002A697C /* AlphaWKing@2x.png in Resources */,
 				3CD027141F95FCD5002A697C /* MeridaWRook@3x.png in Resources */,
 				3CD026921F95FCD5002A697C /* BerlinWRook@2x.png in Resources */,
@@ -2427,6 +2540,7 @@
 				3CD0270D1F95FCD5002A697C /* MeridaWPawn@2x.png in Resources */,
 				3CD0273E1F95FCD5002A697C /* RussianWKnight@2x.png in Resources */,
 				3CD0262E1F95FCCA002A697C /* RussianBPawn96@2x.png in Resources */,
+				3C776C711F9A1578006957E2 /* movelist-ipad.css in Resources */,
 				3CD027051F95FCD5002A697C /* MeridaWBishop@3x.png in Resources */,
 				3CD026131F95FCCA002A697C /* ModernBKnight96.png in Resources */,
 				3CD026EF1F95FCD5002A697C /* MayaWRook.png in Resources */,
@@ -2478,6 +2592,7 @@
 				3CD026D81F95FCD5002A697C /* LightWood@3x.png in Resources */,
 				3CD026551F95FCCA002A697C /* USCFWRook96.png in Resources */,
 				3CD026A91F95FCD5002A697C /* CheqWRook.png in Resources */,
+				3C776C9B1F9A1617006957E2 /* Korchnoi.pgn in Resources */,
 				3CD027181F95FCD5002A697C /* ModernBKing@2x.png in Resources */,
 				3CD026881F95FCD5002A697C /* BerlinWBishop@2x.png in Resources */,
 				3CD026E31F95FCD5002A697C /* MayaBRook.png in Resources */,
@@ -2493,6 +2608,7 @@
 				3CD0275C1F95FCD5002A697C /* USCFWKing@3x.png in Resources */,
 				3CD025B81F95FCCA002A697C /* CheqWKnight96@2x.png in Resources */,
 				3CD026A71F95FCD5002A697C /* CheqWQueen.png in Resources */,
+				3C776C981F9A1617006957E2 /* Karpov.pgn in Resources */,
 				3CD026681F95FCD5002A697C /* AlphaBRook@3x.png in Resources */,
 				3CD027301F95FCD5002A697C /* RussianBKing@2x.png in Resources */,
 				3CD0283D1F960232002A697C /* Senpai-Info.plist in Resources */,
@@ -2523,6 +2639,7 @@
 				3CD026A61F95FCD5002A697C /* CheqWPawn@2x.png in Resources */,
 				3CD027201F95FCD5002A697C /* ModernBRook@2x.png in Resources */,
 				3CD026ED1F95FCD5002A697C /* MayaWQueen.png in Resources */,
+				3C776C901F9A1617006957E2 /* Alekhine.pgn in Resources */,
 				3CD0266F1F95FCD5002A697C /* AlphaWKnight.png in Resources */,
 				3CD0271B1F95FCD5002A697C /* ModernBPawn.png in Resources */,
 				3CD026111F95FCCA002A697C /* ModernBKing96.png in Resources */,
@@ -2537,6 +2654,7 @@
 				3CD027261F95FCD5002A697C /* ModernWKnight@2x.png in Resources */,
 				3CD026E01F95FCD5002A697C /* MayaBPawn@2x.png in Resources */,
 				3CD026531F95FCCA002A697C /* USCFWQueen96.png in Resources */,
+				3C776C731F9A1578006957E2 /* movelist.js in Resources */,
 				3CD0262F1F95FCCA002A697C /* RussianBQueen96.png in Resources */,
 				3CD025B21F95FCCA002A697C /* CheqBRook96@2x.png in Resources */,
 				3CD0260C1F95FCCA002A697C /* MeridaWQueen96@2x.png in Resources */,
@@ -2564,8 +2682,10 @@
 				3CD026F41F95FCD5002A697C /* MeridaBKing.png in Resources */,
 				3CD026041F95FCCA002A697C /* MeridaWBishop96@2x.png in Resources */,
 				3CD026321F95FCCA002A697C /* RussianBRook96@2x.png in Resources */,
+				3C776C971F9A1617006957E2 /* Fischer.pgn in Resources */,
 				3CD025801F95FCCA002A697C /* AlphaBQueen96@2x.png in Resources */,
 				3CD026761F95FCD5002A697C /* AlphaWQueen@2x.png in Resources */,
+				3C776CA51F9A1617006957E2 /* Spielmann.pgn in Resources */,
 				3CD025DF1F95FCCA002A697C /* MayaBBishop96.png in Resources */,
 				3CD026F81F95FCD5002A697C /* MeridaBKnight@2x.png in Resources */,
 				3CD0268F1F95FCD5002A697C /* BerlinWQueen.png in Resources */,
@@ -2593,6 +2713,7 @@
 				3CD026CC1F95FCD5002A697C /* LeipzigWPawn@2x.png in Resources */,
 				3CD025C21F95FCCA002A697C /* DarkWood96@2x.png in Resources */,
 				3CD025B01F95FCCA002A697C /* CheqBQueen96@2x.png in Resources */,
+				3C776C8F1F9A1617006957E2 /* eco.txt in Resources */,
 				3CD026901F95FCD5002A697C /* BerlinWQueen@2x.png in Resources */,
 				3CD027491F95FCD5002A697C /* USCFBKing@2x.png in Resources */,
 				3CD026A51F95FCD5002A697C /* CheqWPawn.png in Resources */,
@@ -2604,11 +2725,13 @@
 				3CD0275A1F95FCD5002A697C /* USCFWKing.png in Resources */,
 				3CD026861F95FCD5002A697C /* BerlinBRook@2x.png in Resources */,
 				3CD025EF1F95FCCA002A697C /* MayaWKnight96.png in Resources */,
+				3C776C9C1F9A1617006957E2 /* Larsen.pgn in Resources */,
 				3CD025A21F95FCCA002A697C /* BerlinWPawn96@2x.png in Resources */,
 				3CD027231F95FCD5002A697C /* ModernWKing.png in Resources */,
 				3CD026E81F95FCD5002A697C /* MayaWKing@2x.png in Resources */,
 				3CD0257A1F95FCCA002A697C /* AlphaBKing96@2x.png in Resources */,
 				3CD025871F95FCCA002A697C /* AlphaWKnight96.png in Resources */,
+				3C776CA21F9A1617006957E2 /* Rubinstein.pgn in Resources */,
 				3CD0272F1F95FCD5002A697C /* RussianBKing.png in Resources */,
 				3CD026211F95FCCA002A697C /* ModernWPawn96.png in Resources */,
 				3CD027411F95FCD5002A697C /* RussianWQueen.png in Resources */,
@@ -2620,10 +2743,12 @@
 				3CD0268E1F95FCD5002A697C /* BerlinWPawn@2x.png in Resources */,
 				3CD0275D1F95FCD5002A697C /* USCFWKnight.png in Resources */,
 				3CD026231F95FCCA002A697C /* ModernWQueen96.png in Resources */,
+				3C776C991F9A1617006957E2 /* Kasparov.pgn in Resources */,
 				3CD026161F95FCCA002A697C /* ModernBPawn96@2x.png in Resources */,
 				3CD027101F95FCD5002A697C /* MeridaWQueen@2x.png in Resources */,
 				3CD026DC1F95FCD5002A697C /* MayaBKing@2x.png in Resources */,
 				3CD025771F95FCCA002A697C /* AlphaBBishop96.png in Resources */,
+				3C776C721F9A1578006957E2 /* movelist-iphone.css in Resources */,
 				3CD026B01F95FCD5002A697C /* LeipzigBBishop.png in Resources */,
 				3CD027661F95FCD5002A697C /* USCFWRook.png in Resources */,
 				3CD026601F95FCD5002A697C /* AlphaBPawn.png in Resources */,
@@ -2668,6 +2793,7 @@
 				3CD026071F95FCCA002A697C /* MeridaWKnight96.png in Resources */,
 				3CD027621F95FCD5002A697C /* USCFWPawn@3x.png in Resources */,
 				3CD026751F95FCD5002A697C /* AlphaWQueen.png in Resources */,
+				3C776CA01F9A1617006957E2 /* Petrosian.pgn in Resources */,
 				3CD0271E1F95FCD5002A697C /* ModernBQueen@2x.png in Resources */,
 				3CD0258A1F95FCCA002A697C /* AlphaWPawn96@2x.png in Resources */,
 				3CD025FC1F95FCCA002A697C /* MeridaBKnight96@2x.png in Resources */,
@@ -2679,6 +2805,8 @@
 				3CD026B61F95FCD5002A697C /* LeipzigBKnight.png in Resources */,
 				3CD025FA1F95FCCA002A697C /* MeridaBKing96@2x.png in Resources */,
 				3CD0268C1F95FCD5002A697C /* BerlinWKnight@2x.png in Resources */,
+				3C776CA11F9A1617006957E2 /* Philidor.pgn in Resources */,
+				3C776CA71F9A1617006957E2 /* Tal.pgn in Resources */,
 				3CD026171F95FCCA002A697C /* ModernBQueen96.png in Resources */,
 				3CD026B91F95FCD5002A697C /* LeipzigBPawn.png in Resources */,
 				3CD026441F95FCCA002A697C /* USCFBKnight96@2x.png in Resources */,
@@ -2686,6 +2814,7 @@
 				3CD026911F95FCD5002A697C /* BerlinWRook.png in Resources */,
 				3CD026E51F95FCD5002A697C /* MayaWBishop.png in Resources */,
 				3CD026181F95FCCA002A697C /* ModernBQueen96@2x.png in Resources */,
+				3C776C701F9A1578006957E2 /* about.html in Resources */,
 				3CD025D81F95FCCA002A697C /* LeipzigWQueen96@2x.png in Resources */,
 				3CD026291F95FCCA002A697C /* RussianBKing96.png in Resources */,
 				3CD026771F95FCD5002A697C /* AlphaWQueen@3x.png in Resources */,
@@ -2693,6 +2822,7 @@
 				3CD0271C1F95FCD5002A697C /* ModernBPawn@2x.png in Resources */,
 				3CD025FE1F95FCCA002A697C /* MeridaBPawn96@2x.png in Resources */,
 				3CD026F61F95FCD5002A697C /* MeridaBKing@3x.png in Resources */,
+				3C776C961F9A1617006957E2 /* Euwe.pgn in Resources */,
 				3CD025B41F95FCCA002A697C /* CheqWBishop96@2x.png in Resources */,
 				3CD0265A1F95FCD5002A697C /* AlphaBKing.png in Resources */,
 				3CD026DE1F95FCD5002A697C /* MayaBKnight@2x.png in Resources */,
@@ -2706,6 +2836,7 @@
 				3CD025E21F95FCCA002A697C /* MayaBKing96@2x.png in Resources */,
 				3CD0264F1F95FCCA002A697C /* USCFWKnight96.png in Resources */,
 				3CD0259C1F95FCCA002A697C /* BerlinWBishop96@2x.png in Resources */,
+				3C776C9F1F9A1617006957E2 /* Morphy.pgn in Resources */,
 				3CD027471F95FCD5002A697C /* USCFBBishop@3x.png in Resources */,
 				3CD0259D1F95FCCA002A697C /* BerlinWKing96.png in Resources */,
 				3CD025B61F95FCCA002A697C /* CheqWKing96@2x.png in Resources */,
@@ -2724,6 +2855,7 @@
 				3CD025B91F95FCCA002A697C /* CheqWPawn96.png in Resources */,
 				3CD026411F95FCCA002A697C /* USCFBKing96.png in Resources */,
 				3CD025D11F95FCCA002A697C /* LeipzigWKing96.png in Resources */,
+				3C776C951F9A1617006957E2 /* Chigorin.pgn in Resources */,
 				3CD0274F1F95FCD5002A697C /* USCFBPawn@2x.png in Resources */,
 				3CD026541F95FCCA002A697C /* USCFWQueen96@2x.png in Resources */,
 				3CD026961F95FCD5002A697C /* CheqBKing@2x.png in Resources */,
@@ -2739,9 +2871,11 @@
 				3CD027401F95FCD5002A697C /* RussianWPawn@2x.png in Resources */,
 				3CD026BC1F95FCD5002A697C /* LeipzigBQueen.png in Resources */,
 				3CD025891F95FCCA002A697C /* AlphaWPawn96.png in Resources */,
+				3C776C741F9A1578006957E2 /* style.css in Resources */,
 				3CD0260D1F95FCCA002A697C /* MeridaWRook96.png in Resources */,
 				3CD0258B1F95FCCA002A697C /* AlphaWQueen96.png in Resources */,
 				3CD0273A1F95FCD5002A697C /* RussianWBishop@2x.png in Resources */,
+				3C776CA41F9A1617006957E2 /* Spassky.pgn in Resources */,
 				3CD026DF1F95FCD5002A697C /* MayaBPawn.png in Resources */,
 				3CD025EB1F95FCCA002A697C /* MayaWBishop96.png in Resources */,
 				3CD0257B1F95FCCA002A697C /* AlphaBKnight96.png in Resources */,
@@ -2778,6 +2912,7 @@
 				3CD026841F95FCD5002A697C /* BerlinBQueen@2x.png in Resources */,
 				3CD0262D1F95FCCA002A697C /* RussianBPawn96.png in Resources */,
 				3CD025BC1F95FCCA002A697C /* CheqWQueen96@2x.png in Resources */,
+				3C776C9D1F9A1617006957E2 /* Lasker.pgn in Resources */,
 				3CD025FF1F95FCCA002A697C /* MeridaBQueen96.png in Resources */,
 				3CD026951F95FCD5002A697C /* CheqBKing.png in Resources */,
 				3CD026C91F95FCD5002A697C /* LeipzigWKnight@2x.png in Resources */,
@@ -2789,6 +2924,7 @@
 				3CD026501F95FCCA002A697C /* USCFWKnight96@2x.png in Resources */,
 				3CD026F91F95FCD5002A697C /* MeridaBKnight@3x.png in Resources */,
 				3CD0257F1F95FCCA002A697C /* AlphaBQueen96.png in Resources */,
+				3C776C9E1F9A1617006957E2 /* Marshall.pgn in Resources */,
 				3CD025C11F95FCCA002A697C /* DarkWood96.png in Resources */,
 				3CD026001F95FCCA002A697C /* MeridaBQueen96@2x.png in Resources */,
 				3CD026F01F95FCD5002A697C /* MayaWRook@2x.png in Resources */,
