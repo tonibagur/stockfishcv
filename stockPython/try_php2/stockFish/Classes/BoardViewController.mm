@@ -283,7 +283,7 @@
         [contentView addSubview: analysisView];
         
         // Book moves. Shared with analysis view on the iPhone.
-        CGFloat offsetDual = 0.0;
+        CGFloat offsetDual = -1.0;
         if (!dualLabels) {
             bookMovesView = analysisView;
         }
@@ -295,7 +295,15 @@
             [bookMovesView setFont: [UIFont systemFontOfSize: 13.0]];
             //[analysisView setBackgroundColor: [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha: 1.0]];
             [bookMovesView setBackgroundColor: [UIColor colorWithRed:0.934 green:0.934 blue:0.953 alpha: 1.0]];
+            
+            CALayer* layerBook = [bookMovesView layer];
+            CALayer *bottomBorderBook = [CALayer layer];
+            bottomBorderBook.borderColor = [UIColor colorWithRed: 0.781 green: 0.777 blue: 0.797 alpha:1.0].CGColor;
+            bottomBorderBook.borderWidth = 1;
+            bottomBorderBook.frame = CGRectMake(0, layerBook.frame.size.height-1, layerBook.frame.size.width, 0.5);
+            [layerBook addSublayer:bottomBorder];
         }
+        
         [contentView addSubview: bookMovesView];
         
         
@@ -304,8 +312,8 @@
         moveListView =
         [[MoveListView alloc]
          initWithFrame:
-         CGRectMake(0.0f, appRect.size.width + /*56.0f*/ 36.0f + offsetDual, appRect.size.width,
-                    frameHeight - appRect.size.width - /*56.0f*/ 36.0f - 44.0f - offsetDual)];
+         CGRectMake(0.0f, appRect.size.width + /*56.0f*/ 36.0f + offsetDual +1, appRect.size.width,
+                    frameHeight - appRect.size.width - /*56.0f*/ 36.0f - 44.0f - (offsetDual+1))];
         [contentView addSubview: moveListView];
         
         // Toolbar
