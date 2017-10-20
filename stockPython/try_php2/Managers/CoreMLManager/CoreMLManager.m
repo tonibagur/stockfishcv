@@ -8,6 +8,7 @@
 #import "CoreMLManager.h"
 
 #import "chess_pieces.h"
+#import "modelPython.h"
 
 @implementation CoreMLManager
 
@@ -25,7 +26,7 @@
 
 - (void) setupModelForPythonResult
 {
-    _modelPieces = [[[chess_pieces alloc] init] model];
+    _modelPieces = [[[modelPython alloc] init] model];
     
     if (!_modelPieces) {
         self.isAvailable = NO;

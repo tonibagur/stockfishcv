@@ -59,6 +59,8 @@
 		3C776CD01F9A281F006957E2 /* Queen2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C776CBB1F9A281E006957E2 /* Queen2.wav */; };
 		3C776CD11F9A281F006957E2 /* Rook1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C776CBC1F9A281E006957E2 /* Rook1.wav */; };
 		3C776CD21F9A281F006957E2 /* Rook2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C776CBD1F9A281E006957E2 /* Rook2.wav */; };
+		3C776CD41F9A2A06006957E2 /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C776CD31F9A29F9006957E2 /* chess_pieces.mlmodel */; };
+		3C776CD61F9A2A61006957E2 /* modelPython.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C776CD51F9A2A5E006957E2 /* modelPython.mlmodel */; };
 		3CD0232D1F95F7F2002A697C /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232C1F95F7F2002A697C /* CoreML.framework */; };
 		3CD0232F1F95F800002A697C /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232E1F95F800002A697C /* Vision.framework */; };
 		3CD025771F95FCCA002A697C /* AlphaBBishop96.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CD024961F95FC63002A697C /* AlphaBBishop96.png */; };
@@ -656,7 +658,6 @@
 		3CD028431F96026F002A697C /* CameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CD028411F96025D002A697C /* CameraVC.xib */; };
 		3CD0284B1F96027F002A697C /* CoreMLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD0284A1F960279002A697C /* CoreMLManager.m */; };
 		3CD0284C1F960283002A697C /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD028471F960279002A697C /* CaptureSessionManager.m */; };
-		3CD0284E1F9602B5002A697C /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3CD0284D1F9602B2002A697C /* chess_pieces.mlmodel */; };
 		3CD0284F1F96045D002A697C /* iphone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3CD023631F95FC4F002A697C /* iphone.mm */; };
 		3CD028501F96045D002A697C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3CD023641F95FC4F002A697C /* main.cpp */; };
 		3CD028521F960CFA002A697C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD028511F960CFA002A697C /* Foundation.framework */; };
@@ -735,6 +736,8 @@
 		3C776CBB1F9A281E006957E2 /* Queen2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Queen2.wav; sourceTree = "<group>"; };
 		3C776CBC1F9A281E006957E2 /* Rook1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Rook1.wav; sourceTree = "<group>"; };
 		3C776CBD1F9A281E006957E2 /* Rook2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Rook2.wav; sourceTree = "<group>"; };
+		3C776CD31F9A29F9006957E2 /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
+		3C776CD51F9A2A5E006957E2 /* modelPython.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = modelPython.mlmodel; sourceTree = "<group>"; };
 		3CD0232C1F95F7F2002A697C /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		3CD0232E1F95F800002A697C /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		3CD023311F95FC1A002A697C /* book.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = book.bin; sourceTree = "<group>"; };
@@ -1438,7 +1441,6 @@
 		3CD028471F960279002A697C /* CaptureSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
 		3CD028491F960279002A697C /* CoreMLManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreMLManager.h; sourceTree = "<group>"; };
 		3CD0284A1F960279002A697C /* CoreMLManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreMLManager.m; sourceTree = "<group>"; };
-		3CD0284D1F9602B2002A697C /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
 		3CD028511F960CFA002A697C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3CD028541F961DAB002A697C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3CD028561F961F9C002A697C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -1494,7 +1496,8 @@
 		3C376FA11F9629FE00A5747D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3CD0284D1F9602B2002A697C /* chess_pieces.mlmodel */,
+				3C776CD51F9A2A5E006957E2 /* modelPython.mlmodel */,
+				3C776CD31F9A29F9006957E2 /* chess_pieces.mlmodel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3127,6 +3130,7 @@
 				3CD0277B1F95FCFE002A697C /* uci.cpp in Sources */,
 				3CD0282F1F96022E002A697C /* Queue.mm in Sources */,
 				3CD0281B1F96022E002A697C /* Game.mm in Sources */,
+				3C776CD61F9A2A61006957E2 /* modelPython.mlmodel in Sources */,
 				3CD028231F96022E002A697C /* LevelViewController.mm in Sources */,
 				3CD027771F95FCFE002A697C /* position.cpp in Sources */,
 				3CD027801F95FD13002A697C /* direction.cpp in Sources */,
@@ -3163,6 +3167,7 @@
 				3CD0283A1F96022E002A697C /* SimpleOptionTableController.mm in Sources */,
 				3CD0276B1F95FCFE002A697C /* benchmark.cpp in Sources */,
 				3CD0282E1F96022E002A697C /* PiecePreview.mm in Sources */,
+				3C776CD41F9A2A06006957E2 /* chess_pieces.mlmodel in Sources */,
 				3CD0276E1F95FCFE002A697C /* book.cpp in Sources */,
 				3CD028201F96022E002A697C /* GamePreview.mm in Sources */,
 				3CD028291F96022E002A697C /* Options.mm in Sources */,
@@ -3170,7 +3175,6 @@
 				3CD028391F96022E002A697C /* SideToMoveController.mm in Sources */,
 				3CD028151F96022E002A697C /* DateTagViewController.mm in Sources */,
 				3CD0277A1F95FCFE002A697C /* tt.cpp in Sources */,
-				3CD0284E1F9602B5002A697C /* chess_pieces.mlmodel in Sources */,
 				3CD0281D1F96022E002A697C /* GameDetailsTableController.mm in Sources */,
 				3CD027791F95FCFE002A697C /* thread.cpp in Sources */,
 				3CD0277E1F95FD13002A697C /* book.cpp in Sources */,
