@@ -67,7 +67,7 @@ using namespace Chess;
          name: @"StockfishPieceSetChanged"
          object: nil];
         
-        BOOL avoidSound = YES;
+        BOOL avoidSound = NO;
         
         if (!avoidSound)
         {
