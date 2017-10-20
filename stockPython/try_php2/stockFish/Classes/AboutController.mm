@@ -34,6 +34,12 @@
    [super loadView];
    NSString *path = [[NSBundle mainBundle] pathForResource: @"about"
                                                     ofType: @"html"];
+    if (!path)
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"No files" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil] show];
+        [self.navigationController popViewControllerAnimated:NO];
+        return;
+    }
    NSURL *url = [[NSURL alloc] initFileURLWithPath: path];
    NSURLRequest *req = [NSURLRequest requestWithURL: url];
    UIWebView *webView =
