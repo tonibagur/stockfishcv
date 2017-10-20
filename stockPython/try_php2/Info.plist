@@ -32,6 +32,25 @@
 	<string>Guardar y seleccionar fotos de la galeria</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeIconFiles</key>
+            <array/>
+            <key>CFBundleTypeName</key>
+            <string>pgn</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>LSHandlerRank</key>
+            <string>Owner</string>
+            <key>LSItemContentTypes</key>
+            <array>
+                <string>org.stockfishchess.pgn</string>
+            </array>
+        </dict>
+    </array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
