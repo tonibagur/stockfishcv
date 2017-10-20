@@ -71,6 +71,7 @@ enum SetupPhase {
 - (int)epCandidateSquaresForColor:(Color)us toArray:(Square *)squares;
 - (NSString *)fen;
 
+- (void) evaluateIsGameAvailable;
 - (void) addPiece:(Piece)p onSquare:(Square) s;
 - (Piece) pieceFromMLByCode:(NSInteger) code;
 @end

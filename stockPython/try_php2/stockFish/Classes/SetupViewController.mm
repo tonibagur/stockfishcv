@@ -168,7 +168,7 @@
              }
              
              [ml closeAll];
-             [self enableDoneButton];
+             [boardView evaluateIsGameAvailable];
              
          });
      }];

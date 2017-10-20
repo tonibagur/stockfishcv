@@ -227,6 +227,17 @@
    }
 }
 
+- (void) evaluateIsGameAvailable
+{
+    int whiteIsInCheck = [self whiteIsInCheck];
+    int blackIsInCheck = [self blackIsInCheck];
+    if ([self pieceCountsOK]
+        && !(whiteIsInCheck && blackIsInCheck)
+        && whiteIsInCheck <= 2 && blackIsInCheck <= 2)
+        [(SetupViewController *)controller enableDoneButton];
+    else
+        [(SetupViewController *)controller disableDoneButton];
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
    if (phase == PHASE_EDIT_BOARD && selectedSquare != SQ_NONE) {
