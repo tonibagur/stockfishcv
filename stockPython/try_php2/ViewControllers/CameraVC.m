@@ -15,10 +15,6 @@
     UIImage *lastPhoto;
     UIImage *photoResult;
 }
-// view Alpha Marks backgrounds
-@property (weak, nonatomic) IBOutlet UIView *vMarkTop;
-@property (weak, nonatomic) IBOutlet UIView *vMarkBottom;
-@property (weak, nonatomic) IBOutlet UIView *vMarkSelectionPhoto;
 
 // referent to camera
 @property (weak, nonatomic) IBOutlet UIView *vCamera;
@@ -40,7 +36,6 @@
     [super viewDidLoad];
     
     [self initCapture];
-    //[self setupUI];
 }
 
 - (void) initCapture
@@ -50,8 +45,8 @@
             camManager = [[CaptureSessionManager alloc] initWithFrame:[UIScreen mainScreen].bounds withDel:self withPresset:AVCaptureSessionPreset640x480];
             
             [camManager startRunning];
-        
-        [self.vCamera.layer addSublayer:camManager.previewLayer];
+            
+            [self.vCamera.layer addSublayer:camManager.previewLayer];
             [self setupUI];
         }
     });
@@ -59,13 +54,11 @@
 
 - (void) setupUI
 {
-    [self showHideBackgroundSelection:NO];
     [self showHideConfirm:NO];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 #pragma mark - ActionButtons
@@ -159,14 +152,6 @@
 
 #pragma mark - Helpers animation
 
-- (void) showHideBackgroundSelection:(BOOL) showDark
-{
-    CGFloat alpha = 0.7;
-    if (showDark) alpha = 0.9;
-    
-    self.vMarkTop.alpha = self.vMarkBottom.alpha = alpha;
-}
-
 - (void) showHideConfirm:(BOOL) show
 {
     if (show) {
@@ -180,7 +165,6 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         [self.view layoutIfNeeded];
-        [self showHideBackgroundSelection:show];
     }];
 }
 
@@ -188,17 +172,17 @@
 
 - (void) CaptureSessionManagerDelegate_PhotoTaked:(UIImage*) photo
 {
-            lastPhoto = nil;
+    lastPhoto = nil;
     photoResult = nil;
     if (!photo) {
         return;
     }
-
+    
     lastPhoto = photo;
     
     [camManager stopRunning];
     [self showHideConfirm:YES];
-
+    
     CoreMLManager *ml = [CoreMLManager new];
     [ml setupModelForPythonResult];
     

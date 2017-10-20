@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,9 +24,6 @@
                 <outlet property="lcvConfirm_BOTTOM" destination="QNq-yO-0qK" id="cb8-gn-2Hx"/>
                 <outlet property="lcvConfirm_HEIGHT" destination="mfs-EI-IV2" id="u89-ma-l4J"/>
                 <outlet property="vCamera" destination="FrC-bA-OiG" id="ouY-oo-wQ0"/>
-                <outlet property="vMarkBottom" destination="c0n-AJ-te7" id="sbT-ky-jxM"/>
-                <outlet property="vMarkSelectionPhoto" destination="tz3-sb-0c6" id="hH0-kV-10Y"/>
-                <outlet property="vMarkTop" destination="eEu-lM-fTi" id="Dad-ug-Pd0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -47,21 +43,6 @@
                 <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83f-aG-yTf" userLabel="vAlphaMark">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tz3-sb-0c6">
-                            <rect key="frame" x="0.0" y="124.5" width="320" height="319"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="tz3-sb-0c6" secondAttribute="height" multiplier="1:1" constant="1" id="xKl-mC-eSz"/>
-                            </constraints>
-                        </view>
-                        <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEu-lM-fTi" userLabel="vTop">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
-                        <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0n-AJ-te7" userLabel="vBottom">
-                            <rect key="frame" x="0.0" y="443.5" width="320" height="124.5"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lER-Cy-APS">
                             <rect key="frame" x="0.0" y="488" width="320" height="80"/>
                             <subviews>
@@ -130,24 +111,12 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="c0n-AJ-te7" firstAttribute="leading" secondItem="83f-aG-yTf" secondAttribute="leading" id="8eM-Zy-tKO"/>
                         <constraint firstItem="uhs-wr-Ibd" firstAttribute="leading" secondItem="83f-aG-yTf" secondAttribute="leading" id="FwS-ve-rh2"/>
-                        <constraint firstAttribute="trailing" secondItem="tz3-sb-0c6" secondAttribute="trailing" id="IM0-3R-vAw"/>
-                        <constraint firstItem="eEu-lM-fTi" firstAttribute="top" secondItem="83f-aG-yTf" secondAttribute="top" id="JUV-G6-cRV"/>
                         <constraint firstAttribute="trailing" secondItem="uhs-wr-Ibd" secondAttribute="trailing" id="LkL-zk-1KN"/>
-                        <constraint firstAttribute="trailing" secondItem="eEu-lM-fTi" secondAttribute="trailing" id="OA9-45-cns"/>
-                        <constraint firstItem="tz3-sb-0c6" firstAttribute="top" secondItem="eEu-lM-fTi" secondAttribute="bottom" id="PLA-ns-DYr"/>
                         <constraint firstAttribute="bottom" secondItem="uhs-wr-Ibd" secondAttribute="bottom" constant="-90" id="QNq-yO-0qK"/>
-                        <constraint firstItem="c0n-AJ-te7" firstAttribute="top" secondItem="tz3-sb-0c6" secondAttribute="bottom" id="VKh-QT-yNU"/>
-                        <constraint firstItem="tz3-sb-0c6" firstAttribute="centerY" secondItem="83f-aG-yTf" secondAttribute="centerY" id="dXG-MQ-mrI"/>
-                        <constraint firstAttribute="bottom" secondItem="c0n-AJ-te7" secondAttribute="bottom" id="dt2-zk-LDh"/>
                         <constraint firstItem="lER-Cy-APS" firstAttribute="leading" secondItem="83f-aG-yTf" secondAttribute="leading" id="fbT-Da-Mve"/>
-                        <constraint firstItem="tz3-sb-0c6" firstAttribute="leading" secondItem="83f-aG-yTf" secondAttribute="leading" id="l7N-Yr-IAg"/>
                         <constraint firstAttribute="bottom" secondItem="lER-Cy-APS" secondAttribute="bottom" id="ozs-wI-gU5"/>
-                        <constraint firstAttribute="trailing" secondItem="c0n-AJ-te7" secondAttribute="trailing" id="qJh-Sl-3PL"/>
                         <constraint firstAttribute="trailing" secondItem="lER-Cy-APS" secondAttribute="trailing" id="r6V-kl-kcL"/>
-                        <constraint firstItem="eEu-lM-fTi" firstAttribute="leading" secondItem="83f-aG-yTf" secondAttribute="leading" id="tDm-3f-rsO"/>
-                        <constraint firstItem="tz3-sb-0c6" firstAttribute="centerX" secondItem="83f-aG-yTf" secondAttribute="centerX" id="wUu-vW-l2J"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rrl-c1-jIO" userLabel="vHeader">
