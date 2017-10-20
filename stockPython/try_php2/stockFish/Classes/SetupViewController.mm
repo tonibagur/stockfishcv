@@ -48,9 +48,13 @@
     CGRect r = [UIScreen mainScreen].bounds;
     UIButton *btCustomCam  = [UIButton buttonWithType:UIButtonTypeSystem];
     btCustomCam.tintColor = [UIColor redColor];
-    btCustomCam.frame = CGRectMake(0, 0, 180, 50);
+    btCustomCam.frame = CGRectMake(0, 0, 260, 55);
+    btCustomCam.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+
+    btCustomCam.titleLabel.textAlignment = NSTextAlignmentCenter;
+
     btCustomCam.titleLabel.font = [UIFont boldSystemFontOfSize:18.0];
-    [btCustomCam setTitle:@"Camera Photo" forState:UIControlStateNormal];
+    [btCustomCam setTitle:@"New ChessBoard\ntaking Camera Photo" forState:UIControlStateNormal];
     btCustomCam.center = CGPointMake(r.size.width/2, r.size.height-40);
     [btCustomCam addTarget:self action:@selector(btnPressOnCam) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btCustomCam];

@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coneptum © 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gU-xc-EmZ">
-                                <rect key="frame" x="15" y="632" width="345" height="20"/>
+                                <rect key="frame" x="15" y="622" width="345" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="jr7-VF-zgi"/>
                                 </constraints>
@@ -61,7 +61,7 @@
                             <constraint firstItem="Laz-Si-eiP" firstAttribute="top" secondItem="Gs2-eQ-RmH" secondAttribute="bottom" constant="30" id="Ewp-Iu-HaR"/>
                             <constraint firstItem="6gU-xc-EmZ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="15" id="J5B-1U-tnd"/>
                             <constraint firstItem="Gs2-eQ-RmH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RHA-ql-8Yb"/>
-                            <constraint firstAttribute="bottom" secondItem="6gU-xc-EmZ" secondAttribute="bottom" constant="15" id="V4I-OT-V2o"/>
+                            <constraint firstAttribute="bottom" secondItem="6gU-xc-EmZ" secondAttribute="bottom" constant="25" id="V4I-OT-V2o"/>
                             <constraint firstItem="fpI-By-syd" firstAttribute="top" secondItem="Laz-Si-eiP" secondAttribute="bottom" constant="30" id="VMv-gK-1Lq"/>
                             <constraint firstAttribute="trailing" secondItem="6gU-xc-EmZ" secondAttribute="trailing" constant="15" id="bg7-lO-ivF"/>
                             <constraint firstItem="Laz-Si-eiP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="kyN-jG-gks"/>
