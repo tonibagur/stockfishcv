@@ -119,11 +119,41 @@
 {
     
 #if TARGET_IPHONE_SIMULATOR
-    [self openTheML:nil];
-    return;
+    
+    CoreMLManager *mlPython = [CoreMLManager initModelForType:MLSetupForPython];
+    
+    UIImage *image = [UIImage imageNamed:@"tablero"];
+    
+    [mlPython getCGRectTuplaPythonWithImage:image
+                             withCompletion:^(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error)
+     {
+         NSLog(@"\n.\n                      end proces python\n.");
+         NSLog(@"success: %@", succes?@"YES":@"NO");
+         if (succes)
+         {
+             NSLog(@"result CGRect: (%.0f, %.0f, %0.f, %.0f)", rectResultTupla.origin.x, rectResultTupla.origin.y, rectResultTupla.size.width, rectResultTupla.size.height);
+             
+             if (rectResultTupla.size.width > 0 && rectResultTupla.size.height > 0) {
+                 
+                 CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rectResultTupla);
+                 UIImage *photoResult = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
+                 
+                 if (photoResult) {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         [self openTheML:photoResult];
+                     });
+                 }
+             }
+             else {
+                 NSLog(@"*********** Height or Width Equals ZERO");
+             }
+         }
+     }];
+
+#else
+    [self openCamera];
 #endif
     
-    [self openCamera];
 }
 
 - (void) openCamera
@@ -139,7 +169,6 @@
 
 - (void) openTheML:(UIImage*) image
 {
-    
     NSLog(@"openML");
     [boardView clear];
     
@@ -150,8 +179,7 @@
      {
          
          NSLog(@"success: %@", succes?@"YES":@"NO");
-         NSLog(@"error of getChessPiecesWithImage: %@",error);
-         //  NSLog(@"arrResults: %@", arrResultPieces);
+         if (error) NSLog(@"error of getChessPiecesWithImage: %@",error);
          
          dispatch_async(dispatch_get_main_queue(), ^{
              
