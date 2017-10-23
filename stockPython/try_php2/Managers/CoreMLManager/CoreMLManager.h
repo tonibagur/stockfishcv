@@ -41,29 +41,48 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSArray* _Nullable results;
 @property BOOL isAvailable;
 
-/*************************************************************************
- *
- *  Init manager and models
- *
- *************************************************************************/
 
-- (void) setupModelForType:(MLSetup) type;
+#pragma mark - Initialize
+
+
+/**
+ First declaration Manager
+ 
+ @param type set model type python or pieces
+ @return objectManager
+ */
 + (instancetype _Nonnull ) initModelForType:(MLSetup) type;
 
+
+/**
+ setup manager for model type
+ 
+ @param type set model type python or pieces
+ */
+- (void) setupModelForType:(MLSetup) type;
+
+#pragma mark - Models Results
+
 /*************************************************************************
  *
- *  Method to get pieces chess in board
- *
-*************************************************************************/
-
-- (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion;
-
-/*************************************************************************
- *
- *  Method to get CGRect in python for max/min rectangle
+ *  GET MODELS RESULTS
  *
  *************************************************************************/
 
+/**
+ Method to get pieces chess in board (only works with setup init -> MLSetupForPython)
+ 
+ @param image original UIImage
+ @param completion completionResult
+ */
+- (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion;
+
+/**
+ Method to get CGRect in python for max/min rectangle (only works with setup init -> MLSetupForChessPieces)
+ 
+ @param image original UIImage
+ @param completion completionResult
+ */
 - (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion;
 
 

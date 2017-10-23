@@ -12,6 +12,7 @@
 
 @implementation CoreMLManager
 
+#pragma mark - Initialize
 
 + (instancetype) initModelForType:(MLSetup) type
 {
@@ -102,6 +103,8 @@
     }
 }
 
+#pragma mark - Private methods
+
 - (NSMutableArray*) evaluateMultiArray:(MLMultiArray*) multiArray
 {
     // evaluate pieces of tablero
@@ -141,6 +144,14 @@
     return arr;
 }
 
+#pragma mark - Models Results
+
+/*************************************************************************
+ *
+ *  GET MODELS RESULTS
+ *
+ *************************************************************************/
+
 - (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion
 {
     if (typeModel != MLSetupForChessPieces) {
@@ -176,7 +187,6 @@
     });
 }
 
-
 - (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion
 {
     if (typeModel != MLSetupForPython) {
@@ -210,6 +220,8 @@
         [handler performRequests:a error:nil];
     });
 }
+
+#pragma mark - Close Manager
 
 - (void) closeAll
 {
