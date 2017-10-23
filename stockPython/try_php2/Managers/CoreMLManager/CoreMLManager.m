@@ -12,25 +12,24 @@
 
 @implementation CoreMLManager
 
-- (void) closeAll
+#pragma mark - Initialize
+
++ (instancetype) initModelForType:(MLSetup) type
 {
-    _mlEngine = nil;
-    _mlRequest = nil;
-    _modelPieces = nil;
-    self.delegate = nil;
-    completionCGRect = nil;
-    completionPieces = nil;
-    self.isAvailable = NO;
+    CoreMLManager *ml = [CoreMLManager new];
+    [ml setupModelForType:type];
+    return ml;
 }
 
 - (void) setupModelForType:(MLSetup) type
 {
+    [self closeAll];
     typeModel = type;
     if (type == MLSetupForPython)  {
-            _modelPieces = [[[chess_board_locate alloc] init] model];
+        _modelPieces = [[[chess_board_locate alloc] init] model];
     }
     else if (type == MLSetupForChessPieces)  {
-         _modelPieces = [[[chess_pieces alloc] init] model];
+        _modelPieces = [[[chess_pieces alloc] init] model];
     }
     
     if (!_modelPieces) {
@@ -41,7 +40,7 @@
     
     _mlEngine = [VNCoreMLModel modelForMLModel: _modelPieces error:nil];
     
-        self.isAvailable = YES;
+    self.isAvailable = YES;
     
     if (type == MLSetupForPython)
     {
@@ -102,102 +101,9 @@
                           });
                       }];
     }
-    
-    
 }
 
-- (void) setupModelForPythonResult
-{
-    _modelPieces = [[[chess_board_locate alloc] init] model];
-    
-    if (!_modelPieces) {
-        self.isAvailable = NO;
-        NSLog(@"Error in loading model.h");
-        return;
-    }
-    
-    _mlEngine = [VNCoreMLModel modelForMLModel: _modelPieces error:nil];
-    if (!_mlEngine) {
-        self.isAvailable = NO;
-        NSLog(@"Error in model to GET POINTS for Python");
-        return;
-    }
-    self.isAvailable = YES;
-    
-    _mlRequest = [[VNCoreMLRequest alloc] initWithModel: _mlEngine completionHandler: (VNRequestCompletionHandler) ^(VNRequest *request, NSError *error)
-                  {
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          
-                          long numberOfResults = request.results.count; //array the multiarrays
-                          
-                          if (numberOfResults > 0) {
-                              self.results = [request.results copy];
-                              VNCoreMLFeatureValueObservation *observations = (VNCoreMLFeatureValueObservation*) self.results[0];
-
-                              if (completionCGRect) {
-                                  MLMultiArray *aux = observations.featureValue.multiArrayValue;
-                                  
-                                  if (!python) {
-                                      python = [PythonManager sharedManager];
-                                  }
-                                  
-                                  [python executePython:aux withCompletion:^(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error)
-                                  {
-                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                               completionCGRect(succes, rectResultTupla, error);
-                                       });
-                                  }];
-                              }
-                          }
-                          else if (completionCGRect) {
-                              completionCGRect(NO, CGRectZero, [NSError errorWithDomain:@"" code:999 userInfo:@{@"message":@"insuficients results in results request"}]);
-                              
-                          }
-                      });
-                  }];
-}
-
-- (void) setupModelForPieces
-{
-    _modelPieces = [[[chess_pieces alloc] init] model];
-    
-    if (!_modelPieces) {
-        self.isAvailable = NO;
-        NSLog(@"Error in loading model.h");
-        return;
-    }
-    
-    _mlEngine = [VNCoreMLModel modelForMLModel: _modelPieces error:nil];
-    if (!_mlEngine) {
-        self.isAvailable = NO;
-        NSLog(@"Error in model for DETECT PIECES CHESS");
-        return;
-    }
-    self.isAvailable = YES;
-    
-    _mlRequest = [[VNCoreMLRequest alloc] initWithModel: _mlEngine completionHandler: (VNRequestCompletionHandler) ^(VNRequest *request, NSError *error)
-                  {
-                      dispatch_async(dispatch_get_main_queue(), ^{
-                          
-                          long numberOfResults = request.results.count; //array the multiarrays
-                          
-                          if (numberOfResults > 0) {
-                              self.results = [request.results copy];
-                              VNCoreMLFeatureValueObservation *observations = (VNCoreMLFeatureValueObservation*) self.results[0];
-                              
-                              NSMutableArray *arr = [self evaluateMultiArray:observations.featureValue.multiArrayValue];
-                              
-                              if (completionPieces) {
-                                  completionPieces((arr && arr.count > 0)?YES:NO, arr, nil);
-                              }
-                          }
-                          else if (completionPieces) {
-                              completionPieces(NO, nil, [NSError errorWithDomain:@"" code:999 userInfo:@{@"message":@"insuficients results in results request"}]);
-                              
-                          }
-                      });
-                  }];
-}
+#pragma mark - Private methods
 
 - (NSMutableArray*) evaluateMultiArray:(MLMultiArray*) multiArray
 {
@@ -238,6 +144,14 @@
     return arr;
 }
 
+#pragma mark - Models Results
+
+/*************************************************************************
+ *
+ *  GET MODELS RESULTS
+ *
+ *************************************************************************/
+
 - (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion
 {
     if (typeModel != MLSetupForChessPieces) {
@@ -273,7 +187,6 @@
     });
 }
 
-
 - (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion
 {
     if (typeModel != MLSetupForPython) {
@@ -287,7 +200,7 @@
     
     if (!self.isAvailable) {
         NSLog(@"CoreML not available, is not initialize");
-         if (completion) {
+        if (completion) {
             completion(NO, CGRectZero, [NSError errorWithDomain:@"" code:1 userInfo:@{@"message":@"unavailable ml initialize"}]);
             
         }
@@ -306,6 +219,19 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [handler performRequests:a error:nil];
     });
+}
+
+#pragma mark - Close Manager
+
+- (void) closeAll
+{
+    _mlEngine = nil;
+    _mlRequest = nil;
+    _modelPieces = nil;
+    self.delegate = nil;
+    completionCGRect = nil;
+    completionPieces = nil;
+    self.isAvailable = NO;
 }
 
 - (void) dealloc

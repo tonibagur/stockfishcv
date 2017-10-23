@@ -183,8 +183,7 @@
     [camManager stopRunning];
     [self showHideConfirm:YES];
     
-    CoreMLManager *ml = [CoreMLManager new];
-    [ml setupModelForPythonResult];
+    CoreMLManager *ml = [CoreMLManager initModelForType:MLSetupForPython];
     
     [ml getCGRectTuplaPythonWithImage:lastPhoto
                        withCompletion:^(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error)

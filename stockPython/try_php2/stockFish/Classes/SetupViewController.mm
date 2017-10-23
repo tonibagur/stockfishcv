@@ -50,9 +50,9 @@
     btCustomCam.tintColor = [UIColor redColor];
     btCustomCam.frame = CGRectMake(0, 0, 260, 55);
     btCustomCam.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-
+    
     btCustomCam.titleLabel.textAlignment = NSTextAlignmentCenter;
-
+    
     btCustomCam.titleLabel.font = [UIFont boldSystemFontOfSize:18.0];
     [btCustomCam setTitle:@"New ChessBoard\ntaking Camera Photo" forState:UIControlStateNormal];
     btCustomCam.center = CGPointMake(r.size.width/2, r.size.height-40);
@@ -143,9 +143,7 @@
     NSLog(@"openML");
     [boardView clear];
     
-    CoreMLManager *ml = [[CoreMLManager alloc]init];
-    
-    [ml setupModelForPieces];
+    CoreMLManager *ml = [CoreMLManager initModelForType:MLSetupForChessPieces];
     
     [ml getChessPiecesWithImage:image
                  withCompletion:^(BOOL succes, NSMutableArray * _Nullable arrResultPieces, NSError * _Nullable error)
@@ -201,11 +199,9 @@
     }
 }
 
-
 - (void)disableDoneButton {
     [menu setEnabled: NO forSegmentAtIndex: 2];
 }
-
 
 - (void)enableDoneButton {
     [menu setEnabled: YES forSegmentAtIndex: 2];

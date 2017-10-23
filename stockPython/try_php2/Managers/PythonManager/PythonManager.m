@@ -24,6 +24,9 @@ static PythonManager *sharedMyManager = nil;
     PyObject *pModule;
 }
 
+
+#pragma mark - Initialize
+
 + (id)sharedManager {
     
     static dispatch_once_t onceToken;
@@ -44,112 +47,6 @@ static PythonManager *sharedMyManager = nil;
 {
     pName = PyString_FromString("test_module");
     pModule = PyImport_Import(pName);
-}
-
-
-- (void) executePython:(MLMultiArray*) multi withCompletion:(PythonCompletionCGRectTupla) completion
-{
-    BOOL succes = NO;
-    CGRect rect = CGRectZero;
-    
-    if (!multi) {
-        NSLog(@" ********************** error MLMultiArray");
-         [self completionFail:completion withError:nil];
-        return;
-    }
-    
-    PyObject *pFunc;
-    PyObject *pArgs, *pValue;
-    
-    if (pModule == NULL) {
-        [self loadModules];
-    }
-    
-    if (pModule != NULL)
-    {
-        pFunc = PyObject_GetAttrString(pModule, "test_function");
-        /* pFunc is a new reference */
-        
-        if (pFunc && PyCallable_Check(pFunc))
-        {
-            int numArgs=1;
-            pArgs = PyTuple_New(numArgs);
-            
-            npy_intp shape[] = {[multi.shape[0] integerValue], [multi.shape[1] integerValue], [multi.shape[2] integerValue] };
-            
-            import_array()
-            PyObject* arr=PyArray_SimpleNewFromData((int)multi.shape.count, shape, NPY_DOUBLE, multi.dataPointer);
-            
-            PyTuple_SetItem(pArgs, 0, arr);
-            
-            pValue = PyObject_CallObject(pFunc, pArgs);
-            Py_DECREF(pArgs);
-            if (pValue != NULL) {
-                long x1,y1,x2,y2;
-                if (PyTuple_Size(pValue) == 4)
-                {
-                    x1=PyInt_AsLong(PyTuple_GetItem(pValue, 0));
-                    y1=PyInt_AsLong(PyTuple_GetItem(pValue, 1));
-                    x2=PyInt_AsLong(PyTuple_GetItem(pValue, 2));
-                    y2=PyInt_AsLong(PyTuple_GetItem(pValue, 3));
-                    
-                    if (y2 >= y1 && x2 >=x1 && (x1 != x2 || (y1 != y2))) {
-                        rect = CGRectMake((float)x1, (float)y1, (float)x2-x1, (float) y2-y1);
-                        succes = YES;
-                    }
-                    
-                    printf("Result of call: %ld %ld %ld %ld\n", x1,y1,x2,y2);
-                }
-                else {
-                    printf("Wrong params result of points");
-                }
-                Py_DECREF(pValue);
-            }
-            else {
-                Py_DECREF(pFunc);
-                PyErr_Print();
-                fprintf(stderr,"Call failed\n");
-                 [self completionFail:completion withError:nil];
-                return ;
-            }
-        }
-        else {
-            if (PyErr_Occurred())
-                PyErr_Print();
-        }
-        Py_XDECREF(pFunc);
-    }
-    else {
-        PyErr_Print();
-        [self completionFail:completion withError:nil];
-        return ;
-    }
-    
-    if (succes && completion) {
-        completion(YES, rect, nil);
-    }
-    else {
-        [self completionFail:completion withError:nil];
-    }
-}
-
-- (void) completionFail:(PythonCompletionCGRectTupla) completion withError:(NSError*) error
-{
-    if (completion) {
-        completion(NO, CGRectZero, error);
-    }
-}
-
-- (void) dealloc
-{
-    [self releaseAll];
-}
-
-- (void) releaseAll
-{
-    Py_Finalize();
-    Py_DECREF(pName);
-    Py_DECREF(pModule);
 }
 
 #pragma mark - First Init
@@ -275,6 +172,116 @@ void initLoad_custom_builtin_importer() {
     "        return mod\n" \
     "sys.meta_path.append(CustomBuiltinImporter())";
     PyRun_SimpleString(custom_builtin_importer);
+}
+
+#pragma mark - Get Python Results
+
+
+- (void) executePython:(MLMultiArray*) multi withCompletion:(PythonCompletionCGRectTupla) completion
+{
+    BOOL succes = NO;
+    CGRect rect = CGRectZero;
+    
+    if (!multi) {
+        NSLog(@" ********************** error MLMultiArray");
+        [self completionFail:completion withError:nil];
+        return;
+    }
+    
+    PyObject *pFunc;
+    PyObject *pArgs, *pValue;
+    
+    if (pModule == NULL) {
+        [self loadModules];
+    }
+    
+    if (pModule != NULL)
+    {
+        pFunc = PyObject_GetAttrString(pModule, "test_function");
+        /* pFunc is a new reference */
+        
+        if (pFunc && PyCallable_Check(pFunc))
+        {
+            int numArgs=1;
+            pArgs = PyTuple_New(numArgs);
+            
+            npy_intp shape[] = {[multi.shape[0] integerValue], [multi.shape[1] integerValue], [multi.shape[2] integerValue] };
+            
+            import_array()
+            PyObject* arr=PyArray_SimpleNewFromData((int)multi.shape.count, shape, NPY_DOUBLE, multi.dataPointer);
+            
+            PyTuple_SetItem(pArgs, 0, arr);
+            
+            pValue = PyObject_CallObject(pFunc, pArgs);
+            Py_DECREF(pArgs);
+            if (pValue != NULL) {
+                long x1,y1,x2,y2;
+                if (PyTuple_Size(pValue) == 4)
+                {
+                    x1=PyInt_AsLong(PyTuple_GetItem(pValue, 0));
+                    y1=PyInt_AsLong(PyTuple_GetItem(pValue, 1));
+                    x2=PyInt_AsLong(PyTuple_GetItem(pValue, 2));
+                    y2=PyInt_AsLong(PyTuple_GetItem(pValue, 3));
+                    
+                    if (y2 >= y1 && x2 >=x1 && (x1 != x2 || (y1 != y2))) {
+                        rect = CGRectMake((float)x1, (float)y1, (float)x2-x1, (float) y2-y1);
+                        succes = YES;
+                    }
+                    
+                    printf("Result of call: %ld %ld %ld %ld\n", x1,y1,x2,y2);
+                }
+                else {
+                    printf("Wrong params result of points");
+                }
+                Py_DECREF(pValue);
+            }
+            else {
+                Py_DECREF(pFunc);
+                PyErr_Print();
+                fprintf(stderr,"Call failed\n");
+                [self completionFail:completion withError:nil];
+                return ;
+            }
+        }
+        else {
+            if (PyErr_Occurred())
+                PyErr_Print();
+        }
+        Py_XDECREF(pFunc);
+    }
+    else {
+        PyErr_Print();
+        [self completionFail:completion withError:nil];
+        return ;
+    }
+    
+    if (succes && completion) {
+        completion(YES, rect, nil);
+    }
+    else {
+        [self completionFail:completion withError:nil];
+    }
+}
+
+- (void) completionFail:(PythonCompletionCGRectTupla) completion withError:(NSError*) error
+{
+    if (completion) {
+        completion(NO, CGRectZero, error);
+    }
+}
+
+#pragma mark - Close
+
+- (void) dealloc
+{
+    [self releaseAll];
+}
+
+- (void) releaseAll
+{
+    Py_Finalize();
+    Py_DECREF(pName);
+    Py_DECREF(pModule);
 }
 
 @end
