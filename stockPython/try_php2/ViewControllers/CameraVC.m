@@ -189,7 +189,7 @@
                        withCompletion:^(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error)
      {
          NSLog(@"success: %@", succes?@"YES":@"NO");
-         NSLog(@"error of getCGRectTuplaPythonWithImage: %@",error);
+         if (error) NSLog(@"error of getCGRectTuplaPythonWithImage: %@",error);
          if (succes)
          {
              NSLog(@"result CGRect: (%.0f, %.0f, %0.f, %.0f)", rectResultTupla.origin.x, rectResultTupla.origin.y, rectResultTupla.size.width, rectResultTupla.size.height);
