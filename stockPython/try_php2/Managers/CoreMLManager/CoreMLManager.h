@@ -41,25 +41,32 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSArray* _Nullable results;
 @property BOOL isAvailable;
 
+/*************************************************************************
+ *
+ *  Init manager and models
+ *
+ *************************************************************************/
+
 - (void) setupModelForType:(MLSetup) type;
++ (instancetype _Nonnull ) initModelForType:(MLSetup) type;
 
 /*************************************************************************
  *
- *  Setup and Method to get pieces chess in board
+ *  Method to get pieces chess in board
  *
 *************************************************************************/
- 
-- (void) setupModelForPieces;
+
 - (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion;
 
 /*************************************************************************
  *
- *  Setup and Method to get CGRect in python for max/min rectangle
+ *  Method to get CGRect in python for max/min rectangle
  *
  *************************************************************************/
 
-- (void) setupModelForPythonResult;
 - (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion;
+
+
 
 - (void) closeAll;
 
