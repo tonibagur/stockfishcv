@@ -149,7 +149,7 @@
             
             [arr addObject:dic];
             
-            NSLog(@"%d , %d -> %d", i, j, indexZMaxValue);
+            //NSLog(@"%d , %d -> %d", i, j, indexZMaxValue);
         }
     }
     
