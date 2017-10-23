@@ -26,19 +26,19 @@
     [self closeAll];
     typeModel = type;
     if (type == MLSetupForPython)  {
-        _modelPieces = [[[chess_board_locate alloc] init] model];
+        _model = [[[chess_board_locate alloc] init] model];
     }
     else if (type == MLSetupForChessPieces)  {
-        _modelPieces = [[[chess_pieces alloc] init] model];
+        _model = [[[chess_pieces alloc] init] model];
     }
     
-    if (!_modelPieces) {
+    if (!_model) {
         self.isAvailable = NO;
         NSLog(@"Error in loading model.h");
         return;
     }
     
-    _mlEngine = [VNCoreMLModel modelForMLModel: _modelPieces error:nil];
+    _mlEngine = [VNCoreMLModel modelForMLModel: _model error:nil];
     
     self.isAvailable = YES;
     
@@ -227,7 +227,7 @@
 {
     _mlEngine = nil;
     _mlRequest = nil;
-    _modelPieces = nil;
+    _model = nil;
     self.delegate = nil;
     completionCGRect = nil;
     completionPieces = nil;

@@ -36,7 +36,7 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, retain) VNCoreMLModel * _Nullable mlEngine;
 @property (nonatomic, retain) VNCoreMLRequest * _Nullable mlRequest;
-@property (nonatomic, retain) MLModel *_Nullable modelPieces;
+@property (nonatomic, retain) MLModel *_Nullable model;
 
 @property (nonatomic, strong) NSArray* _Nullable results;
 @property BOOL isAvailable;
