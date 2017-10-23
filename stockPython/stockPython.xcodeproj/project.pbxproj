@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C376FA51F962A8000A5747D /* PythonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C376FA41F962A8000A5747D /* PythonManager.m */; };
+		3C63F7A81F9DF18D0002F6DE /* chess_board_locate.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C63F7A71F9DF18A0002F6DE /* chess_board_locate.mlmodel */; };
 		3C776C701F9A1578006957E2 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6B1F9A1578006957E2 /* about.html */; };
 		3C776C711F9A1578006957E2 /* movelist-ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6C1F9A1578006957E2 /* movelist-ipad.css */; };
 		3C776C721F9A1578006957E2 /* movelist-iphone.css in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6D1F9A1578006957E2 /* movelist-iphone.css */; };
@@ -60,7 +61,6 @@
 		3C776CD11F9A281F006957E2 /* Rook1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C776CBC1F9A281E006957E2 /* Rook1.wav */; };
 		3C776CD21F9A281F006957E2 /* Rook2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3C776CBD1F9A281E006957E2 /* Rook2.wav */; };
 		3C776CD41F9A2A06006957E2 /* chess_pieces.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C776CD31F9A29F9006957E2 /* chess_pieces.mlmodel */; };
-		3C776CD61F9A2A61006957E2 /* modelPython.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3C776CD51F9A2A5E006957E2 /* modelPython.mlmodel */; };
 		3CD0232D1F95F7F2002A697C /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232C1F95F7F2002A697C /* CoreML.framework */; };
 		3CD0232F1F95F800002A697C /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CD0232E1F95F800002A697C /* Vision.framework */; };
 		3CD025771F95FCCA002A697C /* AlphaBBishop96.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CD024961F95FC63002A697C /* AlphaBBishop96.png */; };
@@ -685,6 +685,7 @@
 /* Begin PBXFileReference section */
 		3C376FA31F962A8000A5747D /* PythonManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PythonManager.h; sourceTree = "<group>"; };
 		3C376FA41F962A8000A5747D /* PythonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PythonManager.m; sourceTree = "<group>"; };
+		3C63F7A71F9DF18A0002F6DE /* chess_board_locate.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_board_locate.mlmodel; sourceTree = "<group>"; };
 		3C776C6B1F9A1578006957E2 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 		3C776C6C1F9A1578006957E2 /* movelist-ipad.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "movelist-ipad.css"; sourceTree = "<group>"; };
 		3C776C6D1F9A1578006957E2 /* movelist-iphone.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "movelist-iphone.css"; sourceTree = "<group>"; };
@@ -737,7 +738,6 @@
 		3C776CBC1F9A281E006957E2 /* Rook1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Rook1.wav; sourceTree = "<group>"; };
 		3C776CBD1F9A281E006957E2 /* Rook2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Rook2.wav; sourceTree = "<group>"; };
 		3C776CD31F9A29F9006957E2 /* chess_pieces.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = chess_pieces.mlmodel; sourceTree = "<group>"; };
-		3C776CD51F9A2A5E006957E2 /* modelPython.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = modelPython.mlmodel; sourceTree = "<group>"; };
 		3CD0232C1F95F7F2002A697C /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
 		3CD0232E1F95F800002A697C /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		3CD023311F95FC1A002A697C /* book.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = book.bin; sourceTree = "<group>"; };
@@ -1496,7 +1496,7 @@
 		3C376FA11F9629FE00A5747D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3C776CD51F9A2A5E006957E2 /* modelPython.mlmodel */,
+				3C63F7A71F9DF18A0002F6DE /* chess_board_locate.mlmodel */,
 				3C776CD31F9A29F9006957E2 /* chess_pieces.mlmodel */,
 			);
 			path = Models;
@@ -3130,7 +3130,6 @@
 				3CD0277B1F95FCFE002A697C /* uci.cpp in Sources */,
 				3CD0282F1F96022E002A697C /* Queue.mm in Sources */,
 				3CD0281B1F96022E002A697C /* Game.mm in Sources */,
-				3C776CD61F9A2A61006957E2 /* modelPython.mlmodel in Sources */,
 				3CD028231F96022E002A697C /* LevelViewController.mm in Sources */,
 				3CD027771F95FCFE002A697C /* position.cpp in Sources */,
 				3CD027801F95FD13002A697C /* direction.cpp in Sources */,
@@ -3139,6 +3138,7 @@
 				3CD0276C1F95FCFE002A697C /* bitbase.cpp in Sources */,
 				3CD027761F95FCFE002A697C /* pawns.cpp in Sources */,
 				3CD0277C1F95FCFE002A697C /* ucioption.cpp in Sources */,
+				3C63F7A81F9DF18D0002F6DE /* chess_board_locate.mlmodel in Sources */,
 				3CD0284C1F960283002A697C /* CaptureSessionManager.m in Sources */,
 				3CD027851F95FD13002A697C /* movepick.cpp in Sources */,
 				3CD0282D1F96022E002A697C /* PieceImageView.mm in Sources */,
