@@ -54,12 +54,13 @@ def test_function(model_out):
     x,y=get_conv_coords(conv_factor,conv_out_y,conv_out_x)
     print np.swapaxes(model_out[0,:,:],0,1)
     probs=np.swapaxes(model_out[0,:,:],0,1).reshape(-1)>0.5
+    print "sum",np.swapaxes(model_out[0,:,:],0,1).reshape(-1).sum(),probs.sum()
     print "probs",probs
     x=x[probs]
     y=y[probs]
     print "x,y",x,y
-    _,y_clust=cluster_points(np.ones(y.shape[0])*200,y , dist_th=5, clust_th=30)
-    x_clust,_=cluster_points(x, np.ones(x.shape[0])*200, dist_th=5, clust_th=30)
+    _,y_clust=cluster_points(np.ones(y.shape[0])*200,y , dist_th=5, clust_th=1)
+    x_clust,_=cluster_points(x, np.ones(x.shape[0])*200, dist_th=5, clust_th=1)
     nx,ny=x_clust.shape[0],y_clust.shape[0]
     min_x=np.min(x_clust)
     max_x=np.max(x_clust)
