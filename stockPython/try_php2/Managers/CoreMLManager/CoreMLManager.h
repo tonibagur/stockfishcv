@@ -14,6 +14,11 @@
 typedef void (^CoreMLManagerCompletionPieces)(BOOL succes, NSMutableArray* _Nullable arrResultPieces, NSError * _Nullable error);
 typedef void (^CoreMLManagerCompletionCGRectTupla)(BOOL succes, CGRect rectResultTupla, NSError * _Nullable error);
 
+typedef enum : NSUInteger {
+    MLSetupForPython,
+    MLSetupForChessPieces,
+} MLSetup;
+
 @protocol CoreMLDelegate <NSObject>
 
 @end
@@ -24,6 +29,7 @@ typedef void (^CoreMLManagerCompletionCGRectTupla)(BOOL succes, CGRect rectResul
     CoreMLManagerCompletionPieces completionPieces;
     CoreMLManagerCompletionCGRectTupla  completionCGRect;
     PythonManager *python;
+    MLSetup typeModel;
 }
 
 @property (nonatomic, weak) id  <CoreMLDelegate> _Nullable delegate;
@@ -35,12 +41,28 @@ typedef void (^CoreMLManagerCompletionCGRectTupla)(BOOL succes, CGRect rectResul
 @property (nonatomic, strong) NSArray* _Nullable results;
 @property BOOL isAvailable;
 
+- (void) setupModelForType:(MLSetup) type;
 
+/*************************************************************************
+ *
+ *  Setup and Method to get pieces chess in board
+ *
+*************************************************************************/
+ 
 - (void) setupModelForPieces;
+- (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion;
+
+/*************************************************************************
+ *
+ *  Setup and Method to get CGRect in python for max/min rectangle
+ *
+ *************************************************************************/
+
 - (void) setupModelForPythonResult;
+- (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion;
 
 - (void) closeAll;
 
-- (void) getChessPiecesWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionPieces _Nullable ) completion;
-- (void) getCGRectTuplaPythonWithImage:(UIImage*_Nullable) image withCompletion:(CoreMLManagerCompletionCGRectTupla _Nullable ) completion;
+
+
 @end
