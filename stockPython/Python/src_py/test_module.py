@@ -38,7 +38,7 @@ def test_function(model_out):
     conv_out_y=160
     conv_out_x=120
     x,y=get_conv_coords(conv_factor,conv_out_y,conv_out_x)
-    probs=np.swapaxes(model_out[0,:,:],0,3).reshape(-1)>0.9
+    probs=np.swapaxes(model_out[0,:,:],0,1).reshape(-1)>0.9
     x=x[probs]
     y=y[probs]
     _,y_clust=cluster_points(np.ones(y.shape[0])*200,y , dist_th=5, clust_th=30)
