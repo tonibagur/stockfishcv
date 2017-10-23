@@ -1,5 +1,19 @@
 import numpy as np
 
+def group(values):
+    import numpy as np
+    values = np.array(values)
+    values.sort()
+    dif = np.ones(values.shape,values.dtype)
+    dif[1:] = np.diff(values)
+    idx = np.where(dif>0)
+    vals = values[idx]
+    count = np.diff(idx)
+    return vals
+
+def dist(x1,x2,y1,y2):
+    return ((x1-x2)**2 + (y1-y2)**2)**0.5
+
 def cluster_points(x_arr, y_arr, dist_th=10, clust_th=10):
     clusters=np.ones((x_arr.shape[0],))*-1
     for i in range(x_arr.shape[0]):
@@ -38,9 +52,12 @@ def test_function(model_out):
     conv_out_y=160
     conv_out_x=120
     x,y=get_conv_coords(conv_factor,conv_out_y,conv_out_x)
-    probs=np.swapaxes(model_out[0,:,:],0,1).reshape(-1)>0.9
+    print np.swapaxes(model_out[0,:,:],0,1)
+    probs=np.swapaxes(model_out[0,:,:],0,1).reshape(-1)>0.5
+    print "probs",probs
     x=x[probs]
     y=y[probs]
+    print "x,y",x,y
     _,y_clust=cluster_points(np.ones(y.shape[0])*200,y , dist_th=5, clust_th=30)
     x_clust,_=cluster_points(x, np.ones(x.shape[0])*200, dist_th=5, clust_th=30)
     nx,ny=x_clust.shape[0],y_clust.shape[0]
@@ -48,5 +65,7 @@ def test_function(model_out):
     max_x=np.max(x_clust)
     min_y=np.min(y_clust)
     max_y=np.max(y_clust)
-    ratio=(max_x - min_x)/(max_y-min_y)
+    #ratio=(max_x - min_x)/(max_y-min_y)
+    print "nx,ny",nx,ny,x_clust,y_clust
+    print "xmin,ymin,xmax,ymax",min_x,min_y,max_x,max_y
     return min_x,min_y,max_x,max_y
