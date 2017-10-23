@@ -78,7 +78,7 @@ static PythonManager *sharedMyManager = nil;
             npy_intp shape[] = {[multi.shape[0] integerValue], [multi.shape[1] integerValue], [multi.shape[2] integerValue] };
             
             import_array()
-            PyObject* arr=PyArray_SimpleNewFromData(2, shape, NPY_DOUBLE, multi.dataPointer);
+            PyObject* arr=PyArray_SimpleNewFromData((int)multi.shape.count, shape, NPY_DOUBLE, multi.dataPointer);
             
             PyTuple_SetItem(pArgs, 0, arr);
             
