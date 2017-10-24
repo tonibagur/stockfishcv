@@ -25,6 +25,8 @@
 
 #import "CoreMLManager.h"
 
+#import "PointsVCViewController.h"
+
 @implementation SetupViewController 
 {
     CameraVC *camVC;
@@ -117,8 +119,10 @@
 
 - (void) btnPressOnCam
 {
-    
 #if TARGET_IPHONE_SIMULATOR
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openDrawPoints:) name:@"points" object:nil];
     
     CoreMLManager *mlPython = [CoreMLManager initModelForType:MLSetupForPython];
     
@@ -166,6 +170,23 @@
     [self presentViewController:camVC animated:YES completion:nil];
 }
 
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void) openDrawPoints:(NSNotification*)noti
+{
+    UIView *vPoints = (UIView*) noti.object;
+    if (![vPoints isKindOfClass:[UIView class]]) return;
+    
+    PointsVCViewController *points = [PointsVCViewController new];
+    
+    [self presentViewController:points animated:YES completion:^{
+        [points InsertView:vPoints];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void) openTheML:(UIImage*) image
 {
