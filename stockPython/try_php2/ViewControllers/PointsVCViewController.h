@@ -10,4 +10,5 @@
 
 @interface PointsVCViewController : UIViewController
 
+- (void) InsertView:(UIView*) viewPoints;
 @end
