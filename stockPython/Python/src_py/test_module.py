@@ -52,6 +52,7 @@ def test_function(model_out):
     conv_out_y=160
     conv_out_x=120
     x,y=get_conv_coords(conv_factor,conv_out_y,conv_out_x)
+    print "model_out[0,78,11]",model_out[0,78,11]
     print np.swapaxes(model_out[0,:,:],0,1)
     probs=np.swapaxes(model_out[0,:,:],0,1).reshape(-1)>0.9
     print "sum",np.swapaxes(model_out[0,:,:],0,1).reshape(-1).sum(),probs.sum()
