@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C30D1751F9F454E0079C916 /* PointsVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C30D1731F9F454E0079C916 /* PointsVCViewController.m */; };
+		3C30D1761F9F454E0079C916 /* PointsVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C30D1741F9F454E0079C916 /* PointsVCViewController.xib */; };
 		3C376FA51F962A8000A5747D /* PythonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C376FA41F962A8000A5747D /* PythonManager.m */; };
 		3C776C701F9A1578006957E2 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6B1F9A1578006957E2 /* about.html */; };
 		3C776C711F9A1578006957E2 /* movelist-ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6C1F9A1578006957E2 /* movelist-ipad.css */; };
@@ -683,6 +685,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C30D1721F9F454E0079C916 /* PointsVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointsVCViewController.h; sourceTree = "<group>"; };
+		3C30D1731F9F454E0079C916 /* PointsVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointsVCViewController.m; sourceTree = "<group>"; };
+		3C30D1741F9F454E0079C916 /* PointsVCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsVCViewController.xib; sourceTree = "<group>"; };
 		3C376FA31F962A8000A5747D /* PythonManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PythonManager.h; sourceTree = "<group>"; };
 		3C376FA41F962A8000A5747D /* PythonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PythonManager.m; sourceTree = "<group>"; };
 		3C776C6B1F9A1578006957E2 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
@@ -2335,6 +2340,9 @@
 				3CD0283F1F96025D002A697C /* CameraVC.h */,
 				3CD028401F96025D002A697C /* CameraVC.m */,
 				3CD028411F96025D002A697C /* CameraVC.xib */,
+				3C30D1721F9F454E0079C916 /* PointsVCViewController.h */,
+				3C30D1731F9F454E0079C916 /* PointsVCViewController.m */,
+				3C30D1741F9F454E0079C916 /* PointsVCViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -2686,6 +2694,7 @@
 				3CD025E11F95FCCA002A697C /* MayaBKing96.png in Resources */,
 				3CD0270C1F95FCD5002A697C /* MeridaWPawn.png in Resources */,
 				3CD0262A1F95FCCA002A697C /* RussianBKing96@2x.png in Resources */,
+				3C30D1761F9F454E0079C916 /* PointsVCViewController.xib in Resources */,
 				3CD0266B1F95FCD5002A697C /* AlphaWBishop@3x.png in Resources */,
 				3CD0275C1F95FCD5002A697C /* USCFWKing@3x.png in Resources */,
 				3CD025B81F95FCCA002A697C /* CheqWKnight96@2x.png in Resources */,
@@ -3151,6 +3160,7 @@
 				3CD0280B1F96022E002A697C /* AppDelegate.mm in Sources */,
 				3CD027711F95FCFE002A697C /* material.cpp in Sources */,
 				3CD0277F1F95FD13002A697C /* color.cpp in Sources */,
+				3C30D1751F9F454E0079C916 /* PointsVCViewController.m in Sources */,
 				3CD0279A1F95FE8D002A697C /* Utils.m in Sources */,
 				3CD027751F95FCFE002A697C /* notation.cpp in Sources */,
 				3CD0276D1F95FCFE002A697C /* bitboard.cpp in Sources */,
