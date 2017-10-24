@@ -11,7 +11,9 @@
 #import "chess_board_locate.h"
 
 @implementation CoreMLManager
-
+{
+    CGFloat ratio;
+}
 #pragma mark - Initialize
 
 + (instancetype) initModelForType:(MLSetup) type
@@ -23,6 +25,7 @@
 
 - (void) setupModelForType:(MLSetup) type
 {
+    ratio = -1.0;
     [self closeAll];
     typeModel = type;
     if (type == MLSetupForPython)  {
@@ -108,16 +111,20 @@
 #pragma mark - Private methods
 - (void) testPythonSum:(MLMultiArray*) multiArray
 {
-    // evaluate pieces of tablero
     NSInteger x = -1;
     NSInteger y = -1;
     NSInteger z = -1;
     
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat height = (width / 3 )* 4;
+    UIView *viewPoints = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    BOOL exist = NO;
+    
     if (multiArray.shape.count > 0) z = [multiArray.shape[0] integerValue];
-    if (multiArray.shape.count > 1) y = [multiArray.shape[1] integerValue];
-    if (multiArray.shape.count > 2) x = [multiArray.shape[2] integerValue];
+    if (multiArray.shape.count > 1) x = [multiArray.shape[1] integerValue];
+    if (multiArray.shape.count > 2) y = [multiArray.shape[2] integerValue];
 
-    double maxValue = 0.9;
+    double maxValue = 0.90;
     double count = 0;
     double sum = 0;
     
@@ -128,7 +135,7 @@
         {
             for (int k = 0; k < 1; k++)
             {
-                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(j), @(i)]] doubleValue];
+                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(i), @(j)]] doubleValue];
                 if (evaluate != evaluate) {
                     NSLog(@"evaluate value is a NAN");
                     return;
@@ -136,16 +143,82 @@
                 
                 if (evaluate > maxValue) {
                     count++;
-                    NSLog(@"(0,%ld,%ld) = %f",(long)j,(long)i, evaluate);
+                    //NSLog(@"(%ld,%ld,%ld) = %f",(long)k, (long)j,(long)i, evaluate);
+                    CGFloat posY = (j+1)*4;
+                    CGFloat posX = (i+1)*4;
+                    NSLog(@"point (%.0f, %.0f)", posX, posY);
+                    [self drawPointInView:viewPoints forX:posX forY:posY];
+                    exist = YES;
                 }
                 sum += evaluate;
             }
         }
     }
-    NSLog(@"************************");
-    
+    NSLog(@"***********************************");
     NSLog(@"sum objc: %f   %f",sum, count);
+    NSLog(@"***********************************");
+    
+    if (exist) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"points" object:viewPoints];
+        });
+        
+    }
+}
 
+- (void) prepareRatio
+{
+    
+    if (ratio < 0) {
+        CGFloat maxSize = 480.0;
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        
+        if (width > maxSize) {
+            ratio = width / maxSize;
+        }
+        else if (width < maxSize) {
+            
+            ratio = maxSize / width;
+        }
+        else {
+            ratio = 1.0;
+        }
+        /*
+        
+        if (width > maxSize) {
+            ratio = maxSize / width;
+        }
+        else if (width < maxSize) {
+            
+            ratio = width / maxSize;
+        }
+        else {
+            ratio = 1.0;
+        }
+         */
+        
+    }
+}
+
+- (void) drawPointInView:(UIView*) view forX:(CGFloat) x forY:(CGFloat)y
+{
+    if (ratio < 0) {
+        [self prepareRatio];
+    }
+    
+    UIColor *color = [UIColor redColor];
+    CGFloat size = 3.0;
+    
+    CGFloat nPosX = x / ratio;
+    CGFloat nPosY = y / ratio;
+    
+    CALayer *layer = [CALayer new];
+    layer.frame = CGRectMake((nPosX-(size/2)),
+                             (nPosY-(size/2)),
+                             size, size);
+    layer.backgroundColor = color.CGColor;
+    [view.layer addSublayer:layer];
+    
 }
 
 - (NSMutableArray*) evaluateMultiArray:(MLMultiArray*) multiArray
