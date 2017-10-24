@@ -57,6 +57,8 @@
                                   if (completionCGRect) {
                                       MLMultiArray *aux = observations.featureValue.multiArrayValue;
                                       
+                                      [self testPythonSum:aux];
+                                      
                                       if (!python) {
                                           python = [PythonManager sharedManager];
                                       }
@@ -104,6 +106,47 @@
 }
 
 #pragma mark - Private methods
+- (void) testPythonSum:(MLMultiArray*) multiArray
+{
+    // evaluate pieces of tablero
+    NSInteger x = -1;
+    NSInteger y = -1;
+    NSInteger z = -1;
+    
+    if (multiArray.shape.count > 0) z = [multiArray.shape[0] integerValue];
+    if (multiArray.shape.count > 1) y = [multiArray.shape[1] integerValue];
+    if (multiArray.shape.count > 2) x = [multiArray.shape[2] integerValue];
+
+    double maxValue = 0.9;
+    double count = 0;
+    double sum = 0;
+    
+    NSLog(@"(z,y,x) = value");
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j <y; j++)
+        {
+            for (int k = 0; k < 1; k++)
+            {
+                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(j), @(i)]] doubleValue];
+                if (evaluate != evaluate) {
+                    NSLog(@"evaluate value is a NAN");
+                    return;
+                }
+                
+                if (evaluate > maxValue) {
+                    count++;
+                    NSLog(@"(0,%ld,%ld) = %f",(long)j,(long)i, evaluate);
+                }
+                sum += evaluate;
+            }
+        }
+    }
+    NSLog(@"************************");
+    
+    NSLog(@"sum objc: %f   %f",sum, count);
+
+}
 
 - (NSMutableArray*) evaluateMultiArray:(MLMultiArray*) multiArray
 {
@@ -127,7 +170,7 @@
             
             for (int k = 0; k < z; k++)
             {
-                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(i), @(j)]] doubleValue];
+                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(j), @(i)]] doubleValue];
                 if (evaluate > maxValue) {
                     indexZMaxValue = k;
                     maxValue = evaluate;
