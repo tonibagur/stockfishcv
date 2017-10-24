@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C30D1751F9F454E0079C916 /* PointsVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C30D1731F9F454E0079C916 /* PointsVCViewController.m */; };
 		3C30D1761F9F454E0079C916 /* PointsVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C30D1741F9F454E0079C916 /* PointsVCViewController.xib */; };
+		3C30D1781F9F61CE0079C916 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C30D1771F9F61CE0079C916 /* CoreImage.framework */; };
 		3C376FA51F962A8000A5747D /* PythonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C376FA41F962A8000A5747D /* PythonManager.m */; };
 		3C776C701F9A1578006957E2 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6B1F9A1578006957E2 /* about.html */; };
 		3C776C711F9A1578006957E2 /* movelist-ipad.css in Resources */ = {isa = PBXBuildFile; fileRef = 3C776C6C1F9A1578006957E2 /* movelist-ipad.css */; };
@@ -688,6 +689,7 @@
 		3C30D1721F9F454E0079C916 /* PointsVCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PointsVCViewController.h; sourceTree = "<group>"; };
 		3C30D1731F9F454E0079C916 /* PointsVCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PointsVCViewController.m; sourceTree = "<group>"; };
 		3C30D1741F9F454E0079C916 /* PointsVCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointsVCViewController.xib; sourceTree = "<group>"; };
+		3C30D1771F9F61CE0079C916 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		3C376FA31F962A8000A5747D /* PythonManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PythonManager.h; sourceTree = "<group>"; };
 		3C376FA41F962A8000A5747D /* PythonManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PythonManager.m; sourceTree = "<group>"; };
 		3C776C6B1F9A1578006957E2 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
@@ -1473,6 +1475,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C30D1781F9F61CE0079C916 /* CoreImage.framework in Frameworks */,
 				3CD028571F961F9C002A697C /* CoreMedia.framework in Frameworks */,
 				3CD028551F961DAB002A697C /* CoreGraphics.framework in Frameworks */,
 				3CD028521F960CFA002A697C /* Foundation.framework in Frameworks */,
@@ -2414,6 +2417,7 @@
 		3CF8326D1F94D55E006669C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3C30D1771F9F61CE0079C916 /* CoreImage.framework */,
 				3CD028561F961F9C002A697C /* CoreMedia.framework */,
 				3CD028541F961DAB002A697C /* CoreGraphics.framework */,
 				3CD028511F960CFA002A697C /* Foundation.framework */,
