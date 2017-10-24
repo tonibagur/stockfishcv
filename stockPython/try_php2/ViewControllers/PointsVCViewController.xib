@@ -24,7 +24,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRT-h5-CS3">
                     <rect key="frame" x="0.0" y="20" width="414" height="552"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tablero" translatesAutoresizingMaskIntoConstraints="NO" id="O8j-6m-XYJ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tablero" translatesAutoresizingMaskIntoConstraints="NO" id="O8j-6m-XYJ">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="552"/>
                         </imageView>
                     </subviews>

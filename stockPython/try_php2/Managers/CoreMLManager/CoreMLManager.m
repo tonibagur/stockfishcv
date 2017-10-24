@@ -146,6 +146,7 @@
                     //NSLog(@"(%ld,%ld,%ld) = %f",(long)k, (long)j,(long)i, evaluate);
                     CGFloat posY = (j+1)*4;
                     CGFloat posX = (i+1)*4;
+                    
                     NSLog(@"point (%.0f, %.0f)", posX, posY);
                     [self drawPointInView:viewPoints forX:posX forY:posY];
                     exist = YES;
@@ -162,13 +163,11 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:@"points" object:viewPoints];
         });
-        
     }
 }
 
 - (void) prepareRatio
 {
-    
     if (ratio < 0) {
         CGFloat maxSize = 480.0;
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
@@ -218,7 +217,6 @@
                              size, size);
     layer.backgroundColor = color.CGColor;
     [view.layer addSublayer:layer];
-    
 }
 
 - (NSMutableArray*) evaluateMultiArray:(MLMultiArray*) multiArray
@@ -229,8 +227,8 @@
     NSInteger z = -1;
     
     if (multiArray.shape.count > 0) z = [multiArray.shape[0] integerValue]; // 13
-    if (multiArray.shape.count > 1) y = [multiArray.shape[1] integerValue]; //  8
-    if (multiArray.shape.count > 2) x = [multiArray.shape[2] integerValue]; //  8
+    if (multiArray.shape.count > 1) x = [multiArray.shape[1] integerValue]; //  8
+    if (multiArray.shape.count > 2) y = [multiArray.shape[2] integerValue]; //  8
     
     NSMutableArray *arr = [NSMutableArray new];
     
@@ -243,7 +241,7 @@
             
             for (int k = 0; k < z; k++)
             {
-                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(j), @(i)]] doubleValue];
+                double evaluate = [[multiArray objectForKeyedSubscript:@[@(k), @(i), @(j)]] doubleValue];
                 if (evaluate > maxValue) {
                     indexZMaxValue = k;
                     maxValue = evaluate;
@@ -256,7 +254,6 @@
             //NSLog(@"%d , %d -> %d", i, j, indexZMaxValue);
         }
     }
-    
     return arr;
 }
 
