@@ -3078,7 +3078,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/Users/toni/dev/kivy-ios/dist/hostpython/bin/python -OO -m compileall \"$PROJECT_DIR\"/project_python";
+			shellScript = "//    /Users/toni/dev/kivy-ios/dist/hostpython/bin/python -OO -m compileall \"$PROJECT_DIR\"/project_python\n    \"$PROJECT_DIR\"/Python/dist/hostpython/bin/python -OO -m compileall \"$PROJECT_DIR\"/project_python";
 		};
 		3C1919401F975572003F041B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
