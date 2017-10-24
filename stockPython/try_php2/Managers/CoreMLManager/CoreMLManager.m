@@ -123,7 +123,7 @@
     if (multiArray.shape.count > 0) z = [multiArray.shape[0] integerValue];
     if (multiArray.shape.count > 1) x = [multiArray.shape[1] integerValue];
     if (multiArray.shape.count > 2) y = [multiArray.shape[2] integerValue];
-
+    
     double maxValue = 0.90;
     double count = 0;
     double sum = 0;
@@ -183,17 +183,17 @@
             ratio = 1.0;
         }
         /*
-        
-        if (width > maxSize) {
-            ratio = maxSize / width;
-        }
-        else if (width < maxSize) {
-            
-            ratio = width / maxSize;
-        }
-        else {
-            ratio = 1.0;
-        }
+         
+         if (width > maxSize) {
+         ratio = maxSize / width;
+         }
+         else if (width < maxSize) {
+         
+         ratio = width / maxSize;
+         }
+         else {
+         ratio = 1.0;
+         }
          */
         
     }
@@ -295,6 +295,7 @@
     completionPieces = completion;
     
     VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [handler performRequests:a error:nil];
     });
@@ -328,12 +329,64 @@
     }
     completionCGRect = completion;
     
-    VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
+    VNImageRequestHandler *handler = nil;
+    
+    
+    int typeImage = 2;
+    
+    if (typeImage == 0)
+    {
+        // CGImage
+        handler = [[VNImageRequestHandler alloc] initWithCGImage:image.CGImage options:@{}];
+    }
+    else if (typeImage == 1)
+    {
+        // CIImage
+        CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
+        handler = [[VNImageRequestHandler alloc] initWithCIImage:ciImage options:@{}];
+    }
+    else if (typeImage == 2)
+    {
+        // PIXEl Buffer
+        CGImageRef imageRef=[image CGImage];
+        CVImageBufferRef pixelBuffer = [self pixelBufferFromCGImage:imageRef];
+        handler = [[VNImageRequestHandler alloc] initWithCVPixelBuffer:pixelBuffer options:@{}];
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [handler performRequests:a error:nil];
     });
 }
 
+- (CVPixelBufferRef) pixelBufferFromCGImage:(CGImageRef) image
+{
+    CGSize frameSize = CGSizeMake(CGImageGetWidth(image), CGImageGetHeight(image));
+    NSDictionary *options = @{
+                              (__bridge NSString *)kCVPixelBufferCGImageCompatibilityKey: @(NO),
+                              (__bridge NSString *)kCVPixelBufferCGBitmapContextCompatibilityKey: @(NO)
+                              };
+    CVPixelBufferRef pixelBuffer;
+    CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, frameSize.width,
+                                          frameSize.height,  kCVPixelFormatType_32ARGB, (__bridge CFDictionaryRef) options,
+                                          &pixelBuffer);
+    if (status != kCVReturnSuccess) {
+        return NULL;
+    }
+    
+    CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    void *data = CVPixelBufferGetBaseAddress(pixelBuffer);
+    CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(data, frameSize.width, frameSize.height,
+                                                 8, CVPixelBufferGetBytesPerRow(pixelBuffer), rgbColorSpace,
+                                                 (CGBitmapInfo) kCGImageAlphaNoneSkipLast);
+    CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(image),
+                                           CGImageGetHeight(image)), image);
+    CGColorSpaceRelease(rgbColorSpace);
+    CGContextRelease(context);
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+    
+    return pixelBuffer;
+}
 #pragma mark - Close Manager
 
 - (void) closeAll
