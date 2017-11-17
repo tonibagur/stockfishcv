@@ -120,6 +120,7 @@
 - (void) btnPressOnCam
 {
 #if TARGET_IPHONE_SIMULATOR
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openDrawPoints:) name:@"points" object:nil];
@@ -139,14 +140,9 @@
              
              if (rectResultTupla.size.width > 0 && rectResultTupla.size.height > 0) {
                  
-                 CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rectResultTupla);
-                 UIImage *photoResult = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
-                 
-                 if (photoResult) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         [self openTheML:photoResult];
-                     });
-                 }
+                 // Si estubieramos en DISPOSITIVO recortaríamos la imagen que nos dijo Python y la pasaríamos por el ML de PIECES,
+                 // en este caso en concreto, las pruebas de Simulador es sólo para dibujar los puntos a modo visual, no requerimos saber las piezas
+
              }
              else {
                  NSLog(@"*********** Height or Width Equals ZERO");
